@@ -1,0 +1,135 @@
+import type { ResumeData } from './types';
+
+export const es: ResumeData = {
+  lang: 'es',
+  title: 'Ray Winkelman — CEO y Líder en Ingeniería de Software',
+  description: 'Líder empresarial en tecnología especializado en arquitectura de software, liderazgo ejecutivo y desarrollo de productos de extremo a extremo. CEO de Shadow Software LLC, con aplicaciones que procesan millones de transacciones de comercio electrónico para marcas globales.',
+  keywords: 'Ray Winkelman, Ingeniero de Software, CEO, Shadow Software, .NET, React, AWS, Azure, Google Cloud',
+  ogLocale: 'es_ES',
+  location: 'Asunción, Paraguay',
+  labels: {
+    synopsis: 'Sinopsis',
+    experience: 'Experiencia',
+    ventures: 'Emprendimientos',
+    education: 'Educación',
+    download: 'Descargar PDF',
+    print: 'Imprimir',
+    langNav: 'Idioma',
+  },
+  synopsis: 'CEO y fundador de Shadow Software LLC, dirigiendo equipos de hasta 17 ingenieros que desarrollan aplicaciones que procesan millones de transacciones de comercio electrónico para marcas como McDonalds, Subway y Home Depot. Creador de tres emprendimientos de software independientes — AmericanGunTrader.com, DabDash y OrderPrepped — cada uno sirviendo mercados desatendidos con plataformas diseñadas específicamente.',
+  venturesContext: 'Construidos y escalados a través de Shadow Software LLC.',
+  ventures: [
+    {
+      name: 'AmericanGunTrader.com™',
+      url: 'https://americanguntrader.com',
+      whitepaper: '/americanguntrader/',
+      logo: '/logos/agt.jpeg',
+      blurb: 'El mercado de armas de fuego sin comisiones de Estados Unidos. Anuncios entre particulares, subastas y grupos comunitarios en los 50 estados — sin tarifas de publicación ni comisiones por transacción. Monetizado a través de destacados de publicaciones, funciones de boletín y suscripciones para distribuidores con licencia federal.',
+    },
+    {
+      name: 'DabDash.com',
+      url: 'https://dabdash.com',
+      whitepaper: '/dabdash/',
+      logo: '/logos/dabdash.png',
+      blurb: 'Plataforma de software como servicio multiempresa para minoristas de cannabis a domicilio. Tiendas con identidad propia, inventario en tiempo real, gestión de zonas de entrega y posicionamiento web incorporado — creada para una industria excluida del comercio electrónico convencional. Suscripción de tarifa fija sin cargos por transacción.',
+    },
+    {
+      name: 'OrderPrepped.com',
+      url: 'https://orderprepped.com',
+      whitepaper: '/orderprepped/',
+      logo: '/logos/prepped-icon.webp',
+      blurb: 'Software completo de automatización para preparación de comidas y catering. Pedidos en línea, gestión de suscripciones, flujos de producción y entrega integrada — todo lo que un negocio de alimentación necesita para crecer. Precios según el uso, sin costos iniciales.',
+    },
+  ],
+  roles: [
+    {
+      company: 'Shadow Software LLC',
+      dates: 'Octubre 2019 – Presente',
+      title: 'Director Ejecutivo, Fundador',
+      location: 'Remoto',
+      description: 'Líder ejecutivo al frente de un equipo de 2 a 17 ingenieros, desarrollando aplicaciones que procesaron millones de transacciones de comercio electrónico para marcas globales como McDonalds, Subway, Dairy Queen y A&W.',
+      ventures: [
+        {
+          name: 'AmericanGunTrader.com™',
+          url: 'https://americanguntrader.com',
+          whitepaper: '/americanguntrader/',
+          logo: '/logos/agt.jpeg',
+          blurb: 'Mercado de armas de fuego entre particulares, sin comisiones. Anuncios, subastas y grupos comunitarios en los 50 estados.',
+        },
+        {
+          name: 'DabDash.com',
+          url: 'https://dabdash.com',
+          whitepaper: '/dabdash/',
+          logo: '/logos/dabdash.png',
+          blurb: 'Plataforma de software como servicio para entrega de cannabis. Tiendas con marca propia, inventario y gestión de zonas de entrega.',
+        },
+        {
+          name: 'OrderPrepped.com',
+          url: 'https://orderprepped.com',
+          whitepaper: '/orderprepped/',
+          logo: '/logos/prepped-icon.webp',
+          blurb: 'Automatización para preparación de comidas y catering. Pedidos, suscripciones, flujos de producción y entrega — todo integrado.',
+        },
+      ],
+    },
+    {
+      company: 'Home Depot Inc.',
+      dates: 'Noviembre 2022 – Junio 2023',
+      title: 'Ingeniero de Software Senior, Contrato',
+      location: 'Remoto',
+      description: 'Ingeniero Senior en un equipo Agile encargado de mantener QuoteCenter — la plataforma de pedidos en línea para profesionales de Home Depot, responsable de más de 3.000 millones de dólares en ingresos anuales. Lideró el desarrollo de más de 40 microservicios y orquestaciones en .NET; responsabilidad secundaria sobre infraestructura como código en Google Cloud, Harness y CircleCI.',
+    },
+    {
+      company: 'Capital Group Inc.',
+      dates: 'Marzo 2022 – Agosto 2022',
+      title: 'Ingeniero de Software Líder, Scrum Master, Contrato',
+      location: 'Remoto',
+      description: 'Ingeniero de Software Líder y Scrum Master en un proyecto de plataforma de datos a gran escala. Dirigió entre 5 y 16 ingenieros en incrementos de proyecto trimestrales, asumiendo planificación, ejecución y coordinación entre equipos desde épicas hasta nivel de historia. Brindó dirección técnica sobre interfaces de programación y orquestaciones de microservicios.',
+    },
+    {
+      company: 'Kangaroo Solutions Inc.',
+      dates: 'Noviembre 2020 – Mayo 2021',
+      title: 'Director de Ingeniería, Accionista',
+      location: 'Remoto',
+      description: 'Responsable de contratación, arquitecto fundador y director de desarrollo de la aplicación de entrega de comida Kangaroo — desde su concepción hasta la operación en más de 30 regiones de Canadá Atlántico. Interfaz de programación en .NET sobre AWS con interfaces en React y React Native.',
+    },
+    {
+      company: 'Elfster Inc.',
+      dates: 'Marzo 2018 – Noviembre 2019',
+      title: 'Ingeniero de Software Senior, Accionista',
+      location: 'Remoto',
+      description: 'Ingeniero Senior en un pequeño equipo Agile remoto que hizo crecer la plataforma de intercambio de regalos Elfster de 6 a 15 millones de usuarios. Responsabilidad principal: interfaz de programación en .NET, dos extensiones para Chrome y una interfaz en Vue.js. Responsabilidad secundaria: infraestructura en AWS.',
+    },
+    {
+      company: "6Joe's Software Inc.",
+      dates: 'Octubre 2017 – Marzo 2018',
+      title: 'Ingeniero de Software Fundador, Accionista',
+      location: 'Halifax, Canadá',
+      description: "Responsable de contratación, arquitecto fundador y director de desarrollo de la plataforma de golf de fantasía 6Joe's, desde el concepto hasta el lanzamiento. Interfaz de programación en .NET sobre Azure con Vue.js y Cordova.",
+    },
+    {
+      company: 'BeyondTrust Software Inc.',
+      dates: 'Septiembre 2015 – Febrero 2017',
+      title: 'Ingeniero de Software',
+      location: 'Halifax, Canadá',
+      description: 'Diseñó y desarrolló una herramienta de análisis semántico para traducir Transact-SQL a PL-SQL. Al concluir el proyecto, fusionó dos versiones muy divergentes del producto mediante una estrategia de ramificación incremental en Git y un ciclo de pruebas.',
+    },
+  ],
+  education: [
+    {
+      school: 'Nova Scotia Community College, Institute of Technology',
+      dates: 'Septiembre 2013 – Junio 2015',
+      details: [
+        'Diploma en Tecnología de la Información, Honores, promedio 4.0',
+        'Concentración en Programación de Computadoras · Promedio académico: 97/100',
+      ],
+    },
+    {
+      school: 'Acadia University',
+      dates: 'Septiembre 2011 – Junio 2013',
+      details: [
+        'Cursos de segundo y tercer año en Matemáticas Avanzadas, Biología, Psicología y Sociología.',
+      ],
+    },
+  ],
+};

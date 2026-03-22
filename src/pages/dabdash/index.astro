@@ -1,0 +1,97 @@
+---
+import Whitepaper from '../../layouts/Whitepaper.astro';
+
+export const prerender = true;
+---
+
+<Whitepaper
+  title="DabDash.com — Cannabis Delivery SaaS Platform"
+  description="How DabDash built a multi-tenant SaaS platform for cannabis delivery retailers worldwide, solving the e-commerce problem for an industry locked out of mainstream platforms. Revenue model, market opportunity, and growth strategy."
+  logo="/logos/dabdash.png"
+  platformName="DabDash"
+  platformUrl="https://dabdash.com"
+  tagline="Cannabis Delivery, Powered by DabDash"
+  path="/dabdash/"
+>
+
+<h2>Overview</h2>
+
+<p><a href="https://dabdash.com" rel="noopener noreferrer">DabDash</a> is a multi-tenant SaaS platform purpose-built for cannabis delivery retailers. Each vendor receives a branded subdomain storefront, a complete product catalog, delivery zone management, and real-time order processing — everything needed to operate a cannabis delivery business without touching a line of code.</p>
+
+<p>The platform serves retailers across legal cannabis markets globally. Cannabis is now legal in some form in approximately 50 countries, and the pace of legalization is accelerating — Germany legalized adult-use in April 2024, with Switzerland, the Netherlands, and several APAC nations actively expanding regulatory frameworks. DabDash is built to move with that expansion: the platform is language-flexible, timezone-aware, and not architecturally dependent on any single jurisdiction's regulatory model.</p>
+
+<p>Where mainstream e-commerce fails this industry — Shopify, Wix, and WooCommerce have all prohibited cannabis merchants — DabDash was built from the ground up for the specific constraints cannabis retailers operate under: cash-on-delivery payments, age verification requirements, geospatial delivery zone compliance, and the ever-present risk of being deplatformed overnight.</p>
+
+<div class="wp-stats">
+  <div>
+    <span class="wp-stat-value">~50</span>
+    <span class="wp-stat-label">Countries with Legal Cannabis</span>
+  </div>
+  <div>
+    <span class="wp-stat-value">$69.8B</span>
+    <span class="wp-stat-label">Global Legal Cannabis Market (2024)</span>
+  </div>
+  <div>
+    <span class="wp-stat-value">30%</span>
+    <span class="wp-stat-label">Cannabis Software CAGR (2024–2031)</span>
+  </div>
+</div>
+
+<h2>Market Opportunity</h2>
+
+<p>The global legal cannabis market was valued at <strong>$69.8 billion in 2024</strong> and is projected to exceed <strong>$102 billion by 2030</strong> at a 25.7% CAGR (Grand View Research). BDSA places the global legal market at $58 billion by 2028, with international markets outside the US and Canada growing at a <strong>24% CAGR</strong> — the fastest-growing segment globally, and the segment where DabDash has the most competitive whitespace versus US-centric incumbents.</p>
+
+<p>The software layer that serves these retailers is a distinct and faster-growing market. The cannabis industry software market is currently valued at <strong>$1.2 billion (2024)</strong> and is forecast to reach <strong>$10 billion by 2031</strong> at a <strong>30.2% CAGR</strong> (Verified Market Research). Cannabis technology broadly — spanning POS, e-commerce, delivery management, and compliance tools — represents a <strong>$6.75 billion market in 2024</strong>, projected to reach <strong>$59 billion by 2033</strong> at a 27.3% CAGR (SkyQuest).</p>
+
+<h3>Global Retail Footprint</h3>
+<p>There are currently an estimated <strong>20,000–25,000+ licensed cannabis retailers globally</strong>: approximately 15,000 in the United States across 24 recreational and 38 medical-legal states; 3,800 in Canada; and a rapidly expanding base across Europe, Asia-Pacific, and Latin America. Germany alone has seen medical cannabis patients grow nearly 4x in 14 months following April 2024 legalization, and the German cannabis market is projected to grow from $2 billion in 2024 to $9.7 billion by 2033 at an 18.9% CAGR (Nova One Advisor). European legal cannabis sales reached €1.5 billion in 2025 — nearly triple 2023 levels.</p>
+
+<h3>Revenue Per Retailer</h3>
+<p>The established market rate for cannabis SaaS is <strong>$500–$1,000 per retailer per month</strong>, validated by platforms like Dutchie ($299–$1,000/month) and Cova ($349+/month). Applied to the current global retail base at meaningful penetration, this represents a <strong>$120M–$300M+ ARR opportunity</strong> that grows proportionally as legalization continues to expand the addressable market.</p>
+
+<h2>The Problem</h2>
+
+<p>Cannabis retailers in legal markets worldwide face a set of infrastructure problems that no mainstream platform solves. Payment processors flag and close cannabis merchant accounts — Stripe, Square, and PayPal all prohibit cannabis transactions in their terms of service. E-commerce platforms enforce the same bans. A cannabis retailer building on Shopify risks losing their entire online presence with 24 hours notice.</p>
+
+<p>The remaining options are generic WooCommerce installs that require constant maintenance and compliance workarounds, or expensive enterprise platforms designed for large multi-location chains — leaving the small-to-mid-size delivery operator without a viable, affordable solution.</p>
+
+<h3>Cash-on-Delivery as Infrastructure</h3>
+<p>DabDash's cash-on-delivery model is not a limitation — it's a deliberate architectural decision that eliminates the largest single compliance risk for cannabis retailers worldwide. Customers order online, drivers collect cash at the door. This removes any dependency on financial institutions that actively discriminate against the industry, making DabDash viable in every legal cannabis jurisdiction regardless of local banking attitudes toward cannabis.</p>
+
+<h2>Revenue Model</h2>
+
+<p>DabDash charges a flat monthly subscription with no transaction fees. This pricing structure is a deliberate competitive advantage: vendors know exactly what the platform costs each month, regardless of order volume. As a vendor's business grows, the per-order cost of DabDash approaches zero — the incentives are fully aligned with vendor success.</p>
+
+<h3>Core Platform — $95/month</h3>
+<p>Full platform access: branded storefront, product catalog with strain data and THC/CBD percentages, five pricing structure types, delivery zone mapping, order management, customer accounts with loyalty points, analytics, and PDF invoicing. <a href="https://dabdash.com" rel="noopener noreferrer">cannabis delivery platform</a> with a fourteen-day free trial, no credit card required.</p>
+
+<h3>SEO MAX Add-On — $66.99/month</h3>
+<p>Local search is an underexploited channel for cannabis retailers — most competitors have poor or nonexistent SEO. SEO MAX provides server-side rendering with structured data, automated sitemaps, JSON-LD schema markup, and blog publishing tools. For a local delivery service, ranking first for a "[city] cannabis delivery" query can generate thousands in monthly incremental revenue from organic traffic alone.</p>
+
+<h2>Platform Features</h2>
+
+<h3>Geospatial Delivery Zones</h3>
+<p>Vendors draw polygons on a map to define their delivery areas. When a customer enters their address, the platform resolves it against the vendor's zones in real-time — returning available products, delivery windows, and fees based on exact location. This works for a neighborhood in Toronto, a postal district in Berlin, or a suburb of Bangkok equally well.</p>
+
+<h3>Cannabis-Specific Catalog</h3>
+<p>The product catalog is built around cannabis retail semantics: strain name, type, THC and CBD percentages, terpene profiles, and category. A database of 14,670 cannabis strains provides autocomplete and standardization. Five pricing structures handle the full variety of how cannabis is sold globally — by gram, by unit, by weight tier, or in complex matrix configurations for wholesale and retail mixed environments.</p>
+
+<h3>Tenant Isolation</h3>
+<p>Strict data isolation ensures one vendor's customers, orders, and analytics are never accessible to another. In many jurisdictions this is not just good engineering — it is a regulatory requirement. DabDash treats compliance as a first-class concern.</p>
+
+<h2>Competitive Position</h2>
+
+<ul>
+  <li><strong>vs. Shopify / WooCommerce</strong> — These platforms prohibit cannabis. DabDash is purpose-built for it. No deplatforming risk.</li>
+  <li><strong>vs. Dutchie / Jane Technologies</strong> — Enterprise platforms with enterprise pricing ($299–$1,000+/month) and US-centric compliance models. DabDash targets the underserved global small-to-mid tier at a flat $95/month with no transaction fees.</li>
+  <li><strong>vs. Custom Development</strong> — Building a multi-tenant cannabis delivery platform from scratch is a six-figure, multi-month project. DabDash provides equivalent capabilities at $95/month, operational in minutes.</li>
+  <li><strong>International whitespace</strong> — The dominant cannabis SaaS platforms are built for US regulatory frameworks (Metrc integrations, state-specific compliance). As Germany, Australia, and other non-US markets expand, retailers in those jurisdictions need platforms that don't assume a US compliance model. DabDash's architecture makes no such assumption.</li>
+</ul>
+
+<h2>Growth Strategy</h2>
+
+<p>Cannabis legalization is expanding market by market. Each new legal jurisdiction creates a wave of retailers who need delivery infrastructure immediately — they cannot wait months for custom development. DabDash's self-service onboarding (14-day free trial, no credit card) is designed to capture these operators at the moment they need a solution most. The built-in SEO tooling then drives organic customer discovery within each local market, reducing vendor dependence on paid advertising and increasing the likelihood of long-term platform retention.</p>
+
+<p>The international market outside the US and Canada — currently growing at a <strong>24% CAGR</strong> and underserved by US-centric platforms — represents the primary expansion vector. Every country that legalizes cannabis creates a new addressable market where DabDash's platform-agnostic architecture provides a structural advantage over incumbents.</p>
+
+</Whitepaper>

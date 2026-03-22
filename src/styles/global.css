@@ -1,0 +1,627 @@
+/* ——————————————————————————————————————————————————————
+   Ray Winkelman — Resume
+   Neo-Swiss typographic design. One font. Maximum discipline.
+   —————————————————————————————————————————————————————— */
+
+/* —— Tokens —— */
+:root {
+  color-scheme: light dark;
+
+  --font: 'Space Grotesk', 'Noto Sans Thai', sans-serif;
+
+  --bg:         #f5f4f0;
+  --text:       #1c1b18;
+  --text-muted: #71706b;
+  --accent:     #2d4a7a;
+  --rule:       #d5d4d0;
+
+  --max-w: 40rem;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:         #141416;
+    --text:       #e5e4e0;
+    --text-muted: #908f8a;
+    --accent:     #8ab0e2;
+    --rule:       #2c2c30;
+  }
+}
+
+/* —— View Transitions —— */
+::view-transition-old(root) {
+  animation-duration: 0.15s;
+  animation-timing-function: ease-out;
+}
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+  animation-timing-function: ease-out;
+}
+
+/* —— Reset —— */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* —— Base —— */
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  padding: clamp(3rem, 12vh, 8rem) var(--gutter) 4rem;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* —— Focus —— */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* —— Header —— */
+.site-header {
+  margin-bottom: 3.5rem;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.headshot {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+}
+
+.name {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 0.75rem;
+}
+
+/* —— Name letter animation —— */
+/* Keep name invisible for ~150ms so module script can split before first paint reveals it */
+.js .name {
+  animation: nameHold 0.15s steps(1, end) forwards;
+}
+@keyframes nameHold {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.js .name-char {
+  opacity: 0;
+  transform: translateY(0.2em);
+  animation: charIn 0.5s var(--ease-out-expo) forwards;
+  animation-delay: calc(var(--i, 0) * 0.028s + 0.05s);
+}
+.name-char {
+  display: inline-block;
+}
+.name-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+@keyframes charIn {
+  to { opacity: 1; transform: none; }
+}
+
+.meta {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+}
+
+.meta a {
+  color: var(--text-muted);
+}
+.meta a.email-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.meta a:hover {
+  color: var(--accent);
+}
+.meta a.email-link:hover {
+  text-decoration-color: var(--accent);
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1.5rem;
+}
+
+/* —— Navigation —— */
+.top-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1rem var(--gutter);
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  z-index: 10;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+.top-nav.scrolled {
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.top-nav a {
+  color: var(--text-muted);
+  transition: color 0.18s ease;
+}
+.top-nav a:hover,
+.top-nav a[aria-current="page"] {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-sep {
+  color: var(--rule);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* —— Sections —— */
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-label {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* Animated underline — draws left to right when section reveals */
+.js .section-label::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--rule);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s var(--ease-out-expo) 0.15s;
+}
+/* No-JS fallback: always show the line */
+.section-label::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--rule);
+}
+.js .reveal.visible .section-label::after {
+  transform: scaleX(1);
+}
+
+/* —— Scroll reveal —— */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity  0.6s var(--ease-out-expo),
+    transform 0.6s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0s);
+}
+.js .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* —— Roles (Experience) —— */
+.role {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+.role:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.role-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  margin-bottom: 0.125rem;
+}
+
+.role-company {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.role-dates {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.role-title {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-bottom: 0.375rem;
+}
+
+.role-location {
+  color: var(--text-muted);
+}
+.role-location::before {
+  content: " · ";
+}
+
+.role-desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* —— Role Ventures (nested under a role) —— */
+.role-ventures {
+  margin-top: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.role-venture {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+
+.role-venture-logo {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  object-fit: contain;
+  margin-top: 0.1rem;
+  border-radius: 3px;
+  transition: transform 0.25s var(--ease-spring);
+}
+.role-venture:hover .role-venture-logo {
+  transform: scale(1.12);
+}
+
+.role-venture-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.role-venture-blurb {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.role-venture-name::after {
+  content: " — ";
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* —— Education —— */
+.edu {
+  margin-bottom: 1.25rem;
+}
+.edu:last-child {
+  margin-bottom: 0;
+}
+
+.edu-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+  margin-bottom: 0.125rem;
+}
+
+.edu-school {
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.edu-dates {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.edu-detail {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* —— Ventures —— */
+.ventures-context {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.ventures-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.venture {
+  padding: 1.25rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--accent);
+  border-bottom: none;
+  transition:
+    background 0.25s ease,
+    padding-left 0.25s var(--ease-out-expo);
+}
+.venture:hover {
+  padding-left: 1.25rem;
+  background: color-mix(in srgb, var(--accent) 4%, transparent);
+}
+
+.venture-head {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.venture-logo {
+  height: 36px;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+.venture-name {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.venture-blurb {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* —— Footer —— */
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.site-footer a,
+.download-btn {
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.6875rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--font);
+  transition: color 0.18s ease;
+}
+.site-footer a:hover,
+.download-btn:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* —— Reduced motion —— */
+@media (prefers-reduced-motion: reduce) {
+  .js .name {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  .js .name-char {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .js .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .js .section-label::after {
+    transform: scaleX(1) !important;
+    transition: none !important;
+  }
+  .venture,
+  .role-venture-logo {
+    transition: none !important;
+  }
+}
+
+/* —— Responsive —— */
+@media (max-width: 32rem) {
+  .role-head,
+  .edu-head {
+    flex-direction: column;
+    gap: 0;
+  }
+  .role-dates,
+  .edu-dates {
+    order: -1;
+    font-size: 0.75rem;
+  }
+  .name {
+    letter-spacing: 0.06em;
+  }
+  .headshot {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* —— Print —— */
+@media print {
+  .js .name {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  :root {
+    --bg: #fff;
+    --text: #1a1a1a;
+    --text-muted: #555;
+    --rule: #ccc;
+    --accent: #2d4a7a;
+  }
+  body {
+    padding: 0.5in 0.6in;
+    font-size: 9.5pt;
+    max-width: none;
+    line-height: 1.5;
+  }
+  .name {
+    font-size: 28pt;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+  }
+  .name-char {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    display: inline !important;
+  }
+  .site-header {
+    margin-bottom: 1.5rem;
+  }
+  .top-nav,
+  .site-footer {
+    display: none;
+  }
+  .headshot {
+    width: 48px;
+    height: 48px;
+  }
+  .role {
+    padding-bottom: 0.7rem;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .section-label::after {
+    transform: scaleX(1) !important;
+    transition: none !important;
+  }
+  .section {
+    margin-bottom: 1.25rem;
+  }
+  .section-label {
+    font-size: 8pt;
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+  .role {
+    margin-bottom: 0.9rem;
+    break-inside: avoid;
+  }
+  .role-desc {
+    font-size: 9pt;
+  }
+  .ventures-context {
+    font-size: 8pt;
+  }
+  .venture {
+    break-inside: avoid;
+    border-left: 2px solid var(--accent) !important;
+    padding: 0.5rem 0.75rem !important;
+    background: none !important;
+  }
+  .venture-blurb {
+    font-size: 9pt;
+  }
+  .venture-logo {
+    height: 20px;
+  }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  a[href]::after {
+    content: none;
+  }
+}

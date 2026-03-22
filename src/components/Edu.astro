@@ -1,0 +1,17 @@
+---
+interface Props {
+  school: string;
+  dates: string;
+  details: string[];
+}
+
+const { school, dates, details } = Astro.props;
+---
+
+<div class="edu">
+  <div class="edu-head">
+    <h3 class="edu-school">{school}</h3>
+    <span class="edu-dates">{dates}</span>
+  </div>
+  {details.map((d) => <p class="edu-detail">{d}</p>)}
+</div>

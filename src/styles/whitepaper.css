@@ -1,0 +1,259 @@
+/* —— Whitepaper Pages —— */
+
+.wp-header {
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.wp-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wp-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+}
+.wp-brand:hover .wp-logo {
+  transform: scale(1.08);
+}
+
+.wp-title {
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.wp-tagline {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.wp-visit {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--rule);
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  white-space: nowrap;
+  align-self: center;
+}
+.wp-visit:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  text-decoration: none;
+}
+.wp-visit:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.wp-visit:active {
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+/* —— Whitepaper Body —— */
+.wp-body {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.wp-body h2 {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  margin-top: 3rem;
+  position: relative;
+  border-bottom: none;
+}
+
+/* Animated underline on h2 — only when JS is present */
+.js .wp-body h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--rule);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+}
+.js .wp-body > h2.visible::after {
+  transform: scaleX(1);
+}
+/* No-JS fallback: always show the border */
+.wp-body h2 {
+  border-bottom: 1px solid var(--rule);
+}
+.js .wp-body h2 {
+  border-bottom: none;
+}
+
+.wp-body h2:first-child {
+  margin-top: 0;
+}
+
+.wp-body h3 {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.wp-body p {
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.wp-body ul,
+.wp-body ol {
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+}
+
+.wp-body li {
+  margin-bottom: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.wp-body strong {
+  font-weight: 600;
+}
+
+/* —— wp-body scroll reveal —— */
+/* Hidden state applied via CSS from the start — no JS class injection needed */
+.js .wp-body > * {
+  opacity: 0;
+  transform: translateY(7px);
+  transition:
+    opacity  0.5s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--wp-i, 0) * 0.03s),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--wp-i, 0) * 0.03s);
+}
+.js .wp-body > .visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* —— Stats Row —— */
+.wp-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 1.5rem 0;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.wp-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  display: block;
+}
+
+.wp-stat-label {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* —— Tech Stack —— */
+.wp-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin: 0.75rem 0 1rem;
+}
+
+.wp-tech span {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* —— Trademark notice —— */
+.wp-trademark {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--rule);
+  padding-top: 1rem;
+}
+
+/* —— Reduced motion —— */
+@media (prefers-reduced-motion: reduce) {
+  .js .wp-body > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .js .wp-body h2::after {
+    transform: scaleX(1) !important;
+    transition: none !important;
+  }
+  .wp-logo {
+    transition: none !important;
+  }
+}
+
+/* —— Print —— */
+@media print {
+  .wp-visit,
+  .top-nav {
+    display: none;
+  }
+  .wp-logo {
+    width: 36px;
+    height: 36px;
+  }
+  .wp-body h2 {
+    margin-top: 1.5rem;
+  }
+  .js .wp-body h2::after {
+    transform: scaleX(1) !important;
+    transition: none !important;
+  }
+  .js .wp-body > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* —— Responsive —— */
+@media (max-width: 32rem) {
+  .wp-header {
+    flex-direction: column;
+  }
+  .wp-visit {
+    align-self: flex-start;
+  }
+}

@@ -1,0 +1,262 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import type { ResumeData } from '../data/types';
+import Role from '../components/Role.astro';
+import Edu from '../components/Edu.astro';
+import Venture from '../components/Venture.astro';
+import '../styles/global.css';
+
+interface Props {
+  data: ResumeData;
+}
+
+const { data } = Astro.props;
+const year = new Date().getFullYear();
+const currentLang = data.lang;
+const needsThai = currentLang === 'th';
+const canonicalPath = currentLang === 'en' ? '/' : `/${currentLang}/`;
+const canonicalUrl = `https://raywinkelman.com${canonicalPath}`;
+
+const fontUrl = needsThai
+  ? 'https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap'
+  : 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap';
+
+const jsonLd = currentLang === 'en' ? {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://raywinkelman.com/#website",
+      "url": "https://raywinkelman.com",
+      "name": "Ray Winkelman",
+      "description": data.description,
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://raywinkelman.com/#organization",
+      "name": "Shadow Software LLC",
+      "url": "https://raywinkelman.com",
+      "founder": { "@id": "https://raywinkelman.com/#person" },
+      "sameAs": [
+        "https://americanguntrader.com",
+        "https://dabdash.com",
+        "https://orderprepped.com"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://raywinkelman.com/#person",
+      "name": "Ray Winkelman",
+      "givenName": "Ray",
+      "familyName": "Winkelman",
+      "jobTitle": "Chief Executive Officer & Founder",
+      "worksFor": { "@id": "https://raywinkelman.com/#organization" },
+      "url": "https://raywinkelman.com",
+      "image": "https://raywinkelman.com/ray.png",
+      "email": "resume@raywinkelman.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tampa Bay",
+        "addressRegion": "Florida",
+        "addressCountry": "US"
+      },
+      "alumniOf": [
+        { "@type": "EducationalOrganization", "name": "Nova Scotia Community College" },
+        { "@type": "EducationalOrganization", "name": "Acadia University" }
+      ],
+      "knowsAbout": [
+        "Software Architecture", "Executive Leadership", ".NET",
+        "React", "Vue.js", "AWS", "Azure", "Google Cloud"
+      ],
+      "sameAs": [
+        "https://americanguntrader.com",
+        "https://dabdash.com",
+        "https://orderprepped.com"
+      ]
+    }
+  ]
+} : null;
+---
+
+<!DOCTYPE html>
+<html lang={data.lang}>
+<head>
+  <script is:inline>document.documentElement.classList.add('js')</script>
+  <ClientRouter />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{data.title}</title>
+  <meta name="description" content={data.description}>
+  <meta name="keywords" content={data.keywords}>
+  <meta name="author" content="Ray Winkelman">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href={canonicalUrl}>
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content={canonicalUrl}>
+  <meta property="og:title" content={data.title}>
+  <meta property="og:description" content={data.description}>
+  <meta property="og:image" content="https://raywinkelman.com/ray.png">
+  <meta property="og:image:width" content="120">
+  <meta property="og:image:height" content="120">
+  <meta property="og:locale" content={data.ogLocale}>
+  <meta property="og:site_name" content="Ray Winkelman">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content={data.title}>
+  <meta name="twitter:description" content={data.description}>
+  <meta name="twitter:image" content="https://raywinkelman.com/ray.png">
+
+  <link rel="alternate" hreflang="en" href="https://raywinkelman.com/">
+  <link rel="alternate" hreflang="es" href="https://raywinkelman.com/es/">
+  <link rel="alternate" hreflang="th" href="https://raywinkelman.com/th/">
+  <link rel="alternate" hreflang="x-default" href="https://raywinkelman.com/">
+
+  <!-- Non-blocking font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href={fontUrl}>
+  <link rel="stylesheet" href={fontUrl} media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href={fontUrl}></noscript>
+
+  {jsonLd && (
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  )}
+</head>
+<body>
+
+  <nav class="top-nav" aria-label={data.labels.langNav}>
+    <a href="/" aria-current={currentLang === 'en' ? 'page' : undefined} hreflang="en">EN</a>
+    <span class="nav-sep" aria-hidden="true">/</span>
+    <a href="/es/" aria-current={currentLang === 'es' ? 'page' : undefined} hreflang="es">ES</a>
+    <span class="nav-sep" aria-hidden="true">/</span>
+    <a href="/th/" aria-current={currentLang === 'th' ? 'page' : undefined} hreflang="th">TH</a>
+  </nav>
+
+  <header class="site-header">
+    <div class="header-row">
+      <div>
+        <h1 class="name">Ray Winkelman</h1>
+        <div class="meta reveal" data-delay="0.42">
+          <div class="meta-row">
+            <span>{data.location}</span>
+            <a class="email-link" data-u="resume" data-d="raywinkelman.com" href="#" aria-label="Email Ray Winkelman"></a>
+          </div>
+        </div>
+      </div>
+      <img src="/ray.png" alt="Ray Winkelman" class="headshot reveal" data-delay="0.35" width="64" height="64">
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section reveal">
+      <h2 class="section-label">{data.labels.synopsis}</h2>
+      <p>{data.synopsis}</p>
+    </section>
+
+    <section class="section reveal">
+      <h2 class="section-label">{data.labels.ventures}</h2>
+      <p class="ventures-context">{data.venturesContext}</p>
+      <div class="ventures-grid">
+        {data.ventures.map((v) => (
+          <Venture {...v} />
+        ))}
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2 class="section-label">{data.labels.experience}</h2>
+      {data.roles.map((role) => (
+        <Role {...role} />
+      ))}
+    </section>
+
+    <section class="section reveal">
+      <h2 class="section-label">{data.labels.education}</h2>
+      {data.education.map((edu) => (
+        <Edu {...edu} />
+      ))}
+    </section>
+
+  </main>
+
+  <footer class="site-footer reveal">
+    <span>&copy; {year} Ray Winkelman</span>
+    <button class="download-btn" onclick="window.print()">{data.labels.print || data.labels.download}</button>
+  </footer>
+
+  <script>
+    // —— Email reveal ——
+    document.querySelectorAll('a.email-link').forEach(function(a) {
+      var addr = a.dataset.u + '\u0040' + a.dataset.d;
+      a.href = 'mailto:' + addr;
+      a.textContent = addr;
+    });
+
+    // —— Name letter split ——
+    const nameEl = document.querySelector('.name');
+    if (nameEl && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+      const text = nameEl.textContent.trim();
+      nameEl.setAttribute('aria-label', text);
+      let idx = 0;
+      nameEl.innerHTML = text.split(' ').map(word => {
+        const spans = [...word].map(ch => {
+          const s = `<span class="name-char" aria-hidden="true" style="--i:${idx}">${ch}</span>`;
+          idx++;
+          return s;
+        }).join('');
+        idx++;
+        return `<span class="name-word">${spans}</span>`;
+      }).join(' ');
+    }
+
+    // —— Scroll reveal ——
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -30px 0px', threshold: 0.05 });
+
+      reveals.forEach((el, i) => {
+        const manual = el.dataset.delay;
+        el.style.setProperty('--reveal-delay', manual ? `${manual}s` : `${Math.min(i * 0.08, 0.28)}s`);
+        io.observe(el);
+      });
+    } else {
+      reveals.forEach(el => el.classList.add('visible'));
+    }
+
+    // —— Nav backdrop on scroll ——
+    if (!window.__navScrollBound) {
+      window.__navScrollBound = true;
+      window.addEventListener('scroll', () => {
+        const n = document.querySelector('.top-nav');
+        if (n) n.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+    }
+
+    // —— Service worker (production only) ——
+    if (!window.__swRegistered && 'serviceWorker' in navigator && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+      window.__swRegistered = true;
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+  </script>
+
+</body>
+</html>

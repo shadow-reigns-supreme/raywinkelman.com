@@ -1,0 +1,135 @@
+import type { ResumeData } from './types';
+
+export const en: ResumeData = {
+  lang: 'en',
+  title: 'Ray Winkelman — CEO & Software Engineering Leader',
+  description: 'Technology business leader with expertise in software architecture, executive leadership, and SDLC. CEO of Shadow Software LLC, delivering applications processing millions of e-commerce transactions for global brands.',
+  keywords: 'Ray Winkelman, Software Engineer, CEO, Shadow Software, .NET, React, AWS, Azure, Google Cloud',
+  ogLocale: 'en_US',
+  location: 'Tampa Bay, Florida, United States',
+  labels: {
+    synopsis: 'Synopsis',
+    experience: 'Experience',
+    ventures: 'Ventures',
+    education: 'Education',
+    download: 'Download PDF',
+    print: 'Print',
+    langNav: 'Language',
+  },
+  synopsis: 'CEO and founder of Shadow Software LLC, directing teams of up to 17 engineers building applications that process millions of e-commerce transactions for brands including McDonalds, Subway, and Home Depot. Creator of three independent software ventures — AmericanGunTrader.com, DabDash, and OrderPrepped — each serving underserved markets with purpose-built platforms.',
+  venturesContext: 'Built and scaled through Shadow Software LLC.',
+  ventures: [
+    {
+      name: 'AmericanGunTrader.com™',
+      url: 'https://americanguntrader.com',
+      whitepaper: '/americanguntrader/',
+      logo: '/logos/agt.jpeg',
+      blurb: 'America\'s commission-free firearms marketplace. Peer-to-peer listings, auctions, and community groups across all 50 states — zero listing fees, zero transaction fees. Monetized through post boosts, newsletter features, and FFL vendor subscriptions.',
+    },
+    {
+      name: 'DabDash.com',
+      url: 'https://dabdash.com',
+      whitepaper: '/dabdash/',
+      logo: '/logos/dabdash.png',
+      blurb: 'Multi-tenant SaaS platform for cannabis delivery retailers. Branded storefronts, real-time inventory, delivery zone mapping, and built-in SEO — purpose-built for an industry locked out of mainstream e-commerce. Flat-rate subscription model with no transaction fees.',
+    },
+    {
+      name: 'OrderPrepped.com',
+      url: 'https://orderprepped.com',
+      whitepaper: '/orderprepped/',
+      logo: '/logos/prepped-icon.webp',
+      blurb: 'Complete meal prep and catering automation software. Online ordering, subscription management, production workflows, and integrated delivery — everything a food business needs to scale. Pay-as-you-grow pricing with zero upfront costs.',
+    },
+  ],
+  roles: [
+    {
+      company: 'Shadow Software LLC',
+      dates: 'October 2019 – Present',
+      title: 'Chief Executive Officer, Founder',
+      location: 'Remote',
+      description: 'Executive leader directing a team of 2–17 engineers, delivering applications that processed millions of e-commerce transactions for global brands including McDonalds, Subway, Dairy Queen, and A&W.',
+      ventures: [
+        {
+          name: 'AmericanGunTrader.com™',
+          url: 'https://americanguntrader.com',
+          whitepaper: '/americanguntrader/',
+          logo: '/logos/agt.jpeg',
+          blurb: 'Commission-free P2P firearms marketplace. Listings, auctions, and community groups across all 50 states.',
+        },
+        {
+          name: 'DabDash.com',
+          url: 'https://dabdash.com',
+          whitepaper: '/dabdash/',
+          logo: '/logos/dabdash.png',
+          blurb: 'SaaS cannabis delivery platform. Branded storefronts, inventory, and delivery zone management for retailers.',
+        },
+        {
+          name: 'OrderPrepped.com',
+          url: 'https://orderprepped.com',
+          whitepaper: '/orderprepped/',
+          logo: '/logos/prepped-icon.webp',
+          blurb: 'Meal prep and catering automation. Ordering, subscriptions, production workflows, and delivery — all-in-one.',
+        },
+      ],
+    },
+    {
+      company: 'Home Depot Inc.',
+      dates: 'November 2022 – June 2023',
+      title: 'Senior Software Engineer, Contract',
+      location: 'Remote',
+      description: 'Senior Engineer on an Agile team maintaining QuoteCenter — Home Depot\'s Pro online ordering platform generating $3B+ in annual revenue. Led development across 40+ .NET microservices and orchestrations; secondary ownership of Google Cloud, Harness, and CircleCI infrastructure-as-code.',
+    },
+    {
+      company: 'Capital Group Inc.',
+      dates: 'March 2022 – August 2022',
+      title: 'Lead Software Engineer, Scrum Master, Contract',
+      location: 'Remote',
+      description: 'Lead Software Engineer and Scrum Master on a large-scale data platform project. Directed 5–16 engineers across quarter-long increments, owning planning, execution, and cross-team coordination from epics to story level. Provided technical direction over REST APIs and microservice orchestrations.',
+    },
+    {
+      company: 'Kangaroo Solutions Inc.',
+      dates: 'November 2020 – May 2021',
+      title: 'Director of Engineering, Shareholder',
+      location: 'Remote',
+      description: 'Hiring manager, founding architect, and development director of the Kangaroo food delivery app — from conception to 30+ regions across Atlantic Canada. .NET REST API on AWS with React and React Native.',
+    },
+    {
+      company: 'Elfster Inc.',
+      dates: 'March 2018 – November 2019',
+      title: 'Senior Software Engineer, Shareholder',
+      location: 'Remote',
+      description: 'Senior Engineer on a small remote Agile team evolving the Elfster gift exchange platform from 6M to 15M users. Primary: .NET REST API, two Chrome extensions, and a Vue.js frontend. Secondary: AWS infrastructure.',
+    },
+    {
+      company: "6Joe's Software Inc.",
+      dates: 'October 2017 – March 2018',
+      title: 'Founding Software Engineer, Shareholder',
+      location: 'Halifax, Canada',
+      description: "Hiring manager, founding architect, and development director of the 6Joe's fantasy golf platform from concept to launch. .NET REST API on Azure with Vue.js and Cordova.",
+    },
+    {
+      company: 'BeyondTrust Software Inc.',
+      dates: 'September 2015 – February 2017',
+      title: 'Software Engineer',
+      location: 'Halifax, Canada',
+      description: 'Designed and developed a semantic analysis tool to translate Transact-SQL to PL-SQL. Upon completion, merged two vastly diverged product versions using an incremental Git branching strategy and test cycle.',
+    },
+  ],
+  education: [
+    {
+      school: 'Nova Scotia Community College, Institute of Technology',
+      dates: 'September 2013 – June 2015',
+      details: [
+        'Information Technology Diploma, Honours, 4.0 GPA',
+        'Computer Programming Concentration · Academic Average: 97/100',
+      ],
+    },
+    {
+      school: 'Acadia University',
+      dates: 'September 2011 – June 2013',
+      details: [
+        'Second and third-year courses in Advanced Mathematics, Biology, Psychology, and Sociology.',
+      ],
+    },
+  ],
+};

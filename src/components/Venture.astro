@@ -1,0 +1,19 @@
+---
+interface Props {
+  name: string;
+  url: string;
+  whitepaper: string;
+  logo: string;
+  blurb: string;
+}
+
+const { name, url, whitepaper, logo, blurb } = Astro.props;
+---
+
+<article class="venture">
+  <div class="venture-head">
+    <img src={logo} alt={`${name} logo`} class="venture-logo" width="36" height="36" loading="lazy">
+    <a href={whitepaper} class="venture-name">{name}</a>
+  </div>
+  <p class="venture-blurb">{blurb}</p>
+</article>

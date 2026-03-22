@@ -1,0 +1,181 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import '../styles/global.css';
+import '../styles/whitepaper.css';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  logo: string;
+  platformName: string;
+  platformUrl: string;
+  tagline: string;
+  path: string;
+}
+
+const { title, description, lang = 'en', logo, platformName, platformUrl, tagline, path } = Astro.props;
+const year = new Date().getFullYear();
+const canonicalUrl = `https://raywinkelman.com${path}`;
+const fontUrl = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ray Winkelman",
+          "item": "https://raywinkelman.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": platformName,
+          "item": canonicalUrl
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": title,
+      "description": description,
+      "url": canonicalUrl,
+      "author": {
+        "@type": "Person",
+        "name": "Ray Winkelman",
+        "url": "https://raywinkelman.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Shadow Software LLC",
+        "url": "https://raywinkelman.com"
+      },
+      "image": `https://raywinkelman.com${logo}`,
+      "mainEntityOfPage": canonicalUrl
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <script is:inline>document.documentElement.classList.add('js')</script>
+  <ClientRouter />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <meta name="author" content="Ray Winkelman">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href={canonicalUrl}>
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content={canonicalUrl}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={`https://raywinkelman.com${logo}`}>
+  <meta property="og:site_name" content="Ray Winkelman">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={`https://raywinkelman.com${logo}`}>
+
+  <!-- Non-blocking font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href={fontUrl}>
+  <link rel="stylesheet" href={fontUrl} media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href={fontUrl}></noscript>
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+</head>
+<body>
+
+  <nav class="top-nav" aria-label="Site navigation">
+    <a href="/">Resume</a>
+    <span class="nav-sep" aria-hidden="true">/</span>
+    <a href="/americanguntrader/" aria-current={path === '/americanguntrader/' ? 'page' : undefined}>AGT</a>
+    <span class="nav-sep" aria-hidden="true">/</span>
+    <a href="/dabdash/" aria-current={path === '/dabdash/' ? 'page' : undefined}>DabDash</a>
+    <span class="nav-sep" aria-hidden="true">/</span>
+    <a href="/orderprepped/" aria-current={path === '/orderprepped/' ? 'page' : undefined}>Prepped</a>
+  </nav>
+
+  <header class="wp-header reveal">
+    <div class="wp-brand">
+      <img src={logo} alt={`${platformName} logo`} class="wp-logo" width="48" height="48">
+      <div>
+        <h1 class="wp-title">{platformName}</h1>
+        <p class="wp-tagline">{tagline}</p>
+      </div>
+    </div>
+    <a href={platformUrl} class="wp-visit" rel="noopener noreferrer" target="_blank">Visit site</a>
+  </header>
+
+  <main class="wp-body">
+    <slot />
+  </main>
+
+  <footer class="site-footer reveal">
+    <span>&copy; {year} Ray Winkelman &middot; Shadow Software LLC</span>
+    <a href="/">Back to resume</a>
+  </footer>
+
+  <script>
+    // —— Scroll reveal (header + footer) ——
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -30px 0px', threshold: 0.05 });
+      reveals.forEach((el, i) => {
+        el.style.setProperty('--reveal-delay', `${i * 0.07}s`);
+        io.observe(el);
+      });
+    } else {
+      reveals.forEach(el => el.classList.add('visible'));
+    }
+
+    // —— wp-body child reveals ——
+    const wpBody = document.querySelector('.wp-body');
+    if (wpBody && 'IntersectionObserver' in window) {
+      const children = Array.from(wpBody.children);
+      const wpIo = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); wpIo.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -20px 0px', threshold: 0.05 });
+      children.forEach((el, i) => {
+        el.style.setProperty('--wp-i', String(i));
+        wpIo.observe(el);
+      });
+    }
+
+    // —— Nav backdrop on scroll ——
+    if (!window.__navScrollBound) {
+      window.__navScrollBound = true;
+      window.addEventListener('scroll', () => {
+        const n = document.querySelector('.top-nav');
+        if (n) n.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+    }
+  </script>
+
+</body>
+</html>
