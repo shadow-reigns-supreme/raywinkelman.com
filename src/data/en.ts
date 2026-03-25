@@ -44,6 +44,7 @@ export const en: ResumeData = {
   roles: [
     {
       company: 'Shadow Software LLC',
+      url: 'https://www.shadowsoftware.com',
       dates: 'October 2019 – Present',
       title: 'Chief Executive Officer, Founder',
       location: 'Remote',
@@ -74,6 +75,7 @@ export const en: ResumeData = {
     },
     {
       company: 'Home Depot Inc.',
+      url: 'https://ir.homedepot.com',
       dates: 'November 2022 – June 2023',
       title: 'Senior Software Engineer, Contract',
       location: 'Remote',
@@ -81,6 +83,7 @@ export const en: ResumeData = {
     },
     {
       company: 'Capital Group Inc.',
+      url: 'https://www.capitalgroup.com',
       dates: 'March 2022 – August 2022',
       title: 'Lead Software Engineer, Scrum Master, Contract',
       location: 'Remote',
@@ -88,6 +91,7 @@ export const en: ResumeData = {
     },
     {
       company: 'Kangaroo Solutions Inc.',
+      dissolved: true,
       dates: 'November 2020 – May 2021',
       title: 'Director of Engineering, Shareholder',
       location: 'Remote',
@@ -95,6 +99,7 @@ export const en: ResumeData = {
     },
     {
       company: 'Elfster Inc.',
+      url: 'https://www.elfster.com',
       dates: 'March 2018 – November 2019',
       title: 'Senior Software Engineer, Shareholder',
       location: 'Remote',
@@ -102,6 +107,7 @@ export const en: ResumeData = {
     },
     {
       company: "6Joe's Software Inc.",
+      dissolved: true,
       dates: 'October 2017 – March 2018',
       title: 'Founding Software Engineer, Shareholder',
       location: 'Halifax, Canada',
@@ -109,6 +115,7 @@ export const en: ResumeData = {
     },
     {
       company: 'BeyondTrust Software Inc.',
+      url: 'https://www.beyondtrust.com',
       dates: 'September 2015 – February 2017',
       title: 'Software Engineer',
       location: 'Halifax, Canada',
@@ -118,6 +125,7 @@ export const en: ResumeData = {
   education: [
     {
       school: 'Nova Scotia Community College, Institute of Technology',
+      url: 'https://www.nscc.ca',
       dates: 'September 2013 – June 2015',
       details: [
         'Information Technology Diploma, Honours, 4.0 GPA',
@@ -126,6 +134,7 @@ export const en: ResumeData = {
     },
     {
       school: 'Acadia University',
+      url: 'https://www.acadiau.ca',
       dates: 'September 2011 – June 2013',
       details: [
         'Second and third-year courses in Advanced Mathematics, Biology, Psychology, and Sociology.',

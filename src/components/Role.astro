@@ -3,6 +3,8 @@ import type { RoleVenture } from '../data/types';
 
 interface Props {
   company: string;
+  url?: string;
+  dissolved?: boolean;
   dates: string;
   title: string;
   location: string;
@@ -10,12 +12,15 @@ interface Props {
   ventures?: RoleVenture[];
 }
 
-const { company, dates, title, location, description, ventures } = Astro.props;
+const { company, url, dissolved, dates, title, location, description, ventures } = Astro.props;
 ---
 
 <article class="role">
   <div class="role-head">
-    <h3 class="role-company">{company}</h3>
+    <h3 class="role-company">
+      {url ? <a href={url} rel="noopener noreferrer" target="_blank">{company}</a> : company}
+      {dissolved && <span class="role-dissolved">dissolved</span>}
+    </h3>
     <span class="role-dates">{dates}</span>
   </div>
   <p class="role-title">{title}<span class="role-location">{location}</span></p>

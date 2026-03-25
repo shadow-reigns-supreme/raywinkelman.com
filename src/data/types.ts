@@ -8,6 +8,8 @@ export interface RoleVenture {
 
 export interface Role {
   company: string;
+  url?: string;
+  dissolved?: boolean;
   dates: string;
   title: string;
   location: string;
@@ -17,6 +19,7 @@ export interface Role {
 
 export interface Education {
   school: string;
+  url?: string;
   dates: string;
   details: string[];
 }

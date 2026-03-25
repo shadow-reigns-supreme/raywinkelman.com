@@ -44,6 +44,7 @@ export const es: ResumeData = {
   roles: [
     {
       company: 'Shadow Software LLC',
+      url: 'https://www.shadowsoftware.com',
       dates: 'Octubre 2019 – Presente',
       title: 'Director Ejecutivo, Fundador',
       location: 'Remoto',
@@ -74,6 +75,7 @@ export const es: ResumeData = {
     },
     {
       company: 'Home Depot Inc.',
+      url: 'https://ir.homedepot.com',
       dates: 'Noviembre 2022 – Junio 2023',
       title: 'Ingeniero de Software Senior, Contrato',
       location: 'Remoto',
@@ -81,6 +83,7 @@ export const es: ResumeData = {
     },
     {
       company: 'Capital Group Inc.',
+      url: 'https://www.capitalgroup.com',
       dates: 'Marzo 2022 – Agosto 2022',
       title: 'Ingeniero de Software Líder, Scrum Master, Contrato',
       location: 'Remoto',
@@ -88,6 +91,7 @@ export const es: ResumeData = {
     },
     {
       company: 'Kangaroo Solutions Inc.',
+      dissolved: true,
       dates: 'Noviembre 2020 – Mayo 2021',
       title: 'Director de Ingeniería, Accionista',
       location: 'Remoto',
@@ -95,6 +99,7 @@ export const es: ResumeData = {
     },
     {
       company: 'Elfster Inc.',
+      url: 'https://www.elfster.com',
       dates: 'Marzo 2018 – Noviembre 2019',
       title: 'Ingeniero de Software Senior, Accionista',
       location: 'Remoto',
@@ -102,6 +107,7 @@ export const es: ResumeData = {
     },
     {
       company: "6Joe's Software Inc.",
+      dissolved: true,
       dates: 'Octubre 2017 – Marzo 2018',
       title: 'Ingeniero de Software Fundador, Accionista',
       location: 'Halifax, Canadá',
@@ -109,6 +115,7 @@ export const es: ResumeData = {
     },
     {
       company: 'BeyondTrust Software Inc.',
+      url: 'https://www.beyondtrust.com',
       dates: 'Septiembre 2015 – Febrero 2017',
       title: 'Ingeniero de Software',
       location: 'Halifax, Canadá',
@@ -118,6 +125,7 @@ export const es: ResumeData = {
   education: [
     {
       school: 'Nova Scotia Community College, Institute of Technology',
+      url: 'https://www.nscc.ca',
       dates: 'Septiembre 2013 – Junio 2015',
       details: [
         'Diploma en Tecnología de la Información, Honores, promedio 4.0',
@@ -126,6 +134,7 @@ export const es: ResumeData = {
     },
     {
       school: 'Acadia University',
+      url: 'https://www.acadiau.ca',
       dates: 'Septiembre 2011 – Junio 2013',
       details: [
         'Cursos de segundo y tercer año en Matemáticas Avanzadas, Biología, Psicología y Sociología.',

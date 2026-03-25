@@ -44,6 +44,7 @@ export const th: ResumeData = {
   roles: [
     {
       company: 'Shadow Software LLC',
+      url: 'https://www.shadowsoftware.com',
       dates: 'ตุลาคม 2019 – ปัจจุบัน',
       title: 'ประธานเจ้าหน้าที่บริหาร, ผู้ก่อตั้ง',
       location: 'ทำงานทางไกล',
@@ -74,6 +75,7 @@ export const th: ResumeData = {
     },
     {
       company: 'Home Depot Inc.',
+      url: 'https://ir.homedepot.com',
       dates: 'พฤศจิกายน 2022 – มิถุนายน 2023',
       title: 'วิศวกรซอฟต์แวร์อาวุโส, สัญญาจ้าง',
       location: 'ทำงานทางไกล',
@@ -81,6 +83,7 @@ export const th: ResumeData = {
     },
     {
       company: 'Capital Group Inc.',
+      url: 'https://www.capitalgroup.com',
       dates: 'มีนาคม 2022 – สิงหาคม 2022',
       title: 'หัวหน้าวิศวกรซอฟต์แวร์, Scrum Master, สัญญาจ้าง',
       location: 'ทำงานทางไกล',
@@ -88,6 +91,7 @@ export const th: ResumeData = {
     },
     {
       company: 'Kangaroo Solutions Inc.',
+      dissolved: true,
       dates: 'พฤศจิกายน 2020 – พฤษภาคม 2021',
       title: 'ผู้อำนวยการฝ่ายวิศวกรรม, ผู้ถือหุ้น',
       location: 'ทำงานทางไกล',
@@ -95,6 +99,7 @@ export const th: ResumeData = {
     },
     {
       company: 'Elfster Inc.',
+      url: 'https://www.elfster.com',
       dates: 'มีนาคม 2018 – พฤศจิกายน 2019',
       title: 'วิศวกรซอฟต์แวร์อาวุโส, ผู้ถือหุ้น',
       location: 'ทำงานทางไกล',
@@ -102,6 +107,7 @@ export const th: ResumeData = {
     },
     {
       company: "6Joe's Software Inc.",
+      dissolved: true,
       dates: 'ตุลาคม 2017 – มีนาคม 2018',
       title: 'วิศวกรซอฟต์แวร์ผู้ก่อตั้ง, ผู้ถือหุ้น',
       location: 'Halifax, Canada',
@@ -109,6 +115,7 @@ export const th: ResumeData = {
     },
     {
       company: 'BeyondTrust Software Inc.',
+      url: 'https://www.beyondtrust.com',
       dates: 'กันยายน 2015 – กุมภาพันธ์ 2017',
       title: 'วิศวกรซอฟต์แวร์',
       location: 'Halifax, Canada',
@@ -118,6 +125,7 @@ export const th: ResumeData = {
   education: [
     {
       school: 'Nova Scotia Community College, Institute of Technology',
+      url: 'https://www.nscc.ca',
       dates: 'กันยายน 2013 – มิถุนายน 2015',
       details: [
         'อนุปริญญาเทคโนโลยีสารสนเทศ, เกียรตินิยม, เกรดเฉลี่ย 4.0',
@@ -126,6 +134,7 @@ export const th: ResumeData = {
     },
     {
       school: 'Acadia University',
+      url: 'https://www.acadiau.ca',
       dates: 'กันยายน 2011 – มิถุนายน 2013',
       details: [
         'หลักสูตรชั้นปีที่สองและสามในวิชาคณิตศาสตร์ขั้นสูง ชีววิทยา จิตวิทยา และสังคมวิทยา',

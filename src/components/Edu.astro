@@ -1,16 +1,19 @@
 ---
 interface Props {
   school: string;
+  url?: string;
   dates: string;
   details: string[];
 }
 
-const { school, dates, details } = Astro.props;
+const { school, url, dates, details } = Astro.props;
 ---
 
 <div class="edu">
   <div class="edu-head">
-    <h3 class="edu-school">{school}</h3>
+    <h3 class="edu-school">
+      {url ? <a href={url} rel="noopener noreferrer" target="_blank">{school}</a> : school}
+    </h3>
     <span class="edu-dates">{dates}</span>
   </div>
   {details.map((d) => <p class="edu-detail">{d}</p>)}
