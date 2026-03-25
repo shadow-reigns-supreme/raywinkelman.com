@@ -94,20 +94,22 @@ a:hover {
   margin-bottom: 3.5rem;
 }
 
-.header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1.5rem;
+.synopsis-wrap {
+  display: block;
+}
+
+.synopsis-wrap p {
+  margin: 0;
 }
 
 .headshot {
-  width: 64px;
-  height: 64px;
+  float: right;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   object-fit: cover;
-  flex-shrink: 0;
-  margin-top: 0.5rem;
+  shape-outside: circle(50%);
+  margin: 0.15em 0 0.75rem 1.5rem;
 }
 
 .name {
@@ -529,8 +531,9 @@ a:hover {
     letter-spacing: 0.06em;
   }
   .headshot {
-    width: 52px;
-    height: 52px;
+    width: 56px;
+    height: 56px;
+    margin-left: 1rem;
   }
 }
 
@@ -572,8 +575,10 @@ a:hover {
     display: none;
   }
   .headshot {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
+    float: right;
+    margin: 0 0 0.5rem 1rem;
   }
   .role {
     padding-bottom: 0.7rem;

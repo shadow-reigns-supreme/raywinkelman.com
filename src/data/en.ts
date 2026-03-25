@@ -16,7 +16,7 @@ export const en: ResumeData = {
     print: 'Print',
     langNav: 'Language',
   },
-  synopsis: 'CEO and founder of Shadow Software LLC, directing teams of up to 17 engineers building applications that process millions of e-commerce transactions for brands including McDonalds, Subway, and Home Depot. Creator of three independent software ventures — AmericanGunTrader.com, DabDash, and OrderPrepped — each serving underserved markets with purpose-built platforms.',
+  synopsis: 'CEO and founder of Shadow Software LLC, directing teams of up to 17 engineers building applications that process millions of e-commerce transactions for brands including McDonalds, Subway, and Home Depot. Creator of three independent software ventures — American Gun Trader, DabDash, and Prepped — each serving underserved markets with purpose-built platforms.',
   venturesContext: 'Built and scaled through Shadow Software LLC.',
   ventures: [
     {
@@ -77,14 +77,14 @@ export const en: ResumeData = {
       dates: 'November 2022 – June 2023',
       title: 'Senior Software Engineer, Contract',
       location: 'Remote',
-      description: 'Senior Engineer on an Agile team maintaining QuoteCenter — Home Depot\'s Pro online ordering platform generating $3B+ in annual revenue. Led development across 40+ .NET microservices and orchestrations; secondary ownership of Google Cloud, Harness, and CircleCI infrastructure-as-code.',
+      description: 'Senior Engineer on an Agile team maintaining QuoteCenter — the Pro ordering platform for the world\'s largest home improvement retailer (Fortune 17, $157B revenue). Led development across 40+ .NET microservices and orchestrations; secondary ownership of Google Cloud, Harness, and CircleCI IaC.',
     },
     {
       company: 'Capital Group Inc.',
       dates: 'March 2022 – August 2022',
       title: 'Lead Software Engineer, Scrum Master, Contract',
       location: 'Remote',
-      description: 'Lead Software Engineer and Scrum Master on a large-scale data platform project. Directed 5–16 engineers across quarter-long increments, owning planning, execution, and cross-team coordination from epics to story level. Provided technical direction over REST APIs and microservice orchestrations.',
+      description: 'Lead Engineer and Scrum Master at one of the world\'s largest asset managers — $3.2T AUM, founded 1931, manager of the American Funds family. Directed 5–16 engineers on a large-scale data platform, owning planning, execution, and cross-team coordination. Technical direction over REST APIs and microservice orchestrations.',
     },
     {
       company: 'Kangaroo Solutions Inc.',
@@ -98,7 +98,7 @@ export const en: ResumeData = {
       dates: 'March 2018 – November 2019',
       title: 'Senior Software Engineer, Shareholder',
       location: 'Remote',
-      description: 'Senior Engineer on a small remote Agile team evolving the Elfster gift exchange platform from 6M to 15M users. Primary: .NET REST API, two Chrome extensions, and a Vue.js frontend. Secondary: AWS infrastructure.',
+      description: 'Senior Engineer on a bootstrapped, remote-first team scaling Elfster\'s gift exchange platform from 6M to 15M users. Primary: .NET REST API, two Chrome extensions, Vue.js frontend. Secondary: AWS infrastructure.',
     },
     {
       company: "6Joe's Software Inc.",
@@ -112,7 +112,7 @@ export const en: ResumeData = {
       dates: 'September 2015 – February 2017',
       title: 'Software Engineer',
       location: 'Halifax, Canada',
-      description: 'Designed and developed a semantic analysis tool to translate Transact-SQL to PL-SQL. Upon completion, merged two vastly diverged product versions using an incremental Git branching strategy and test cycle.',
+      description: 'Software engineer at a seven-time Gartner Magic Quadrant PAM leader — software trusted by 75 of the Fortune 100, all US cabinet-level federal agencies, and 100+ Department of Defense environments. Specific contributions under NDA.',
     },
   ],
   education: [

@@ -16,7 +16,7 @@ export const es: ResumeData = {
     print: 'Imprimir',
     langNav: 'Idioma',
   },
-  synopsis: 'CEO y fundador de Shadow Software LLC, dirigiendo equipos de hasta 17 ingenieros que desarrollan aplicaciones que procesan millones de transacciones de comercio electrónico para marcas como McDonalds, Subway y Home Depot. Creador de tres emprendimientos de software independientes — AmericanGunTrader.com, DabDash y OrderPrepped — cada uno sirviendo mercados desatendidos con plataformas diseñadas específicamente.',
+  synopsis: 'CEO y fundador de Shadow Software LLC, dirigiendo equipos de hasta 17 ingenieros que desarrollan aplicaciones que procesan millones de transacciones de comercio electrónico para marcas como McDonalds, Subway y Home Depot. Creador de tres emprendimientos de software independientes — American Gun Trader, DabDash y Prepped — cada uno sirviendo mercados desatendidos con plataformas diseñadas específicamente.',
   venturesContext: 'Construidos y escalados a través de Shadow Software LLC.',
   ventures: [
     {
@@ -77,14 +77,14 @@ export const es: ResumeData = {
       dates: 'Noviembre 2022 – Junio 2023',
       title: 'Ingeniero de Software Senior, Contrato',
       location: 'Remoto',
-      description: 'Ingeniero Senior en un equipo Agile encargado de mantener QuoteCenter — la plataforma de pedidos en línea para profesionales de Home Depot, responsable de más de 3.000 millones de dólares en ingresos anuales. Lideró el desarrollo de más de 40 microservicios y orquestaciones en .NET; responsabilidad secundaria sobre infraestructura como código en Google Cloud, Harness y CircleCI.',
+      description: 'Ingeniero Senior en un equipo Agile encargado de mantener QuoteCenter — la plataforma de pedidos para profesionales del mayor minorista de mejoras del hogar del mundo (Fortune 17, $157B en ingresos). Lideró el desarrollo de más de 40 microservicios y orquestaciones en .NET; responsabilidad secundaria sobre IaC en Google Cloud, Harness y CircleCI.',
     },
     {
       company: 'Capital Group Inc.',
       dates: 'Marzo 2022 – Agosto 2022',
       title: 'Ingeniero de Software Líder, Scrum Master, Contrato',
       location: 'Remoto',
-      description: 'Ingeniero de Software Líder y Scrum Master en un proyecto de plataforma de datos a gran escala. Dirigió entre 5 y 16 ingenieros en incrementos de proyecto trimestrales, asumiendo planificación, ejecución y coordinación entre equipos desde épicas hasta nivel de historia. Brindó dirección técnica sobre interfaces de programación y orquestaciones de microservicios.',
+      description: 'Ingeniero Líder y Scrum Master en uno de los mayores gestores de activos del mundo — $3,2 billones en AUM, fundado en 1931, gestor de la familia American Funds. Dirigió entre 5 y 16 ingenieros en una plataforma de datos a gran escala, asumiendo planificación, ejecución y coordinación entre equipos. Dirección técnica sobre APIs REST y orquestaciones de microservicios.',
     },
     {
       company: 'Kangaroo Solutions Inc.',
@@ -98,7 +98,7 @@ export const es: ResumeData = {
       dates: 'Marzo 2018 – Noviembre 2019',
       title: 'Ingeniero de Software Senior, Accionista',
       location: 'Remoto',
-      description: 'Ingeniero Senior en un pequeño equipo Agile remoto que hizo crecer la plataforma de intercambio de regalos Elfster de 6 a 15 millones de usuarios. Responsabilidad principal: interfaz de programación en .NET, dos extensiones para Chrome y una interfaz en Vue.js. Responsabilidad secundaria: infraestructura en AWS.',
+      description: 'Ingeniero Senior en un equipo remoto y sin financiación externa que escaló la plataforma de intercambio de regalos Elfster de 6 a 15 millones de usuarios. Principal: API REST en .NET, dos extensiones para Chrome y frontend en Vue.js. Secundario: infraestructura en AWS.',
     },
     {
       company: "6Joe's Software Inc.",
@@ -112,7 +112,7 @@ export const es: ResumeData = {
       dates: 'Septiembre 2015 – Febrero 2017',
       title: 'Ingeniero de Software',
       location: 'Halifax, Canadá',
-      description: 'Diseñó y desarrolló una herramienta de análisis semántico para traducir Transact-SQL a PL-SQL. Al concluir el proyecto, fusionó dos versiones muy divergentes del producto mediante una estrategia de ramificación incremental en Git y un ciclo de pruebas.',
+      description: 'Ingeniero de software en la firma líder en gestión de acceso privilegiado, reconocida siete veces en el Gartner Magic Quadrant — software de confianza para 75 empresas del Fortune 100, todas las agencias federales de gabinete de EE. UU. y más de 100 entornos del Departamento de Defensa. Contribuciones específicas bajo NDA.',
     },
   ],
   education: [

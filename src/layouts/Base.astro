@@ -144,17 +144,12 @@ const jsonLd = currentLang === 'en' ? {
   </nav>
 
   <header class="site-header">
-    <div class="header-row">
-      <div>
-        <h1 class="name">Ray Winkelman</h1>
-        <div class="meta reveal" data-delay="0.42">
-          <div class="meta-row">
-            <span>{data.location}</span>
-            <a class="email-link" data-u="resume" data-d="raywinkelman.com" href="#" aria-label="Email Ray Winkelman"></a>
-          </div>
-        </div>
+    <h1 class="name">Ray Winkelman</h1>
+    <div class="meta reveal" data-delay="0.42">
+      <div class="meta-row">
+        <span>{data.location}</span>
+        <a class="email-link" data-u="resume" data-d="raywinkelman.com" href="#" aria-label="Email Ray Winkelman"></a>
       </div>
-      <img src="/ray.png" alt="Ray Winkelman" class="headshot reveal" data-delay="0.35" width="64" height="64">
     </div>
   </header>
 
@@ -162,7 +157,10 @@ const jsonLd = currentLang === 'en' ? {
 
     <section class="section reveal">
       <h2 class="section-label">{data.labels.synopsis}</h2>
-      <p>{data.synopsis}</p>
+      <div class="synopsis-wrap">
+        <img src="/ray.png" alt="Ray Winkelman" class="headshot" width="72" height="72">
+        <p>{data.synopsis}</p>
+      </div>
     </section>
 
     <section class="section reveal">
