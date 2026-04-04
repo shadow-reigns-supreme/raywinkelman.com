@@ -159,7 +159,7 @@ const jsonLd = currentLang === 'en' ? {
       <h2 class="section-label">{data.labels.synopsis}</h2>
       <div class="synopsis-wrap">
         <img src="/ray.png" alt="Ray Winkelman" class="headshot" width="72" height="72">
-        <p>{data.synopsis}</p>
+        {data.synopsisHtml ? <p set:html={data.synopsisHtml} /> : <p>{data.synopsis}</p>}
       </div>
     </section>
 

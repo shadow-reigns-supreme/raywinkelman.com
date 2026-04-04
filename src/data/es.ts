@@ -6,7 +6,7 @@ export const es: ResumeData = {
   description: 'Líder empresarial en tecnología especializado en arquitectura de software, liderazgo ejecutivo y desarrollo de productos de extremo a extremo. CEO de Shadow Software LLC, con aplicaciones que procesan millones de transacciones de comercio electrónico para marcas globales.',
   keywords: 'Ray Winkelman, Ingeniero de Software, CEO, Shadow Software, .NET, React, AWS, Azure, Google Cloud',
   ogLocale: 'es_ES',
-  location: 'Asunción, Paraguay',
+  location: 'Remoto / Nómade',
   labels: {
     synopsis: 'Sinopsis',
     experience: 'Experiencia',
@@ -16,7 +16,8 @@ export const es: ResumeData = {
     print: 'Imprimir',
     langNav: 'Idioma',
   },
-  synopsis: 'CEO y fundador de Shadow Software LLC, dirigiendo equipos de hasta 17 ingenieros que desarrollan aplicaciones que procesan millones de transacciones de comercio electrónico para marcas como McDonalds, Subway y Home Depot. Creador de tres emprendimientos de software independientes — American Gun Trader, DabDash y Prepped — cada uno sirviendo mercados desatendidos con plataformas diseñadas específicamente.',
+  synopsis: 'Emprendedor y ejecutivo de software. Fundador y CEO de Shadow Software LLC. Especialista en optimización fiscal offshore, consultor SEO/AEO, y creador de plataformas en los sectores de armas, cannabis y alimentación.',
+  synopsisHtml: 'Emprendedor y ejecutivo de software. Fundador y CEO de <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a>. Especialista en optimización fiscal offshore, consultor SEO/AEO, y creador de plataformas en los sectores de armas, cannabis y alimentación.',
   venturesContext: 'Construidos y escalados a través de Shadow Software LLC.',
   ventures: [
     {

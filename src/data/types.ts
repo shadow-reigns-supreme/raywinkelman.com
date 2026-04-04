@@ -50,6 +50,7 @@ export interface ResumeData {
     langNav: string;
   };
   synopsis: string;
+  synopsisHtml?: string;
   venturesContext: string;
   ventures: Venture[];
   roles: Role[];

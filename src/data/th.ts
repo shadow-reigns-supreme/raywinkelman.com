@@ -6,7 +6,7 @@ export const th: ResumeData = {
   description: 'ผู้นำธุรกิจเทคโนโลยีที่เชี่ยวชาญด้านสถาปัตยกรรมซอฟต์แวร์ การบริหารระดับผู้บริหาร และการพัฒนาผลิตภัณฑ์ตั้งแต่ต้นจนจบ ซีอีโอของ Shadow Software LLC ส่งมอบแอปพลิเคชันที่ประมวลผลธุรกรรมอีคอมเมิร์ซหลายล้านรายการสำหรับแบรนด์ระดับโลก',
   keywords: 'Ray Winkelman, วิศวกรซอฟต์แวร์, CEO, Shadow Software, .NET, React, AWS, Azure, Google Cloud, กรุงเทพ',
   ogLocale: 'th_TH',
-  location: 'กรุงเทพฯ, ประเทศไทย',
+  location: 'รีโมต / นอมัด',
   labels: {
     synopsis: 'สรุปโปรไฟล์',
     experience: 'ประสบการณ์การทำงาน',
@@ -16,7 +16,8 @@ export const th: ResumeData = {
     print: 'พิมพ์',
     langNav: 'ภาษา',
   },
-  synopsis: 'ซีอีโอและผู้ก่อตั้ง Shadow Software LLC บริหารทีมวิศวกรสูงสุด 17 คน พัฒนาแอปพลิเคชันที่ประมวลผลธุรกรรมอีคอมเมิร์ซหลายล้านรายการให้กับแบรนด์ระดับโลก เช่น McDonalds, Subway และ Home Depot ผู้สร้างกิจการซอฟต์แวร์อิสระสามแห่ง — American Gun Trader, DabDash และ Prepped — แต่ละแห่งให้บริการตลาดเฉพาะทางด้วยแพลตฟอร์มที่ออกแบบมาโดยเฉพาะ',
+  synopsis: 'นักธุรกิจและผู้บริหารด้านซอฟต์แวร์ ผู้ก่อตั้งและซีอีโอของ Shadow Software LLC ผู้เชี่ยวชาญด้านการวางแผนภาษีนอกชายฝั่ง ที่ปรึกษา SEO/AEO และผู้สร้างแพลตฟอร์มในธุรกิจอาวุธ กัญชา และอาหาร',
+  synopsisHtml: 'นักธุรกิจและผู้บริหารด้านซอฟต์แวร์ ผู้ก่อตั้งและซีอีโอของ <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a> ผู้เชี่ยวชาญด้านการวางแผนภาษีนอกชายฝั่ง ที่ปรึกษา SEO/AEO และผู้สร้างแพลตฟอร์มในธุรกิจอาวุธ กัญชา และอาหาร',
   venturesContext: 'สร้างและขยายผ่าน Shadow Software LLC',
   ventures: [
     {

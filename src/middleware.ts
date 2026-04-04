@@ -3,8 +3,13 @@ import { defineMiddleware } from 'astro:middleware';
 const SUPPORTED = ['en', 'es', 'th'] as const;
 type Lang = (typeof SUPPORTED)[number];
 
-function getPreferredLang(acceptLanguage: string | null): Lang {
-  if (!acceptLanguage) return 'en';
+const ES_COUNTRIES = new Set([
+  'AR','BO','CL','CO','CR','CU','DO','EC','ES','GT',
+  'GQ','HN','MX','NI','PA','PE','PR','PY','SV','UY','VE',
+]);
+
+function getLangFromHeader(acceptLanguage: string | null): Lang | null {
+  if (!acceptLanguage) return null;
 
   const langs = acceptLanguage
     .split(',')
@@ -18,14 +23,27 @@ function getPreferredLang(acceptLanguage: string | null): Lang {
     if (SUPPORTED.includes(lang as Lang)) return lang as Lang;
   }
 
-  return 'en';
+  return null;
+}
+
+function getLangFromCountry(country: string | undefined): Lang | null {
+  if (!country) return null;
+  if (country === 'TH') return 'th';
+  if (ES_COUNTRIES.has(country)) return 'es';
+  return null;
 }
 
 export const onRequest = defineMiddleware(({ request, redirect }, next) => {
   const url = new URL(request.url);
 
   if (url.pathname === '/') {
-    const preferred = getPreferredLang(request.headers.get('accept-language'));
+    const cf = (request as unknown as { cf?: { country?: string } }).cf;
+
+    const preferred =
+      getLangFromHeader(request.headers.get('accept-language')) ??
+      getLangFromCountry(cf?.country) ??
+      'en';
+
     if (preferred !== 'en') {
       return redirect(`/${preferred}/`, 302);
     }
