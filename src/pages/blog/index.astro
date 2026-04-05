@@ -202,7 +202,10 @@ const posts = [...dynamicPosts, ...staticPosts];
 
     let visible = 0;
     for (const item of items) {
-      const show = filter === 'All' || item.dataset.category?.toLowerCase() === filter.toLowerCase();
+      const cat = item.dataset.category?.toLowerCase();
+      const show = filter === 'All'
+        ? cat !== 'guest blog'
+        : cat === filter.toLowerCase();
       item.hidden = !show;
       if (show) visible++;
     }
