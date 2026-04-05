@@ -57,9 +57,7 @@ const jsonLd = currentLang === 'en' ? {
       "email": "resume@raywinkelman.com",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "Tampa Bay",
-        "addressRegion": "Florida",
-        "addressCountry": "US"
+        "addressCountry": "Nomad"
       },
       "alumniOf": [
         { "@type": "EducationalOrganization", "name": "Nova Scotia Community College" },
@@ -141,6 +139,8 @@ const jsonLd = currentLang === 'en' ? {
     <a href="/es/" aria-current={currentLang === 'es' ? 'page' : undefined} hreflang="es">ES</a>
     <span class="nav-sep" aria-hidden="true">/</span>
     <a href="/th/" aria-current={currentLang === 'th' ? 'page' : undefined} hreflang="th">TH</a>
+    <span class="nav-sep" aria-hidden="true">/</span>
+    <a href="/blog/">Blog</a>
   </nav>
 
   <header class="site-header">
@@ -190,11 +190,24 @@ const jsonLd = currentLang === 'en' ? {
   </main>
 
   <footer class="site-footer reveal">
-    <span>&copy; {year} Ray Winkelman</span>
+    <span>&copy; {year} Ray Winkelman &middot; <a href="/blog/">Blog</a></span>
     <button class="download-btn" onclick="window.print()">{data.labels.print || data.labels.download}</button>
   </footer>
 
   <script>
+    // —— Outbound UTM ——
+    document.querySelectorAll('a[href]').forEach(function(a) {
+      var href = a.getAttribute('href');
+      if (!href || !href.startsWith('http') || href.includes('raywinkelman.com')) return;
+      try {
+        var u = new URL(href);
+        if (!u.searchParams.has('utm_source')) {
+          u.searchParams.set('utm_source', 'raywinkelman.com');
+          a.setAttribute('href', u.toString());
+        }
+      } catch (_) {}
+    });
+
     // —— Email reveal ——
     document.querySelectorAll('a.email-link').forEach(function(a) {
       var addr = a.dataset.u + '\u0040' + a.dataset.d;

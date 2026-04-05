@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "n8n-raywinkelman": {
+      "type": "http",
+      "url": "https://n8n.americanguntrader.com/mcp/6f3f9247-2e70-4885-80fe-5cebb3294fd9"
+    }
+  }
+}
