@@ -30,13 +30,15 @@ try {
   });
   if (res.ok) {
     const data = await res.json();
-    if (Array.isArray(data)) dynamicPosts = (data as RawPost[]).map((p) => ({
-      title: p.title,
-      description: p.excerpt,
-      href: `/blog/${p.slug}/`,
-      date: new Date(p.published_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
-      category: p.category,
-    }));
+    if (Array.isArray(data)) dynamicPosts = (data as RawPost[])
+      .sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime())
+      .map((p) => ({
+        title: p.title,
+        description: p.excerpt,
+        href: `/blog/${p.slug}/`,
+        date: new Date(p.published_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+        category: p.category,
+      }));
   }
 } catch {}
 
@@ -200,7 +202,7 @@ const posts = [...dynamicPosts, ...staticPosts];
 
     let visible = 0;
     for (const item of items) {
-      const show = filter === 'All' || item.dataset.category === filter;
+      const show = filter === 'All' || item.dataset.category?.toLowerCase() === filter.toLowerCase();
       item.hidden = !show;
       if (show) visible++;
     }
