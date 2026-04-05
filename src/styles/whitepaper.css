@@ -217,6 +217,80 @@
   padding-top: 1rem;
 }
 
+/* —— Comparison Table —— */
+.wp-table {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.wp-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.wp-table th {
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 0.625rem 0.875rem 0.625rem 0;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+
+.wp-table td {
+  padding: 0.75rem 0.875rem 0.75rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--rule) 50%, transparent);
+  color: var(--text);
+  vertical-align: top;
+}
+
+.wp-table tr:last-child td {
+  border-bottom: none;
+}
+
+.wp-table td strong {
+  color: var(--text);
+}
+
+/* —— FAQ Section —— */
+.wp-faq {
+  margin-top: 3rem;
+}
+
+.wp-faq > h2 {
+  /* inherits wp-body h2 styles */
+}
+
+.wp-faq-item {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--rule) 50%, transparent);
+}
+
+.wp-faq-item:last-child {
+  border-bottom: none;
+}
+
+.wp-faq-item h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.wp-faq-item p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.65;
+}
+
 /* —— Reduced motion —— */
 @media (prefers-reduced-motion: reduce) {
   .js .wp-body > * {

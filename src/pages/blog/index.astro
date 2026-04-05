@@ -20,15 +20,7 @@ try {
   }
 } catch {}
 
-const staticPosts: Post[] = [
-  {
-    title: 'Krabi Garuda Resort Review — Five Stars, No Reservations',
-    description: 'An honest first-hand review of Krabi Garuda resort in Thailand — exceptional staff, seamless online booking, and a property that earns every star.',
-    href: '/blog/krabi-vacation-review/',
-    date: 'April 2026',
-    category: 'Guest Blog',
-  },
-];
+const staticPosts: Post[] = [];
 
 let dynamicPosts: Post[] = [];
 
@@ -48,7 +40,7 @@ try {
   }
 } catch {}
 
-const posts = [...staticPosts, ...dynamicPosts];
+const posts = [...dynamicPosts, ...staticPosts];
 ---
 
 <Whitepaper

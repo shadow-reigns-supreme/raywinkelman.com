@@ -20,7 +20,6 @@ const pages = [
   { loc: `${BASE}/dabdash/`,                      hreflang: false, priority: '0.7' },
   { loc: `${BASE}/orderprepped/`,                 hreflang: false, priority: '0.7' },
   { loc: `${BASE}/blog/`,                         hreflang: false, priority: '0.6' },
-  { loc: `${BASE}/blog/krabi-vacation-review/`,   hreflang: false, priority: '0.6' },
 ];
 
 const urls = pages.map(({ loc, hreflang, priority }) => `
