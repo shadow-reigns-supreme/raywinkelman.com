@@ -7,7 +7,7 @@ interface Props {
   blurb: string;
 }
 
-const { name, url, whitepaper, logo, blurb } = Astro.props;
+const { name, url: _url, whitepaper, logo, blurb } = Astro.props;
 const logoAvif = logo.replace(/\.[^.]+$/, '.avif');
 const logoWebp = logo.replace(/\.[^.]+$/, '.webp');
 ---

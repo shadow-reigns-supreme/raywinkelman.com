@@ -158,32 +158,32 @@ const jsonLd = {
 
   <script>
     // —— Outbound UTM ——
-    document.querySelectorAll('a[href]').forEach(function(a) {
-      var href = a.getAttribute('href');
-      if (!href || !href.startsWith('http') || href.includes('raywinkelman.com')) return;
-      try {
-        var u = new URL(href);
-        if (!u.searchParams.has('utm_source')) {
-          u.searchParams.set('utm_source', 'raywinkelman.com');
-          a.setAttribute('href', u.toString());
-        }
-      } catch (_) {}
-    });
+    for (const a of document.querySelectorAll('a[href]')) {
+  const href = a.getAttribute('href');
+  if (!href || !href.startsWith('http') || href.includes('raywinkelman.com')) continue;
+  try {
+    const u = new URL(href);
+    if (!u.searchParams.has('utm_source')) {
+      u.searchParams.set('utm_source', 'raywinkelman.com');
+      a.setAttribute('href', u.toString());
+    }
+  } catch {}
+}
 
     // —— Scroll reveal (header + footer) ——
     const reveals = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
-        });
+        for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    }
       }, { rootMargin: '0px 0px -30px 0px', threshold: 0.05 });
-      reveals.forEach((el, i) => {
-        el.style.setProperty('--reveal-delay', `${i * 0.07}s`);
-        io.observe(el);
-      });
+      for (const [i, el] of reveals.entries()) {
+    el.style.setProperty('--reveal-delay', `${i * 0.07}s`);
+    io.observe(el);
+  }
     } else {
-      reveals.forEach(el => el.classList.add('visible'));
+      for (const el of reveals) el.classList.add('visible');
     }
 
     // —— wp-body child reveals ——
@@ -191,14 +191,14 @@ const jsonLd = {
     if (wpBody && 'IntersectionObserver' in window) {
       const children = Array.from(wpBody.children);
       const wpIo = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('visible'); wpIo.unobserve(e.target); }
-        });
+        for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); wpIo.unobserve(e.target); }
+    }
       }, { rootMargin: '0px 0px -20px 0px', threshold: 0.05 });
-      children.forEach((el, i) => {
-        el.style.setProperty('--wp-i', String(i));
-        wpIo.observe(el);
-      });
+      for (const [i, el] of children.entries()) {
+    el.style.setProperty('--wp-i', String(i));
+    wpIo.observe(el);
+  }
     }
 
     // —— Nav backdrop on scroll ——

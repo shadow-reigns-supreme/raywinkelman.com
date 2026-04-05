@@ -14,8 +14,10 @@ function getLangFromHeader(acceptLanguage: string | null): Lang | null {
   const langs = acceptLanguage
     .split(',')
     .map((part) => {
-      const [lang, q] = part.trim().split(';q=');
-      return { lang: lang.trim().toLowerCase().split('-')[0], q: q ? parseFloat(q) : 1 };
+      const segments = part.trim().split(';q=');
+      const tag = segments[0]?.trim().toLowerCase().split('-')[0] ?? '';
+      const q = segments[1] ? parseFloat(segments[1]) : 1;
+      return { lang: tag, q };
     })
     .sort((a, b) => b.q - a.q);
 

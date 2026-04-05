@@ -3,7 +3,8 @@ import Whitepaper from '../../layouts/Whitepaper.astro';
 
 export const prerender = true;
 
-type Post = { title: string; description: string; href: string; date: string; category: string };
+interface Post { title: string; description: string; href: string; date: string; category: string }
+interface RawPost { title: string; excerpt: string; slug: string; published_at: string; category: string }
 
 const PERMITTED_CATEGORIES = ['Tax', 'AEO', 'SEO', 'DabDash', 'Prepped', 'American Gun Trader', 'Guest Blog'];
 
@@ -17,7 +18,7 @@ try {
     const data = await res.json();
     if (Array.isArray(data) && data.length > 0) categories = data;
   }
-} catch (_) {}
+} catch {}
 
 const staticPosts: Post[] = [
   {
@@ -37,7 +38,7 @@ try {
   });
   if (res.ok) {
     const data = await res.json();
-    if (Array.isArray(data)) dynamicPosts = data.map((p: any) => ({
+    if (Array.isArray(data)) dynamicPosts = (data as RawPost[]).map((p) => ({
       title: p.title,
       description: p.excerpt,
       href: `/blog/${p.slug}/`,
@@ -45,7 +46,7 @@ try {
       category: p.category,
     }));
   }
-} catch (_) {}
+} catch {}
 
 const posts = [...staticPosts, ...dynamicPosts];
 ---
@@ -197,22 +198,22 @@ const posts = [...staticPosts, ...dynamicPosts];
   const items = document.querySelectorAll<HTMLLIElement>('.blog-item');
   const empty = document.querySelector<HTMLParagraphElement>('.blog-empty');
 
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      const filter = pill.dataset.filter!;
+  for (const pill of pills) {
+  pill.addEventListener('click', () => {
+    const filter = pill.dataset.filter ?? 'All';
 
-      pills.forEach(p => { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
-      pill.classList.add('active');
-      pill.setAttribute('aria-pressed', 'true');
+    for (const p of pills) { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); }
+    pill.classList.add('active');
+    pill.setAttribute('aria-pressed', 'true');
 
-      let visible = 0;
-      items.forEach(item => {
-        const show = filter === 'All' || item.dataset.category === filter;
-        item.hidden = !show;
-        if (show) visible++;
-      });
+    let visible = 0;
+    for (const item of items) {
+      const show = filter === 'All' || item.dataset.category === filter;
+      item.hidden = !show;
+      if (show) visible++;
+    }
 
-      if (empty) empty.hidden = visible > 0;
-    });
+    if (empty) empty.hidden = visible > 0;
   });
+}
 </script>

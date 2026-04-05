@@ -286,27 +286,27 @@ const jsonLd = currentLang === 'en' ? {
 
   <script>
     // —— Outbound UTM ——
-    document.querySelectorAll('a[href]').forEach(function(a) {
-      var href = a.getAttribute('href');
-      if (!href || !href.startsWith('http') || href.includes('raywinkelman.com')) return;
-      try {
-        var u = new URL(href);
-        if (!u.searchParams.has('utm_source')) {
-          u.searchParams.set('utm_source', 'raywinkelman.com');
-          a.setAttribute('href', u.toString());
-        }
-      } catch (_) {}
-    });
+    for (const a of document.querySelectorAll('a[href]')) {
+  const href = a.getAttribute('href');
+  if (!href || !href.startsWith('http') || href.includes('raywinkelman.com')) continue;
+  try {
+    const u = new URL(href);
+    if (!u.searchParams.has('utm_source')) {
+      u.searchParams.set('utm_source', 'raywinkelman.com');
+      a.setAttribute('href', u.toString());
+    }
+  } catch {}
+}
 
     // —— Print button ——
     document.querySelector('.download-btn')?.addEventListener('click', () => window.print());
 
     // —— Email reveal ——
-    document.querySelectorAll('a.email-link').forEach(function(a) {
-      var addr = a.dataset.u + '\u0040' + a.dataset.d;
-      a.href = 'mailto:' + addr;
-      a.textContent = addr;
-    });
+    for (const a of document.querySelectorAll('a.email-link')) {
+  const addr = a.dataset.u + '\u0040' + a.dataset.d;
+  a.href = 'mailto:' + addr;
+  a.textContent = addr;
+}
 
     // —— Name letter split ——
     const nameEl = document.querySelector('.name');
@@ -329,21 +329,21 @@ const jsonLd = currentLang === 'en' ? {
     const reveals = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            io.unobserve(e.target);
-          }
-        });
+        for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    }
       }, { rootMargin: '0px 0px -30px 0px', threshold: 0.05 });
 
-      reveals.forEach((el, i) => {
-        const manual = el.dataset.delay;
-        el.style.setProperty('--reveal-delay', manual ? `${manual}s` : `${Math.min(i * 0.08, 0.28)}s`);
-        io.observe(el);
-      });
+      for (const [i, el] of reveals.entries()) {
+    const manual = el.dataset.delay;
+    el.style.setProperty('--reveal-delay', manual ? `${manual}s` : `${Math.min(i * 0.08, 0.28)}s`);
+    io.observe(el);
+  }
     } else {
-      reveals.forEach(el => el.classList.add('visible'));
+      for (const el of reveals) el.classList.add('visible');
     }
 
     // —— Nav backdrop on scroll ——
@@ -358,7 +358,7 @@ const jsonLd = currentLang === 'en' ? {
     // —— Service worker (production only) ——
     if (!window.__swRegistered && 'serviceWorker' in navigator && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       window.__swRegistered = true;
-      navigator.serviceWorker.register('/sw.js').catch(() => {});
+      navigator.serviceWorker.register('/sw.js').catch(Object);
     }
   </script>
 
