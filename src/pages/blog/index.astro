@@ -192,13 +192,10 @@ const posts = [...dynamicPosts, ...staticPosts];
   const items = document.querySelectorAll<HTMLLIElement>('.blog-item');
   const empty = document.querySelector<HTMLParagraphElement>('.blog-empty');
 
-  for (const pill of pills) {
-  pill.addEventListener('click', () => {
-    const filter = pill.dataset.filter ?? 'All';
-
+  function applyFilter(filter: string) {
     for (const p of pills) { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); }
-    pill.classList.add('active');
-    pill.setAttribute('aria-pressed', 'true');
+    const activePill = [...pills].find(p => p.dataset.filter === filter);
+    if (activePill) { activePill.classList.add('active'); activePill.setAttribute('aria-pressed', 'true'); }
 
     let visible = 0;
     for (const item of items) {
@@ -209,8 +206,12 @@ const posts = [...dynamicPosts, ...staticPosts];
       item.hidden = !show;
       if (show) visible++;
     }
-
     if (empty) empty.hidden = visible > 0;
-  });
-}
+  }
+
+  applyFilter('All');
+
+  for (const pill of pills) {
+    pill.addEventListener('click', () => applyFilter(pill.dataset.filter ?? 'All'));
+  }
 </script>
