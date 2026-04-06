@@ -35,7 +35,7 @@ export const es: ResumeData = {
       blurb: 'Plataforma de software como servicio multiempresa para minoristas de cannabis a domicilio. Tiendas con identidad propia, inventario en tiempo real, gestión de zonas de entrega y posicionamiento web incorporado — creada para una industria excluida del comercio electrónico convencional. Suscripción de tarifa fija sin cargos por transacción.',
     },
     {
-      name: 'Prepped',
+      name: 'OrderPrepped.com',
       url: 'https://orderprepped.com',
       whitepaper: '/orderprepped/',
       logo: '/logos/prepped-icon.webp',
@@ -66,7 +66,7 @@ export const es: ResumeData = {
           blurb: 'Plataforma de software como servicio para entrega de cannabis. Tiendas con marca propia, inventario y gestión de zonas de entrega.',
         },
         {
-          name: 'Prepped',
+          name: 'OrderPrepped.com',
           url: 'https://orderprepped.com',
           whitepaper: '/orderprepped/',
           logo: '/logos/prepped-icon.webp',
