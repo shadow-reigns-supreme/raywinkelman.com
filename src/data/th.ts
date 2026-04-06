@@ -35,7 +35,7 @@ export const th: ResumeData = {
       blurb: 'แพลตฟอร์มซอฟต์แวร์แบบบริการสำหรับผู้ค้าปลีกกัญชาจัดส่งถึงบ้าน รองรับหลายร้านค้าในระบบเดียว พร้อมหน้าร้านออนไลน์แบรนด์เฉพาะตัว สินค้าคงคลังแบบเรียลไทม์ การจัดการพื้นที่จัดส่ง และเครื่องมือเพิ่มการมองเห็นในเครื่องมือค้นหา — สร้างขึ้นเพื่ออุตสาหกรรมที่แพลตฟอร์มอีคอมเมิร์ซทั่วไปปฏิเสธให้บริการ ค่าสมัครสมาชิกแบบอัตราคงที่ ไม่มีค่าธรรมเนียมการทำธุรกรรม',
     },
     {
-      name: 'OrderPrepped.com',
+      name: 'Prepped',
       url: 'https://orderprepped.com',
       whitepaper: '/orderprepped/',
       logo: '/logos/prepped-icon.webp',
@@ -66,7 +66,7 @@ export const th: ResumeData = {
           blurb: 'แพลตฟอร์มซอฟต์แวร์แบบบริการสำหรับผู้ค้าปลีกกัญชาจัดส่ง หน้าร้านออนไลน์แบรนด์เฉพาะตัว สินค้าคงคลัง และการจัดการพื้นที่จัดส่ง',
         },
         {
-          name: 'OrderPrepped.com',
+          name: 'Prepped',
           url: 'https://orderprepped.com',
           whitepaper: '/orderprepped/',
           logo: '/logos/prepped-icon.webp',
