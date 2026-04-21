@@ -3,11 +3,21 @@
    Neo-Swiss typographic design. One font. Maximum discipline.
    —————————————————————————————————————————————————————— */
 
+/* —— Fallback font metrics (prevent CLS during webfont swap) —— */
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  src: local('Arial');
+  size-adjust: 93.72%;
+  ascent-override: 98.4%;
+  descent-override: 29.2%;
+  line-gap-override: 0%;
+}
+
 /* —— Tokens —— */
 :root {
   color-scheme: light dark;
 
-  --font: 'Space Grotesk', 'Noto Sans Thai', sans-serif;
+  --font: 'Space Grotesk', 'Space Grotesk Fallback', 'Noto Sans Thai', sans-serif;
 
   --bg:         #f5f4f0;
   --text:       #1c1b18;

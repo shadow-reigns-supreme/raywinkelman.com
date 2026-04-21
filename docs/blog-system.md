@@ -36,7 +36,7 @@ All require header: `x-shadowmen: 508e7579-374c-47ec-9d6d-a024f9a65a89`
 | `title` | varchar | Full post title |
 | `excerpt` | text | ~155 char meta description |
 | `html` | longtext | Inner body HTML (Whitepaper slot content) |
-| `category` | varchar | One of 8 permitted categories |
+| `category` | varchar | One of 9 permitted categories |
 | `tags_csv` | varchar | Comma-separated tags |
 | `keyword` | varchar | Primary target keyword |
 | `slug` | varchar | URL slug — no slashes |
