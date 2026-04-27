@@ -1,0 +1,177 @@
+---
+---
+
+<aside class="ss-promo reveal" aria-label="Sponsored — Shadow Software LLC">
+  <div class="ss-promo-inner">
+    <div class="ss-promo-brand">
+      <img src="/logos/shadow-software.webp" alt="Shadow Software LLC" class="ss-promo-logo" width="32" height="32">
+      <span class="ss-promo-sponsor">Shadow Software LLC</span>
+    </div>
+    <p class="ss-promo-eyebrow">You found this article through search — that's not an accident.</p>
+    <p class="ss-promo-heading">We build <em>search visibility</em> for serious brands.</p>
+    <p class="ss-promo-body">SEO &amp; AEO services that get your business in front of people the moment they're asking the right questions — in Google, and in AI.</p>
+    <div class="ss-promo-pills">
+      <span class="ss-promo-pill">Technical SEO</span>
+      <span class="ss-promo-pill">Answer Engine Optimization</span>
+      <span class="ss-promo-pill">Content Strategy</span>
+      <span class="ss-promo-pill">AI Search Visibility</span>
+    </div>
+    <div class="ss-promo-cta-wrap">
+      <a href="https://shadowsoftware.com/services/seo" class="ss-promo-cta" target="_blank" rel="noopener noreferrer sponsored">
+        Get found like this
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="2" y1="7" x2="12" y2="7"/>
+          <polyline points="8 3 12 7 8 11"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .ss-promo {
+    margin: 3rem 0 2rem;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #0f0f0f;
+    border: 1px solid rgba(143, 212, 104, 0.2);
+    box-shadow:
+      0 0 0 1px rgba(143, 212, 104, 0.04),
+      0 4px 32px rgba(0, 0, 0, 0.4),
+      0 0 60px rgba(143, 212, 104, 0.05);
+  }
+
+  .ss-promo-inner {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ss-promo-inner::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(ellipse at center, rgba(143, 212, 104, 0.14) 0%, transparent 68%);
+    pointer-events: none;
+  }
+
+  .ss-promo-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .ss-promo-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    object-fit: contain;
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+
+  .ss-promo-sponsor {
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(143, 212, 104, 0.65);
+  }
+
+  .ss-promo-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.42) !important;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+    margin: 0 !important;
+  }
+
+  .ss-promo-heading {
+    font-size: clamp(1.35rem, 4vw, 1.875rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: #fff !important;
+    margin: 0 !important;
+    text-transform: none !important;
+    text-decoration: none !important;
+  }
+
+  .ss-promo-heading em {
+    font-style: normal;
+    color: #8FD468;
+  }
+
+  .ss-promo-body {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.55) !important;
+    margin: 0 !important;
+    max-width: 44ch;
+  }
+
+  .ss-promo-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: 0.25rem;
+  }
+
+  .ss-promo-pill {
+    font-size: 0.5625rem;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.625rem;
+    border-radius: 2px;
+    background: rgba(143, 212, 104, 0.07);
+    border: 1px solid rgba(143, 212, 104, 0.18);
+    color: #8FD468;
+  }
+
+  .ss-promo-cta-wrap {
+    display: flex;
+  }
+
+  .ss-promo-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.375rem;
+    background: #8FD468;
+    color: #060606 !important;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    border-radius: 3px;
+    text-decoration: none !important;
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    margin-top: 0.25rem;
+  }
+
+  .ss-promo-cta:hover {
+    background: #a0e37e;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(143, 212, 104, 0.3);
+    color: #060606 !important;
+  }
+
+  .ss-promo-cta svg {
+    transition: transform 0.2s ease;
+  }
+
+  .ss-promo-cta:hover svg {
+    transform: translateX(3px);
+  }
+
+  @media print {
+    .ss-promo { display: none; }
+  }
+</style>

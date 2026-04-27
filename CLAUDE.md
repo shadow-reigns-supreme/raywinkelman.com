@@ -11,7 +11,7 @@
 - Ray is a founder/CEO with deep technical roots — the site should reflect someone who builds real things
 
 ### Ventures & CTAs
-- Ray is the founder of **AmericanGuntrader.com**, **DabDash.com**, and **OrderPrepped.com**
+- Ray is the founder of **AmericanGuntrader.com** and **DabDash.com**
 - CTAs should feel organic and contextual, not salesy — integrated naturally into the resume narrative
 
 ### Aesthetic Direction

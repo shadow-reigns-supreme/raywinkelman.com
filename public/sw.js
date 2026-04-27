@@ -8,7 +8,6 @@ const PRECACHE_STATIC = [
   '/ray.png',
   '/logos/agt.avif',
   '/logos/dabdash.avif',
-  '/logos/prepped-icon.avif',
 ];
 
 const PRECACHE_HTML = ['/', '/es/', '/th/'];

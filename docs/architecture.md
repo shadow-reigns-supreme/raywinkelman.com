@@ -35,7 +35,6 @@ src/
 │   ├── th/index.astro      /th/ — Thai resume
 │   ├── americanguntrader/  /americanguntrader/ — venture whitepaper (prerendered)
 │   ├── dabdash/            /dabdash/ — venture whitepaper (prerendered)
-│   ├── orderprepped/       /orderprepped/ — venture whitepaper (prerendered)
 │   ├── blog/index.astro    /blog/ — blog index (prerendered, fetches at build time)
 │   └── blog/[slug].astro   /blog/{slug}/ — dynamic post (SSR, fetches at request time)
 ├── scripts/
@@ -50,7 +49,7 @@ scripts/
 
 public/
 ├── blog-img/               {slug}.avif + {slug}.webp, 1200×630 — one pair per post
-└── logos/                  agt.jpeg, dabdash.png, prepped-icon.webp
+└── logos/                  agt.jpeg, dabdash.png
 ```
 
 ## Page Types

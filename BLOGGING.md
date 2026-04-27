@@ -222,7 +222,6 @@ Exactly one per post:
 | `Banking` | Non-resident banking, offshore accounts, fintech tools, asset protection |
 | `Cybersecurity` | OpSec, system hardening, privacy engineering, anti-fingerprinting, nomad threat models |
 | `DabDash` | DabDash.com updates, cannabis delivery market, SaaS |
-| `Prepped` | OrderPrepped.com updates, food/catering industry, meal prep |
 | `American Gun Trader` | AmericanGunTrader.com updates, firearms market, P2P marketplace |
 | `Guest Blog` | First-person reviews, travel write-ups, SEO backlink placements |
 

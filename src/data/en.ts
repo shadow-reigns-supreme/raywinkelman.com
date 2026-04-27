@@ -3,7 +3,7 @@ import type { ResumeData } from './types';
 export const en: ResumeData = {
   lang: 'en',
   title: 'Ray Winkelman',
-  description: 'Ray Winkelman is the founder and CEO of Shadow Software LLC. SaaS builder, software architect, and full-time nomad. Creator of AmericanGunTrader.com, DabDash.com, and OrderPrepped.com.',
+  description: 'Ray Winkelman is the founder and CEO of Shadow Software LLC. SaaS builder, software architect, and full-time nomad. Creator of AmericanGunTrader.com and DabDash.com.',
   keywords: 'Ray Winkelman, Shadow Software LLC',
   ogLocale: 'en_US',
   location: 'Remote / Nomad',
@@ -16,8 +16,8 @@ export const en: ResumeData = {
     print: 'Print',
     langNav: 'Language',
   },
-  synopsis: 'SaaS founder and software architect. Building platforms full-time through Shadow Software LLC. Offshore tax specialist, SEO/AEO consultant, and founder of AmericanGunTrader.com, DabDash.com, and OrderPrepped.com.',
-  synopsisHtml: 'SaaS founder and software architect. Building platforms full-time through <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a>. Offshore tax specialist, SEO/AEO consultant, and founder of AmericanGunTrader.com, DabDash.com, and OrderPrepped.com.',
+  synopsis: 'SaaS founder and software architect. Building platforms full-time through Shadow Software LLC. Offshore tax specialist, SEO/AEO consultant, and founder of AmericanGunTrader.com and DabDash.com.',
+  synopsisHtml: 'SaaS founder and software architect. Building platforms full-time through <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a>. Offshore tax specialist, SEO/AEO consultant, and founder of AmericanGunTrader.com and DabDash.com.',
   venturesContext: 'Built and scaled through Shadow Software LLC.',
   ventures: [
     {
@@ -33,13 +33,6 @@ export const en: ResumeData = {
       whitepaper: '/dabdash/',
       logo: '/logos/dabdash.png',
       blurb: 'Multi-tenant SaaS platform for cannabis delivery retailers. Branded storefronts, real-time inventory, delivery zone mapping, and built-in SEO — purpose-built for an industry locked out of mainstream e-commerce. Flat-rate subscription model with no transaction fees.',
-    },
-    {
-      name: 'OrderPrepped.com',
-      url: 'https://orderprepped.com',
-      whitepaper: '/orderprepped/',
-      logo: '/logos/prepped-icon.webp',
-      blurb: 'Complete meal prep and catering automation software. Online ordering, subscription management, production workflows, and integrated delivery — everything a food business needs to scale. Pay-as-you-grow pricing with zero upfront costs.',
     },
   ],
   roles: [
@@ -64,13 +57,6 @@ export const en: ResumeData = {
           whitepaper: '/dabdash/',
           logo: '/logos/dabdash.png',
           blurb: 'SaaS cannabis delivery platform. Branded storefronts, inventory, and delivery zone management for retailers.',
-        },
-        {
-          name: 'OrderPrepped.com',
-          url: 'https://orderprepped.com',
-          whitepaper: '/orderprepped/',
-          logo: '/logos/prepped-icon.webp',
-          blurb: 'Meal prep and catering automation. Ordering, subscriptions, production workflows, and delivery — all-in-one.',
         },
       ],
     },

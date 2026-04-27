@@ -18,7 +18,6 @@ const staticPages = [
   { loc: `${BASE}/th/`,                           hreflang: true,  priority: '0.8' },
   { loc: `${BASE}/americanguntrader/`,            hreflang: false, priority: '0.7' },
   { loc: `${BASE}/dabdash/`,                      hreflang: false, priority: '0.7' },
-  { loc: `${BASE}/orderprepped/`,                 hreflang: false, priority: '0.7' },
   { loc: `${BASE}/blog/`,                         hreflang: false, priority: '0.6' },
 ];
 

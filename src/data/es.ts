@@ -34,13 +34,6 @@ export const es: ResumeData = {
       logo: '/logos/dabdash.png',
       blurb: 'Plataforma de software como servicio multiempresa para minoristas de cannabis a domicilio. Tiendas con identidad propia, inventario en tiempo real, gestión de zonas de entrega y posicionamiento web incorporado — creada para una industria excluida del comercio electrónico convencional. Suscripción de tarifa fija sin cargos por transacción.',
     },
-    {
-      name: 'OrderPrepped.com',
-      url: 'https://orderprepped.com',
-      whitepaper: '/orderprepped/',
-      logo: '/logos/prepped-icon.webp',
-      blurb: 'Software completo de automatización para preparación de comidas y catering. Pedidos en línea, gestión de suscripciones, flujos de producción y entrega integrada — todo lo que un negocio de alimentación necesita para crecer. Precios según el uso, sin costos iniciales.',
-    },
   ],
   roles: [
     {
@@ -64,13 +57,6 @@ export const es: ResumeData = {
           whitepaper: '/dabdash/',
           logo: '/logos/dabdash.png',
           blurb: 'Plataforma de software como servicio para entrega de cannabis. Tiendas con marca propia, inventario y gestión de zonas de entrega.',
-        },
-        {
-          name: 'OrderPrepped.com',
-          url: 'https://orderprepped.com',
-          whitepaper: '/orderprepped/',
-          logo: '/logos/prepped-icon.webp',
-          blurb: 'Automatización para preparación de comidas y catering. Pedidos, suscripciones, flujos de producción y entrega — todo integrado.',
         },
       ],
     },

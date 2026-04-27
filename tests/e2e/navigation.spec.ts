@@ -30,7 +30,6 @@ test.describe('navigation — whitepaper/blog pages', () => {
     await expect(nav.locator('a[href="/"]')).toBeVisible();
     await expect(nav.locator('a[href="/americanguntrader/"]')).toBeVisible();
     await expect(nav.locator('a[href="/dabdash/"]')).toBeVisible();
-    await expect(nav.locator('a[href="/orderprepped/"]')).toBeVisible();
     await expect(nav.locator('a[href="/blog/"]')).toBeVisible();
   });
 

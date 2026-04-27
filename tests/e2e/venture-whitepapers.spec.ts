@@ -3,7 +3,6 @@ import { test, expect } from '@playwright/test';
 const VENTURES = [
   { path: '/americanguntrader/', name: 'AmericanGunTrader', expectedTitle: /AmericanGunTrader/i },
   { path: '/dabdash/', name: 'DabDash', expectedTitle: /DabDash/i },
-  { path: '/orderprepped/', name: 'OrderPrepped', expectedTitle: /OrderPrepped/i },
 ];
 
 test.describe('venture whitepapers — routing', () => {
