@@ -283,18 +283,25 @@ magick input.jpg -resize 1200x630^ -gravity Center -extent 1200x630 -strip -qual
 
 Filename must match slug exactly. Both files must exist before publishing.
 
-### 3. Publish via MCP Upsert
+### 3. Write the JSON file
 
-See `CLAUDE.md` for the full field mapping table. Key points:
-- `Value_of_Column_to_Match_On`: empty string for new posts
-- `values2_Value`: the inner body HTML only
-- `values8_Value`: `/blog-img/{slug}.avif`
-- Never pass an empty string for any field you want to preserve (`replaceEmptyStrings: true` destroys content)
+Create `src/content/posts/{slug}.json`:
 
-Posts appear at `/blog/{slug}/` immediately after upsert — no rebuild needed.
+```json
+{
+  "title": "...",
+  "excerpt": "~155 char excerpt — lead with the answer",
+  "html": "inner body HTML only",
+  "category": "Tax",
+  "keyword": "primary keyword",
+  "lang": "en-US",
+  "slug": "post-slug",
+  "image_url": "/blog-img/post-slug.avif",
+  "published_at": "2026-01-15T00:00:00Z"
+}
+```
 
-### Static `.astro` files
-Reserved exclusively for `src/pages/blog/index.astro` and the three venture whitepapers. **No blog post should ever be a static `.astro` file.**
+Then commit and push. Cloudflare Pages rebuilds and deploys automatically. The post is live once the build completes (~30 seconds).
 
 ---
 

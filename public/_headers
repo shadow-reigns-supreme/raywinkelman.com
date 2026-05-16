@@ -1,0 +1,74 @@
+# ─── Immutable hashed assets (_astro/) ──────────────────────────────────────
+# Astro content-hashes every filename. Safe to cache forever at the edge and
+# browser. Cloudflare will serve these from its edge cache; browsers won't
+# revalidate until the hash changes on the next deploy.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+# ─── Blog images ─────────────────────────────────────────────────────────────
+# Images never change for a given slug — filename IS the cache key.
+# 1-year edge + browser cache. Cloudflare caches these automatically.
+/blog-img/*
+  Cache-Control: public, max-age=31536000, immutable
+  X-Content-Type-Options: nosniff
+
+# ─── Other static assets (icons, fonts, manifest) ────────────────────────────
+# Not content-hashed but rarely change. 30-day cache, must-revalidate lets
+# Cloudflare serve stale while it revalidates in the background (SWR).
+/ray.avif
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/ray.webp
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/ray-2.avif
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/ray-2.webp
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/ray-winkelman.webp
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/*.png
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/*.ico
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+/manifest.json
+  Cache-Control: public, max-age=86400, stale-while-revalidate=3600
+
+# ─── Sitemap & robots ────────────────────────────────────────────────────────
+# Short TTL — these update on every deploy. Cloudflare purges on deploy anyway.
+/sitemap.xml
+  Cache-Control: public, max-age=3600, stale-while-revalidate=600
+/robots.txt
+  Cache-Control: public, max-age=86400, stale-while-revalidate=3600
+
+# ─── HTML pages ──────────────────────────────────────────────────────────────
+# Blog posts: content only changes on new deploy. 1-hour edge cache with
+# stale-while-revalidate so Cloudflare keeps serving the old page instantly
+# while it fetches the new one in background. Cloudflare Pages purges the
+# edge cache automatically on every deploy, so stale is never stale in prod.
+/blog/*/
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  X-Robots-Tag: index, follow
+
+/blog/
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  X-Robots-Tag: index, follow
+
+# Venture pages — rarely change
+/americanguntrader/
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/dabdash/
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# Homepage and i18n variants — language redirect logic means we must NOT
+# cache the bare / at the browser (redirect target varies by visitor).
+# Edge caches the HTML fine; browser gets no-store so the middleware redirect
+# runs fresh for each visitor. stale-while-revalidate keeps edge warm.
+/
+  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400, no-store
+
+/es/
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/th/
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400

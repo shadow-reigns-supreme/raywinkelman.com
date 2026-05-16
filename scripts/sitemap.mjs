@@ -1,4 +1,4 @@
-import { writeFileSync } from 'fs';
+import { writeFileSync, readdirSync, readFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -13,31 +13,27 @@ const HREFLANG = `
     <xhtml:link rel="alternate" hreflang="x-default" href="${BASE}/"/>`.trimStart();
 
 const staticPages = [
-  { loc: `${BASE}/`,                              hreflang: true,  priority: '1.0' },
-  { loc: `${BASE}/es/`,                           hreflang: true,  priority: '0.8' },
-  { loc: `${BASE}/th/`,                           hreflang: true,  priority: '0.8' },
-  { loc: `${BASE}/americanguntrader/`,            hreflang: false, priority: '0.7' },
-  { loc: `${BASE}/dabdash/`,                      hreflang: false, priority: '0.7' },
-  { loc: `${BASE}/blog/`,                         hreflang: false, priority: '0.6' },
+  { loc: `${BASE}/`,               hreflang: true,  priority: '1.0' },
+  { loc: `${BASE}/es/`,            hreflang: true,  priority: '0.8' },
+  { loc: `${BASE}/th/`,            hreflang: true,  priority: '0.8' },
+  { loc: `${BASE}/americanguntrader/`, hreflang: false, priority: '0.7' },
+  { loc: `${BASE}/dabdash/`,       hreflang: false, priority: '0.7' },
+  { loc: `${BASE}/blog/`,          hreflang: false, priority: '0.6' },
 ];
 
-let blogPosts = [];
-try {
-  const res = await fetch('https://api.shadowsoftware.com/ray/blogs');
-  if (res.ok) {
-    const data = await res.json();
-    if (Array.isArray(data)) {
-      blogPosts = data.map((p) => ({
-        loc: `${BASE}/blog/${p.slug}/`,
-        lastmod: new Date(p.published_at).toISOString().split('T')[0],
-        hreflang: false,
-        priority: '0.5',
-      }));
-    }
-  }
-} catch (e) {
-  console.warn('Could not fetch blog posts for sitemap:', e.message);
-}
+const postsDir = resolve(__dirname, '../src/content/posts');
+const blogPosts = readdirSync(postsDir)
+  .filter((f) => f.endsWith('.json'))
+  .map((f) => {
+    const post = JSON.parse(readFileSync(resolve(postsDir, f), 'utf8'));
+    return {
+      loc: `${BASE}/blog/${post.slug}/`,
+      lastmod: new Date(post.published_at).toISOString().split('T')[0],
+      hreflang: false,
+      priority: '0.5',
+    };
+  })
+  .sort((a, b) => b.lastmod.localeCompare(a.lastmod));
 
 const allPages = [...staticPages, ...blogPosts];
 

@@ -7,39 +7,21 @@ export const prerender = true;
 interface Post { title: string; description: string; href: string; date: string; category: string }
 interface RawPost { title: string; excerpt: string; slug: string; published_at: string; category: string }
 
+const modules = import.meta.glob('../../content/posts/*.json', { eager: true }) as Record<string, RawPost>;
+
+const posts: Post[] = Object.values(modules)
+  .sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime())
+  .map((p) => ({
+    title: p.title,
+    description: p.excerpt,
+    href: `/blog/${p.slug}/`,
+    date: new Date(p.published_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+    category: p.category,
+  }));
+
 const PERMITTED_CATEGORIES = ['Tax', 'AEO', 'SEO', 'Banking', 'Cybersecurity', 'DabDash', 'American Gun Trader', 'Guest Blog'];
-
-let categories: string[] = [...PERMITTED_CATEGORIES];
-
-try {
-  const res = await fetch('https://api.shadowsoftware.com/ray/categories');
-  if (res.ok) {
-    const data = await res.json();
-    if (Array.isArray(data) && data.length > 0) categories = data;
-  }
-} catch {}
-
-const staticPosts: Post[] = [];
-
-let dynamicPosts: Post[] = [];
-
-try {
-  const res = await fetch('https://api.shadowsoftware.com/ray/blogs');
-  if (res.ok) {
-    const data = await res.json();
-    if (Array.isArray(data)) dynamicPosts = (data as RawPost[])
-      .sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime())
-      .map((p) => ({
-        title: p.title,
-        description: p.excerpt,
-        href: `/blog/${p.slug}/`,
-        date: new Date(p.published_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
-        category: p.category,
-      }));
-  }
-} catch {}
-
-const posts = [...dynamicPosts, ...staticPosts];
+const presentCategories = new Set(posts.map((p) => p.category));
+const categories = PERMITTED_CATEGORIES.filter((c) => presentCategories.has(c));
 ---
 
 <Whitepaper

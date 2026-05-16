@@ -45,23 +45,25 @@ ls -lh /home/shadow/Source/raywinkelman.com/public/blog-img/{SLUG}.*
 
 Verify both files exist before continuing.
 
-## Step 4 — Publish via MCP
+## Step 4 — Write the JSON file
 
-**Actual column mapping** (verified — do not deviate):
+Create `src/content/posts/{slug}.json`:
 
-| Parameter | DB column | Value |
-|---|---|---|
-| `Value_of_Column_to_Match_On` | `id` | `""` for new post (INSERT), existing id string for UPDATE |
-| `values0_Value` | `title` | Full post title |
-| `values1_Value` | `excerpt` | 155-char excerpt — lead with the answer |
-| `values2_Value` | `html` | Full inner body HTML (slot content only) |
-| `values3_Value` | `category` | One permitted category |
-| `values4_Value` | `tags_csv` | Comma-separated tags |
-| `values5_Value` | `keyword` | Primary keyword |
-| `values7_Value` | `slug` | URL slug — no leading/trailing slash |
-| `values8_Value` | `image_url` | `/blog-img/{slug}.avif` — matches the file saved in Step 3 |
+```json
+{
+  "title": "Full post title",
+  "excerpt": "~155 char excerpt — lead with the answer",
+  "html": "inner body HTML only (slot content)",
+  "category": "One permitted category",
+  "keyword": "primary keyword",
+  "lang": "en-US",
+  "slug": "post-slug",
+  "image_url": "/blog-img/post-slug.avif",
+  "published_at": "2026-01-15T00:00:00Z"
+}
+```
 
-**Note**: `lang` is hardcoded to `en-US` in the n8n workflow — no parameter needed. Timestamps (`published_at`, `created_at`, `updated_at`) are auto-generated.
+Use the current UTC datetime for `published_at`. Commit the JSON file and both image files, then push. Cloudflare Pages rebuilds automatically — the post is live once the build completes (~30 seconds).
 
 ## Image rules
 
