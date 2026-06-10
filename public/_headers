@@ -35,34 +35,34 @@
   Cache-Control: public, max-age=86400, stale-while-revalidate=3600
 
 # ─── HTML pages ──────────────────────────────────────────────────────────────
-# Blog posts: content only changes on new deploy. 1-hour edge cache with
-# stale-while-revalidate so Cloudflare keeps serving the old page instantly
-# while it fetches the new one in background. Cloudflare Pages purges the
-# edge cache automatically on every deploy, so stale is never stale in prod.
+# HTML references content-hashed /_astro/ CSS+JS. On every deploy those hashes
+# change and the old files are deleted. So HTML must NEVER be served stale across
+# a deploy — a stale page points at now-404 assets and renders completely
+# unstyled. We therefore use must-revalidate with NO stale-while-revalidate:
+# caches may hold the page for up to an hour, but must revalidate against origin
+# before serving it afterwards, picking up the new HTML (and new asset hashes).
 /blog/*/
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=3600, must-revalidate
   X-Robots-Tag: index, follow
 
 /blog/
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=3600, must-revalidate
   X-Robots-Tag: index, follow
 
 # Venture pages — rarely change
 /americanguntrader/
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=3600, must-revalidate
 
 /dabdash/
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=3600, must-revalidate
 
-# Homepage and i18n variants — language redirect logic means we must NOT
-# cache the bare / at the browser (redirect target varies by visitor).
-# Edge caches the HTML fine; browser gets no-store so the middleware redirect
-# runs fresh for each visitor. stale-while-revalidate keeps edge warm.
+# Homepage and i18n variants. Same must-revalidate rule as above so a deploy is
+# never masked by a stale cached homepage referencing dead asset hashes.
 /
-  Cache-Control: public, s-maxage=3600, stale-while-revalidate=86400, no-store
+  Cache-Control: public, max-age=3600, must-revalidate
 
 /es/
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=3600, must-revalidate
 
 /th/
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=3600, must-revalidate
