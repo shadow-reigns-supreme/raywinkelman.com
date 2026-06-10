@@ -10,45 +10,14 @@ test.describe('blog category filter', () => {
     await expect(allPill).toHaveClass(/active/);
   });
 
-  test('Guest Blog posts are hidden on initial load', async ({ page }) => {
-    const guestItems = page.locator('.blog-item[data-category="Guest Blog"]');
-    const count = await guestItems.count();
-    if (count > 0) {
-      for (let i = 0; i < count; i++) {
-        await expect(guestItems.nth(i)).toBeHidden();
-      }
-    }
+  test('posts are visible on initial load', async ({ page }) => {
+    const items = page.locator('.blog-item:not([data-category="Guest Blog"])');
+    const count = await items.count();
+    expect(count).toBeGreaterThan(0);
+    await expect(items.first()).toBeVisible();
   });
 
-  test('non-guest posts are visible on initial load', async ({ page }) => {
-    const nonGuestItems = page.locator('.blog-item:not([data-category="Guest Blog"])');
-    const count = await nonGuestItems.count();
-    if (count > 0) {
-      await expect(nonGuestItems.first()).toBeVisible();
-    }
-  });
-
-  test('clicking Guest Blog shows only guest posts', async ({ page }) => {
-    await page.locator('.cat-pill[data-filter="Guest Blog"]').click();
-
-    const guestItems = page.locator('.blog-item[data-category="Guest Blog"]');
-    const nonGuestItems = page.locator('.blog-item:not([data-category="Guest Blog"])');
-
-    const guestCount = await guestItems.count();
-    if (guestCount > 0) {
-      await expect(guestItems.first()).toBeVisible();
-    }
-
-    const nonGuestCount = await nonGuestItems.count();
-    for (let i = 0; i < nonGuestCount; i++) {
-      await expect(nonGuestItems.nth(i)).toBeHidden();
-    }
-  });
-
-  test('clicking All after Guest Blog hides guest posts again', async ({ page }) => {
-    await page.locator('.cat-pill[data-filter="Guest Blog"]').click();
-    await page.locator('.cat-pill[data-filter="All"]').click();
-
+  test('Guest Blog posts, if any, are hidden on initial load', async ({ page }) => {
     const guestItems = page.locator('.blog-item[data-category="Guest Blog"]');
     const count = await guestItems.count();
     for (let i = 0; i < count; i++) {
@@ -56,7 +25,7 @@ test.describe('blog category filter', () => {
     }
   });
 
-  test('clicking a non-guest category shows only that category', async ({ page }) => {
+  test('clicking a category shows only that category', async ({ page }) => {
     const pill = page.locator('.cat-pill:not([data-filter="All"]):not([data-filter="Guest Blog"])').first();
     const filter = await pill.getAttribute('data-filter');
     await pill.click();
@@ -65,9 +34,8 @@ test.describe('blog category filter', () => {
     const otherItems = page.locator(`.blog-item:not([data-category="${filter}"])`);
 
     const matchCount = await matchingItems.count();
-    if (matchCount > 0) {
-      await expect(matchingItems.first()).toBeVisible();
-    }
+    expect(matchCount).toBeGreaterThan(0);
+    await expect(matchingItems.first()).toBeVisible();
 
     const otherCount = await otherItems.count();
     for (let i = 0; i < otherCount; i++) {
@@ -75,14 +43,29 @@ test.describe('blog category filter', () => {
     }
   });
 
+  test('clicking All restores the default view', async ({ page }) => {
+    const pill = page.locator('.cat-pill:not([data-filter="All"])').first();
+    await pill.click();
+    await page.locator('.cat-pill[data-filter="All"]').click();
+
+    const items = page.locator('.blog-item:not([data-category="Guest Blog"])');
+    await expect(items.first()).toBeVisible();
+  });
+
   test('active pill updates when switching categories', async ({ page }) => {
-    const guestPill = page.locator('.cat-pill[data-filter="Guest Blog"]');
-    await guestPill.click();
-    await expect(guestPill).toHaveClass(/active/);
+    const pill = page.locator('.cat-pill:not([data-filter="All"])').first();
+    await pill.click();
+    await expect(pill).toHaveClass(/active/);
     await expect(page.locator('.cat-pill[data-filter="All"]')).not.toHaveClass(/active/);
 
     await page.locator('.cat-pill[data-filter="All"]').click();
     await expect(page.locator('.cat-pill[data-filter="All"]')).toHaveClass(/active/);
-    await expect(guestPill).not.toHaveClass(/active/);
+    await expect(pill).not.toHaveClass(/active/);
+  });
+
+  test('only funnel-aligned categories are offered', async ({ page }) => {
+    const pills = await page.locator('.cat-pill').allTextContents();
+    expect(pills).not.toContain('Tax');
+    expect(pills).not.toContain('Banking');
   });
 });

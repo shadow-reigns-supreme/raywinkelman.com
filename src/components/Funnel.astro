@@ -1,0 +1,31 @@
+---
+import type { Funnel } from '../data/types';
+
+interface Props {
+  funnel: Funnel;
+}
+
+const { funnel } = Astro.props;
+---
+
+<aside class="funnel reveal" aria-label="Shadow Software LLC services">
+  <p class="funnel-kicker">{funnel.kicker}</p>
+  <p class="funnel-heading" set:html={funnel.headingHtml} />
+  <ul class="funnel-lanes">
+    {funnel.lanes.map((lane) => (
+      <li class="funnel-lane">
+        <a href={lane.href} target="_blank" rel="noopener">
+          <span class="funnel-lane-name">{lane.name}</span>
+          <span class="funnel-lane-note">{lane.note}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <a class="btn btn--primary" href="https://shadowsoftware.com/contact" target="_blank" rel="noopener">
+    {funnel.cta}
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="2" y1="7" x2="12" y2="7"/>
+      <polyline points="8 3 12 7 8 11"/>
+    </svg>
+  </a>
+</aside>

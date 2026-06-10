@@ -19,28 +19,33 @@
 src/
 ├── components/
 │   ├── Edu.astro           Education entry
+│   ├── Funnel.astro        Service-lanes funnel block (homepage CTA to Shadow Software)
 │   ├── Role.astro          Experience/role entry with nested ventures
-│   └── Venture.astro       Venture card (resume page)
+│   ├── ShadowSoftwarePromo.astro  Sponsored promo card — 4 variants via `variant` prop
+│   ├── TopNav.astro        Centered floating pill nav (Profile / Blog / Shadow Software ↗ / lang)
+│   └── Venture.astro       Venture card (dossier page)
+├── content/
+│   └── posts/              {slug}.json — one static JSON file per blog post
 ├── data/
-│   ├── types.ts            ResumeData, Role, Education, Venture interfaces
-│   ├── en.ts               English resume content
-│   ├── es.ts               Spanish resume content
-│   └── th.ts               Thai resume content
+│   ├── types.ts            ResumeData, Hero, Funnel, Role, Education, Venture interfaces
+│   ├── en.ts               English dossier content
+│   ├── es.ts               Spanish dossier content
+│   └── th.ts               Thai dossier content
 ├── layouts/
-│   ├── Base.astro          Resume layout — JSON-LD, i18n hreflang, theme init
-│   └── Whitepaper.astro    Blog/venture layout — OG 1200×630, BlogPosting JSON-LD, featured image
+│   ├── Base.astro          Dossier layout — hero, funnel, JSON-LD, i18n hreflang
+│   └── Whitepaper.astro    Blog/venture layout — OG 1200×630, BlogPosting JSON-LD, featured image, promoVariant
 ├── pages/
-│   ├── index.astro         / — English resume (SSR, middleware-driven)
-│   ├── es/index.astro      /es/ — Spanish resume
-│   ├── th/index.astro      /th/ — Thai resume
+│   ├── index.astro         / — English founder dossier (SSR, middleware-driven)
+│   ├── es/index.astro      /es/ — Spanish dossier
+│   ├── th/index.astro      /th/ — Thai dossier
 │   ├── americanguntrader/  /americanguntrader/ — venture whitepaper (prerendered)
 │   ├── dabdash/            /dabdash/ — venture whitepaper (prerendered)
-│   ├── blog/index.astro    /blog/ — blog index (prerendered, fetches at build time)
-│   └── blog/[slug].astro   /blog/{slug}/ — dynamic post (SSR, fetches at request time)
+│   ├── blog/index.astro    /blog/ — blog index (prerendered from local JSON)
+│   └── blog/[slug].astro   /blog/{slug}/ — prerendered post (getStaticPaths over local JSON)
 ├── scripts/
-│   └── page-init.ts        Client-side init: theme, UTM, email reveal, scroll/wp reveal
+│   └── page-init.ts        Client-side init: nav progress, UTM, lang dropdown, print, name split, scroll/wp reveal
 ├── styles/
-│   ├── global.css          Design tokens, reset, resume layout, animations
+│   ├── global.css          Design tokens, reset, dossier layout, animations
 │   └── whitepaper.css      Whitepaper/blog styles
 └── middleware.ts           i18n redirect at / only
 
@@ -48,19 +53,21 @@ scripts/
 └── sitemap.mjs             Generates public/sitemap.xml at build time
 
 public/
+├── big-shadow.png/.avif/.webp  "Big Shadow" avatar — site identity, OG/schema image
 ├── blog-img/               {slug}.avif + {slug}.webp, 1200×630 — one pair per post
-└── logos/                  agt.jpeg, dabdash.png
+├── logos/                  agt.jpeg, dabdash.png, shadow-software.webp
+└── sw.js                   Service worker (cache version rw-v3, precaches /big-shadow.*)
 ```
 
 ## Page Types
 
 | Type | Rendering | Example |
 |---|---|---|
-| Resume (EN) | SSR | `/` |
-| Resume (ES/TH) | SSR | `/es/`, `/th/` |
+| Dossier (EN) | SSR | `/` |
+| Dossier (ES/TH) | SSR | `/es/`, `/th/` |
 | Venture whitepapers | Prerendered | `/americanguntrader/` |
 | Blog index | Prerendered (`prerender = true`) | `/blog/` |
-| Blog posts | SSR (dynamic) | `/blog/mercury-bank-non-resident-saas-founders/` |
+| Blog posts | Prerendered (`getStaticPaths` over local JSON) | `/blog/claude-code-aeo-seo-tool/` |
 
 ## i18n Routing
 
@@ -76,11 +83,11 @@ Middleware runs at `/` only. Logic:
 
 ## Theme System
 
-1. CSS tokens in `:root` (light default)
-2. `@media (prefers-color-scheme: dark)` overrides tokens
-3. `html[data-theme="light|dark"]` forced override (highest specificity)
-4. Inline `<script is:inline>` in `<head>` reads `localStorage.theme` and sets `data-theme` before first paint — prevents flash
-5. `astro:after-swap` listener in `page-init.ts` re-applies theme after each Astro view transition
+The site is **dark-only** (Shadow Software design language — shadowsoftware.com):
+
+1. CSS tokens in `:root` with `color-scheme: dark` — no light mode, no `prefers-color-scheme` media query
+2. No theme toggle, no `data-theme` attribute, no `localStorage.theme` — all theme-switching code was removed from `TopNav.astro` and `page-init.ts`
+3. The only light rendering is the `@media print` block, which overrides the tokens to a white-background palette
 
 ## Build
 
@@ -90,7 +97,7 @@ npm run dev     # astro dev → http://localhost:4321
 npm run preview # astro preview (built dist/)
 ```
 
-The sitemap script runs first because it fetches live post data from n8n and writes `public/sitemap.xml` before Astro bundles it into the output.
+The sitemap script runs first because it reads the post JSON files in `src/content/posts/` and writes `public/sitemap.xml` before Astro bundles it into the output.
 
 ## Deployments
 

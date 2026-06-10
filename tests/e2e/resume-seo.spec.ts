@@ -21,9 +21,9 @@ test.describe('resume SEO — English', () => {
     expect(ogType).toBe('profile');
   });
 
-  test('has og:image pointing to ray.png', async ({ page }) => {
+  test('has og:image pointing to the Big Shadow avatar', async ({ page }) => {
     const ogImage = await page.locator('meta[property="og:image"]').getAttribute('content');
-    expect(ogImage).toContain('ray.png');
+    expect(ogImage).toContain('big-shadow.png');
   });
 
   test('has twitter:card summary', async ({ page }) => {

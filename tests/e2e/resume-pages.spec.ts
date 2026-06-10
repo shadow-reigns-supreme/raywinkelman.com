@@ -20,7 +20,7 @@ test.describe('resume — English (/)', () => {
   test('renders at least one venture card', async ({ page }) => {
     await page.goto('/');
     const ventures = page.locator('.venture');
-    expect(await ventures.count()).toBeGreaterThanOrEqual(3);
+    expect(await ventures.count()).toBeGreaterThanOrEqual(2);
   });
 
   test('renders at least one role', async ({ page }) => {
@@ -35,8 +35,8 @@ test.describe('resume — English (/)', () => {
     expect(await edus.count()).toBeGreaterThanOrEqual(2);
   });
 
-  test('headshot image loads', async ({ request }) => {
-    const imgRes = await request.get('/ray.avif');
+  test('Big Shadow avatar loads', async ({ request }) => {
+    const imgRes = await request.get('/big-shadow.avif');
     expect(imgRes.status()).toBe(200);
   });
 

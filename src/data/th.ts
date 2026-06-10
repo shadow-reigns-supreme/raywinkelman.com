@@ -16,8 +16,31 @@ export const th: ResumeData = {
     print: 'พิมพ์',
     langNav: 'ภาษา',
   },
-  synopsis: 'ผู้บริหารซอฟต์แวร์อาวุโสที่มีประสบการณ์ในอุตสาหกรรมกว่า 13+ ปี ผู้ก่อตั้ง ShadowSoftware.com, AmericanGunTrader.com™ และ DabDash.com',
-  synopsisHtml: 'ผู้บริหารซอฟต์แวร์อาวุโสที่มีประสบการณ์ในอุตสาหกรรมกว่า 13+ ปี ผู้ก่อตั้ง <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">ShadowSoftware.com</a>, <a href="/americanguntrader/">AmericanGunTrader.com™</a> และ <a href="/dabdash/">DabDash.com</a>',
+  hero: {
+    kicker: 'ผู้ก่อตั้งและซีอีโอ · Shadow Software LLC',
+    positionHtml: 'วิศวกรเบื้องหลัง <strong>Shadow Software</strong> สร้างและดูแลแพลตฟอร์มระดับโปรดักชันตั้งแต่ปี 2019',
+    proof: [
+      'ตั้งแต่ <strong>2019</strong>',
+      'วิศวกรรม <strong>13+</strong> ปี',
+      '<strong>2</strong> แพลตฟอร์มในโปรดักชัน',
+      '<strong>5.0</strong> บน Google',
+    ],
+    ctaPrimary: 'ร่วมงานกับ Shadow Software',
+    ctaSecondary: 'อ่านบล็อก',
+  },
+  funnel: {
+    kicker: 'Shadow Software LLC',
+    headingHtml: 'ต้องการ<em>วิศวกรรม</em>แบบนี้ไหม?',
+    lanes: [
+      { name: 'พัฒนาซอฟต์แวร์ครบวงจร', note: 'แพลตฟอร์ม · API', href: 'https://shadowsoftware.com/what-we-do' },
+      { name: 'SEO และการเพิ่มการมองเห็นใน AI', note: 'Google · AI Search', href: 'https://shadowsoftware.com' },
+      { name: 'Cold email และระบบ outbound', note: 'Deliverability', href: 'https://shadowsoftware.com/contact' },
+      { name: 'โฆษณา Grey Hat & ความเสี่ยงสูง', note: 'Cloaking · Compliance', href: 'https://shadowsoftware.com/contact' },
+    ],
+    cta: 'เริ่มโปรเจกต์',
+  },
+  synopsis: 'ผู้ก่อตั้งและซีอีโอของ Shadow Software LLC บริษัทวิศวกรรมเบื้องหลัง AmericanGunTrader.com และ DabDash.com ประสบการณ์สร้างซอฟต์แวร์กว่า 13+ ปีให้กับธุรกิจค้าปลีก การจัดการสินทรัพย์ และความปลอดภัยระดับ Fortune ปัจจุบันทีมของเขาสร้างแพลตฟอร์มครบวงจรให้ลูกค้าทั่วโลก',
+  synopsisHtml: 'ผู้ก่อตั้งและซีอีโอของ <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a> บริษัทวิศวกรรมเบื้องหลัง <a href="/americanguntrader/">AmericanGunTrader.com™</a> และ <a href="/dabdash/">DabDash.com</a> ประสบการณ์สร้างซอฟต์แวร์กว่า 13+ ปีให้กับธุรกิจค้าปลีก การจัดการสินทรัพย์ และความปลอดภัยระดับ Fortune ปัจจุบันทีมของเขาสร้างแพลตฟอร์มครบวงจรให้ลูกค้าทั่วโลก',
   venturesContext: 'สร้างและขยายผ่าน Shadow Software LLC',
   ventures: [
     {

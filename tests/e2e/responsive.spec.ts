@@ -19,7 +19,7 @@ test.describe('responsive — mobile viewport (375px)', () => {
     await page.goto('/');
     const ventures = page.locator('.venture');
     const count = await ventures.count();
-    expect(count).toBeGreaterThanOrEqual(3);
+    expect(count).toBeGreaterThanOrEqual(2);
     await expect(ventures.first()).toBeVisible();
   });
 

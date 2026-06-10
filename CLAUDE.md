@@ -1,36 +1,36 @@
 ## Design Context
 
+### Purpose
+The site is a **funnel to shadowsoftware.com** for visitors who need software development, SEO/AEO, or cold email/outbound services. The homepage is a founder dossier (proof of competence), not a job-seeking resume.
+
 ### Users
-- **Recruiters & hiring managers** evaluating Ray for senior/executive engineering roles or contracts
-- **Potential clients** considering Shadow Software LLC for engineering engagements
-- Both audiences arrive expecting credibility, clarity, and proof of serious experience
+- **Prospective Shadow Software clients** evaluating the firm through its founder
+- **Blog readers from search/AI answers**, converted by per-category promos
+- **99% of traffic is mobile** — design and verify at 390px first
 
-### Brand Personality
-- **Understated, authoritative, precise** — Swiss-design inspired minimalism
-- Emotional goals: instant credibility, quiet confidence, respect for the visitor's time
-- Ray is a founder/CEO with deep technical roots — the site should reflect someone who builds real things
+### Brand & Anonymity
+- The site speaks **Shadow Software's design language** — the two sites must read as one family
+- **No photos of Ray anywhere** (pages, favicons, OG, schema). His visual identity is the **"Big Shadow"** avatar: cartoon hooded, heavily-muscled figure with green eyes (`/big-shadow.png` + variants), matching the SS shadowman mascot
+- Ray is the founder of **AmericanGuntrader.com** and **DabDash.com** — presented as proof of shipping, with CTAs woven in, never bolted on
 
-### Ventures & CTAs
-- Ray is the founder of **AmericanGuntrader.com** and **DabDash.com**
-- CTAs should feel organic and contextual, not salesy — integrated naturally into the resume narrative
-
-### Aesthetic Direction
-- **Minimal & refined** — restrained palette, generous whitespace, typographic hierarchy does the heavy lifting
-- Light and dark modes via `prefers-color-scheme`, both equally considered
-- Design tokens: `--accent: #2d4a7a` (light) / `#8ab0e2` (dark), `--bg: #f5f4f0` / `#141416`
+### Aesthetic Direction (ported from shadowsoftware.com)
+- **Dark-only** (`color-scheme: dark`); print stylesheet stays light
+- Tokens: `--bg: #060606`, surfaces `#0e0e0e`/`#151515`, hairlines `#232323`, `--accent: #8fd468` (hover `#9de073`, ink `#07210a`), radius 18px/11px, ease `cubic-bezier(0.22,1,0.36,1)`
+- Type: **Bricolage Grotesque** display (700/800, tight tracking) + **DM Sans** body + mono kickers; Noto Sans Thai on `/th/`
+- Components: floating pill nav, green pill buttons, bordered surface cards (never side-stripe accents), staggered reveals
 
 ### Anti-References (what this must NOT look like)
 - Generic LinkedIn profile (headshot + timeline + endorsements)
-- Developer portfolio template (dark mode, terminal aesthetic, card grids)
-- Corporate consulting site (stock photos, blue gradients, buzzwords)
-- Flashy startup landing page (hero sections, CTAs everywhere, animated illustrations)
+- Developer portfolio template (terminal aesthetic, card grids)
+- Corporate consulting site (stock photos, buzzwords)
+- A visually different brand from shadowsoftware.com
 
 ### Design Principles
-1. **Typography is the design** — hierarchy, weight, and spacing carry the visual identity
-2. **Earned density** — information-rich but never cluttered; every element justifies its presence
-3. **Quiet authority** — the design should feel like it was made by someone who doesn't need to prove anything
-4. **Dual-purpose clarity** — a recruiter and a potential client should both find what they need within seconds
-5. **Contextual commerce** — ventures and CTAs are woven into the narrative, never bolted on
+1. **One brand, two surfaces** — anything that would look foreign on shadowsoftware.com doesn't ship here
+2. **Mobile fold first** — the 390px first screen carries the funnel; it gets designed before anything else
+3. **Earned density** — information-rich but never cluttered; every element justifies its presence
+4. **Quiet authority** — proof over claims; the dossier states facts and lets them sell
+5. **Contextual commerce** — every CTA matches what the visitor is reading (per-category promo variants)
 
 ---
 

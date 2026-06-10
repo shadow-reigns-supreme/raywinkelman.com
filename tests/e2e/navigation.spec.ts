@@ -1,67 +1,82 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('navigation — resume pages', () => {
-  test('resume nav has language links (EN, ES, TH) and Blog', async ({ page }) => {
+test.describe('navigation — profile pages', () => {
+  test('nav has Profile, Blog, and Shadow Software links', async ({ page }) => {
     await page.goto('/');
     const nav = page.locator('nav.top-nav');
     await expect(nav.locator('a[href="/"]')).toBeVisible();
-    await expect(nav.locator('a[href="/es/"]')).toBeVisible();
-    await expect(nav.locator('a[href="/th/"]')).toBeVisible();
     await expect(nav.locator('a[href="/blog/"]')).toBeVisible();
+    await expect(nav.locator('a[href="https://shadowsoftware.com"]')).toBeVisible();
   });
 
-  test('current language has aria-current="page"', async ({ page }) => {
+  test('language dropdown opens and shows ES and TH links', async ({ page }) => {
     await page.goto('/');
-    const enLink = page.locator('nav.top-nav a[href="/"]');
-    await expect(enLink).toHaveAttribute('aria-current', 'page');
+    await page.locator('.lang-drop-btn').click();
+    await expect(page.locator('.lang-drop-menu a[href="/es/"]')).toBeVisible();
+    await expect(page.locator('.lang-drop-menu a[href="/th/"]')).toBeVisible();
   });
 
-  test('ES page marks ES as current', async ({ page }) => {
+  test('Profile link has aria-current="page" on /', async ({ page }) => {
+    await page.goto('/');
+    const profileLink = page.locator('nav.top-nav a[href="/"]');
+    await expect(profileLink).toHaveAttribute('aria-current', 'page');
+  });
+
+  test('ES page still marks Profile as current', async ({ page }) => {
     await page.goto('/es/');
-    const esLink = page.locator('nav.top-nav a[href="/es/"]');
-    await expect(esLink).toHaveAttribute('aria-current', 'page');
+    const profileLink = page.locator('nav.top-nav a[href="/"]');
+    await expect(profileLink).toHaveAttribute('aria-current', 'page');
   });
 });
 
-test.describe('navigation — whitepaper/blog pages', () => {
-  test('whitepaper nav has venture links and Blog', async ({ page }) => {
-    await page.goto('/blog/');
-    const nav = page.locator('nav.top-nav');
-    await expect(nav.locator('a[href="/"]')).toBeVisible();
-    await expect(nav.locator('a[href="/americanguntrader/"]')).toBeVisible();
-    await expect(nav.locator('a[href="/dabdash/"]')).toBeVisible();
-    await expect(nav.locator('a[href="/blog/"]')).toBeVisible();
-  });
-
+test.describe('navigation — blog/whitepaper pages', () => {
   test('Blog link has aria-current on /blog/', async ({ page }) => {
     await page.goto('/blog/');
     const blogLink = page.locator('nav.top-nav a[href="/blog/"]');
     await expect(blogLink).toHaveAttribute('aria-current', 'page');
   });
 
-  test('venture page marks itself as current', async ({ page }) => {
+  test('whitepaper pages render the nav', async ({ page }) => {
     await page.goto('/americanguntrader/');
-    const agtLink = page.locator('nav.top-nav a[href="/americanguntrader/"]');
-    await expect(agtLink).toHaveAttribute('aria-current', 'page');
+    await expect(page.locator('nav.top-nav')).toBeVisible();
   });
 });
 
 test.describe('navigation — cross-page links', () => {
-  test('resume footer links to blog', async ({ page }) => {
+  test('profile footer links to blog', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('.site-footer a[href="/blog/"]')).toBeVisible();
   });
 
-  test('whitepaper footer links back to resume', async ({ page }) => {
+  test('whitepaper footer links back to profile', async ({ page }) => {
     await page.goto('/blog/');
     await expect(page.locator('.site-footer a[href="/"]')).toBeVisible();
   });
 
-  test('clicking Blog from resume navigates to /blog/', async ({ page }) => {
+  test('clicking Blog from profile navigates to /blog/', async ({ page }) => {
     await page.goto('/');
     await page.locator('nav.top-nav a[href="/blog/"]').click();
     await page.waitForURL('**/blog/**');
     await expect(page.locator('h1.wp-title')).toContainText('Blog');
+  });
+});
+
+test.describe('funnel — Shadow Software CTAs', () => {
+  test('hero primary CTA targets shadowsoftware.com/contact', async ({ page }) => {
+    await page.goto('/');
+    const cta = page.locator('.hero-cta .btn--primary');
+    await expect(cta).toBeVisible();
+    const href = await cta.getAttribute('href');
+    expect(href).toContain('shadowsoftware.com/contact');
+  });
+
+  test('funnel block lists the three service lanes', async ({ page }) => {
+    await page.goto('/');
+    const lanes = page.locator('.funnel-lane a');
+    await expect(lanes).toHaveCount(3);
+    for (const href of await lanes.evaluateAll((els) => els.map((el) => el.getAttribute('href')))) {
+      expect(href).toContain('shadowsoftware.com');
+    }
   });
 });
 
@@ -73,17 +88,11 @@ test.describe('accessibility — focus and landmarks', () => {
     expect(label).toBeTruthy();
   });
 
-  test('theme toggle has aria-label', async ({ page }) => {
-    await page.goto('/');
-    const toggle = page.locator('.theme-toggle');
-    await expect(toggle).toHaveAttribute('aria-label', 'Toggle theme');
-  });
-
-  test('headshot has alt text', async ({ page }) => {
+  test('avatar has alt text naming Big Shadow', async ({ page }) => {
     await page.goto('/');
     const img = page.locator('img.headshot');
     const alt = await img.getAttribute('alt');
-    expect(alt).toBeTruthy();
+    expect(alt).toContain('Big Shadow');
   });
 
   test('venture logos have alt text', async ({ page }) => {

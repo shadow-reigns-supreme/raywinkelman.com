@@ -1,24 +1,67 @@
 ---
+type Variant = 'seo' | 'software' | 'outbound' | 'brand';
+
+interface Props {
+  variant?: Variant;
+}
+
+const { variant = 'seo' } = Astro.props;
+
+const variants = {
+  seo: {
+    eyebrow: "You found this article through search. That's not an accident.",
+    headingHtml: 'We build <em>search visibility</em> for serious brands.',
+    body: "SEO & AEO services that get your business in front of people the moment they're asking the right questions, in Google and in AI.",
+    pills: ['Technical SEO', 'Answer Engine Optimization', 'Content Strategy', 'AI Search Visibility'],
+    cta: 'Get found like this',
+    href: 'https://shadowsoftware.com',
+  },
+  software: {
+    eyebrow: 'Written by the founder of a software engineering company.',
+    headingHtml: 'We build the <em>software</em>, end to end.',
+    body: 'Custom platforms, web apps, integrations, and internal tools, designed and shipped by the people who write the code.',
+    pills: ['End-to-End Builds', 'Web Platforms & APIs', 'Integrations', 'Internal Tools'],
+    cta: 'Start a project',
+    href: 'https://shadowsoftware.com/contact',
+  },
+  outbound: {
+    eyebrow: 'Outbound, run like an engineering problem.',
+    headingHtml: 'Cold email that actually <em>lands</em>.',
+    body: 'Mailbox infrastructure, deliverability, and sequencing built by engineers who run their own outbound systems in production.',
+    pills: ['Mailbox Infrastructure', 'Deliverability', 'Outbound Copy', 'Automation'],
+    cta: 'Start a conversation',
+    href: 'https://shadowsoftware.com/contact',
+  },
+  brand: {
+    eyebrow: 'From the founder of Shadow Software LLC.',
+    headingHtml: 'Built by <em>Shadow Software</em>.',
+    body: 'The engineering company behind this site builds software, search visibility, and outbound systems for clients worldwide.',
+    pills: ['Software Development', 'SEO & AEO', 'Cold Email & Outbound'],
+    cta: 'See what we do',
+    href: 'https://shadowsoftware.com/what-we-do',
+  },
+} satisfies Record<Variant, { eyebrow: string; headingHtml: string; body: string; pills: string[]; cta: string; href: string }>;
+
+const v = variants[variant];
 ---
 
-<aside class="ss-promo reveal" aria-label="Sponsored — Shadow Software LLC">
+<aside class="ss-promo reveal" aria-label="About Shadow Software LLC">
   <div class="ss-promo-inner">
     <div class="ss-promo-brand">
       <img src="/logos/shadow-software.webp" alt="Shadow Software LLC" class="ss-promo-logo" width="32" height="32">
       <span class="ss-promo-sponsor">Shadow Software LLC</span>
     </div>
-    <p class="ss-promo-eyebrow">You found this article through search — that's not an accident.</p>
-    <p class="ss-promo-heading">We build <em>search visibility</em> for serious brands.</p>
-    <p class="ss-promo-body">SEO &amp; AEO services that get your business in front of people the moment they're asking the right questions — in Google, and in AI.</p>
+    <p class="ss-promo-eyebrow">{v.eyebrow}</p>
+    <p class="ss-promo-heading" set:html={v.headingHtml} />
+    <p class="ss-promo-body">{v.body}</p>
     <div class="ss-promo-pills">
-      <span class="ss-promo-pill">Technical SEO</span>
-      <span class="ss-promo-pill">Answer Engine Optimization</span>
-      <span class="ss-promo-pill">Content Strategy</span>
-      <span class="ss-promo-pill">AI Search Visibility</span>
+      {v.pills.map((pill) => (
+        <span class="ss-promo-pill">{pill}</span>
+      ))}
     </div>
     <div class="ss-promo-cta-wrap">
-      <a href="https://shadowsoftware.com/services/seo" class="ss-promo-cta" target="_blank" rel="noopener noreferrer sponsored">
-        Get found like this
+      <a href={v.href} class="ss-promo-cta" target="_blank" rel="noopener noreferrer">
+        {v.cta}
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="2" y1="7" x2="12" y2="7"/>
           <polyline points="8 3 12 7 8 11"/>
@@ -31,14 +74,14 @@
 <style>
   .ss-promo {
     margin: 3rem 0 2rem;
-    border-radius: 5px;
+    border-radius: var(--radius, 18px);
     overflow: hidden;
-    background: #0f0f0f;
-    border: 1px solid rgba(143, 212, 104, 0.2);
+    background: var(--surface, #0f0f0f);
+    border: 1px solid rgba(var(--accent-rgb, 143, 212, 104), 0.2);
     box-shadow:
-      0 0 0 1px rgba(143, 212, 104, 0.04),
+      0 0 0 1px rgba(var(--accent-rgb, 143, 212, 104), 0.04),
       0 4px 32px rgba(0, 0, 0, 0.4),
-      0 0 60px rgba(143, 212, 104, 0.05);
+      0 0 60px rgba(var(--accent-rgb, 143, 212, 104), 0.05);
   }
 
   .ss-promo-inner {
@@ -50,6 +93,12 @@
     overflow: hidden;
   }
 
+  @media (max-width: 32rem) {
+    .ss-promo-inner {
+      padding: 1.375rem;
+    }
+  }
+
   .ss-promo-inner::before {
     content: '';
     position: absolute;
@@ -57,7 +106,7 @@
     right: -60px;
     width: 240px;
     height: 240px;
-    background: radial-gradient(ellipse at center, rgba(143, 212, 104, 0.14) 0%, transparent 68%);
+    background: radial-gradient(ellipse at center, rgba(var(--accent-rgb, 143, 212, 104), 0.14) 0%, transparent 68%);
     pointer-events: none;
   }
 
@@ -77,11 +126,12 @@
   }
 
   .ss-promo-sponsor {
+    font-family: var(--font-mono, ui-monospace, monospace);
     font-size: 0.625rem;
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba(143, 212, 104, 0.65);
+    color: rgba(var(--accent-rgb, 143, 212, 104), 0.65);
   }
 
   .ss-promo-eyebrow {
@@ -94,19 +144,20 @@
   }
 
   .ss-promo-heading {
+    font-family: var(--font-display, inherit);
     font-size: clamp(1.35rem, 4vw, 1.875rem);
     font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    color: #fff !important;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    color: var(--text-strong, #fff) !important;
     margin: 0 !important;
     text-transform: none !important;
     text-decoration: none !important;
   }
 
-  .ss-promo-heading em {
+  .ss-promo-heading :global(em) {
     font-style: normal;
-    color: #8FD468;
+    color: var(--accent, #8fd468);
   }
 
   .ss-promo-body {
@@ -125,15 +176,16 @@
   }
 
   .ss-promo-pill {
+    font-family: var(--font-mono, ui-monospace, monospace);
     font-size: 0.5625rem;
     font-weight: 500;
     letter-spacing: 0.09em;
     text-transform: uppercase;
-    padding: 0.2rem 0.625rem;
-    border-radius: 2px;
-    background: rgba(143, 212, 104, 0.07);
-    border: 1px solid rgba(143, 212, 104, 0.18);
-    color: #8FD468;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(var(--accent-rgb, 143, 212, 104), 0.07);
+    border: 1px solid rgba(var(--accent-rgb, 143, 212, 104), 0.18);
+    color: var(--accent, #8fd468);
   }
 
   .ss-promo-cta-wrap {
@@ -144,23 +196,23 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.7rem 1.375rem;
-    background: #8FD468;
-    color: #060606 !important;
+    padding: 0.8rem 1.45rem;
+    background: var(--accent, #8fd468);
+    color: var(--accent-ink, #07210a) !important;
     font-size: 0.8125rem;
     font-weight: 700;
     letter-spacing: 0.02em;
-    border-radius: 3px;
+    border-radius: 999px;
     text-decoration: none !important;
-    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    transition: background 0.2s ease, box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1);
     margin-top: 0.25rem;
+    min-height: 44px;
   }
 
   .ss-promo-cta:hover {
-    background: #a0e37e;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(143, 212, 104, 0.3);
-    color: #060606 !important;
+    background: var(--accent-bright, #9de073);
+    box-shadow: 0 18px 50px -16px rgba(var(--accent-rgb, 143, 212, 104), 0.55);
+    color: var(--accent-ink, #07210a) !important;
   }
 
   .ss-promo-cta svg {

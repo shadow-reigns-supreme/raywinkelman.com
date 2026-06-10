@@ -22,7 +22,7 @@ Each post lives at `src/content/posts/{slug}.json`:
   "title": "...",
   "excerpt": "~155 char meta description",
   "html": "inner body HTML only — no <html>/<head>/<body>",
-  "category": "Tax",
+  "category": "AEO",
   "keyword": "primary keyword",
   "lang": "en-US",
   "slug": "post-slug",
@@ -50,6 +50,19 @@ Use the `/blog` skill for the full guided workflow.
 - Sets `twitter:card` to `summary_large_image`
 - Includes a `ImageObject` with `width: 1200, height: 630` in the JSON-LD BlogPosting
 - Hides the hero via `onerror` if the image file is missing (graceful fallback)
+
+## Shadow Software Promo Variants
+
+Every post page ends with a `ShadowSoftwarePromo` card. `Whitepaper.astro` accepts a `promoVariant` prop (`'seo' | 'software' | 'outbound' | 'brand'`, default `'seo'`), and `[slug].astro` picks it from the post's category:
+
+| Category | Variant |
+|---|---|
+| AEO, SEO | `seo` |
+| Cold Email | `outbound` |
+| Software Development, Cybersecurity | `software` |
+| anything else (Guest Blog: venture promos, SaaS guest placements) | `brand` |
+
+The mapping lives in `VARIANT_BY_CATEGORY` in `src/pages/blog/[slug].astro`.
 
 ## Featured Images
 

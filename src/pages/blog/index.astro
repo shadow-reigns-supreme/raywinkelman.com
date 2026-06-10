@@ -1,6 +1,5 @@
 ---
 import Whitepaper from '../../layouts/Whitepaper.astro';
-import ShadowSoftwarePromo from '../../components/ShadowSoftwarePromo.astro';
 
 export const prerender = true;
 
@@ -19,23 +18,22 @@ const posts: Post[] = Object.values(modules)
     category: p.category,
   }));
 
-const PERMITTED_CATEGORIES = ['Tax', 'AEO', 'SEO', 'Banking', 'Cybersecurity', 'DabDash', 'American Gun Trader', 'Guest Blog'];
+const PERMITTED_CATEGORIES = ['Software Development', 'AEO', 'SEO', 'Cold Email', 'Cybersecurity', 'Guest Blog'];
 const presentCategories = new Set(posts.map((p) => p.category));
 const categories = PERMITTED_CATEGORIES.filter((c) => presentCategories.has(c));
 ---
 
 <Whitepaper
   title="Blog — Ray Winkelman"
-  description="Tech entrepreneurship, AEO/SEO, offshore tax residencies, and travel — written by Ray Winkelman, founder of Shadow Software LLC."
-  logo="/ray.png"
+  description="Software engineering, SEO/AEO, and outbound systems — written by Ray Winkelman, founder of Shadow Software LLC."
+  logo="/big-shadow.png"
   platformName="Blog"
   platformUrl="https://raywinkelman.com/blog/"
-  tagline="Tech entrepreneurship, AEO/SEO, offshore tax, and travel"
+  tagline="Software engineering, SEO/AEO, and outbound systems"
   path="/blog/"
   showVisitLink={false}
+  isIndex={true}
 >
-
-<ShadowSoftwarePromo />
 
 <nav class="cat-nav" aria-label="Filter by category">
   <button class="cat-pill active" data-filter="All" aria-pressed="true">All</button>
@@ -77,7 +75,7 @@ const categories = PERMITTED_CATEGORIES.filter((c) => presentCategories.has(c));
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.375rem 0.875rem;
+  padding: 0.5rem 0.875rem;
   border: 1px solid var(--text-muted);
   border-radius: 2px;
   color: var(--text-muted);
@@ -85,6 +83,7 @@ const categories = PERMITTED_CATEGORIES.filter((c) => presentCategories.has(c));
   font-family: var(--font);
   cursor: pointer;
   line-height: 1;
+  min-height: 32px;
   transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
 }
 
@@ -169,30 +168,35 @@ const categories = PERMITTED_CATEGORIES.filter((c) => presentCategories.has(c));
 </style>
 
 <script>
-  const pills = document.querySelectorAll<HTMLButtonElement>('.cat-pill');
-  const items = document.querySelectorAll<HTMLLIElement>('.blog-item');
-  const empty = document.querySelector<HTMLParagraphElement>('.blog-empty');
+  function initBlogFilter() {
+    const pills = document.querySelectorAll<HTMLButtonElement>('.cat-pill');
+    const items = document.querySelectorAll<HTMLLIElement>('.blog-item');
+    const empty = document.querySelector<HTMLParagraphElement>('.blog-empty');
+    if (!pills.length) return;
 
-  function applyFilter(filter: string) {
-    for (const p of pills) { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); }
-    const activePill = [...pills].find(p => p.dataset.filter === filter);
-    if (activePill) { activePill.classList.add('active'); activePill.setAttribute('aria-pressed', 'true'); }
+    function applyFilter(filter: string) {
+      for (const p of pills) { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); }
+      const activePill = [...pills].find(p => p.dataset.filter === filter);
+      if (activePill) { activePill.classList.add('active'); activePill.setAttribute('aria-pressed', 'true'); }
 
-    let visible = 0;
-    for (const item of items) {
-      const cat = item.dataset.category?.toLowerCase();
-      const show = filter === 'All'
-        ? cat !== 'guest blog'
-        : cat === filter.toLowerCase();
-      item.hidden = !show;
-      if (show) visible++;
+      let visible = 0;
+      for (const item of items) {
+        const cat = item.dataset.category?.toLowerCase();
+        const show = filter === 'All'
+          ? cat !== 'guest blog'
+          : cat === filter.toLowerCase();
+        item.hidden = !show;
+        if (show) visible++;
+      }
+      if (empty) empty.hidden = visible > 0;
     }
-    if (empty) empty.hidden = visible > 0;
+
+    applyFilter('All');
+
+    for (const pill of pills) {
+      pill.addEventListener('click', () => applyFilter(pill.dataset.filter ?? 'All'));
+    }
   }
 
-  applyFilter('All');
-
-  for (const pill of pills) {
-    pill.addEventListener('click', () => applyFilter(pill.dataset.filter ?? 'All'));
-  }
+  document.addEventListener('astro:page-load', initBlogFilter);
 </script>

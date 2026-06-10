@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://raywinkelman.com/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en"        href="https://raywinkelman.com/"/>
     <xhtml:link rel="alternate" hreflang="es"        href="https://raywinkelman.com/es/"/>
     <xhtml:link rel="alternate" hreflang="th"        href="https://raywinkelman.com/th/"/>
@@ -13,7 +13,7 @@
   </url>
   <url>
     <loc>https://raywinkelman.com/es/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en"        href="https://raywinkelman.com/"/>
     <xhtml:link rel="alternate" hreflang="es"        href="https://raywinkelman.com/es/"/>
     <xhtml:link rel="alternate" hreflang="th"        href="https://raywinkelman.com/th/"/>
@@ -23,7 +23,7 @@
   </url>
   <url>
     <loc>https://raywinkelman.com/th/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <xhtml:link rel="alternate" hreflang="en"        href="https://raywinkelman.com/"/>
     <xhtml:link rel="alternate" hreflang="es"        href="https://raywinkelman.com/es/"/>
     <xhtml:link rel="alternate" hreflang="th"        href="https://raywinkelman.com/th/"/>
@@ -33,31 +33,25 @@
   </url>
   <url>
     <loc>https://raywinkelman.com/americanguntrader/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://raywinkelman.com/dabdash/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://raywinkelman.com/blog/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://raywinkelman.com/blog/linux-anti-fingerprinting-hardening/</loc>
     <lastmod>2026-04-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/how-i-paid-zero-tax-2025/</loc>
-    <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -74,12 +68,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://raywinkelman.com/blog/bali-founder-scene-is-theater/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://raywinkelman.com/blog/claude-code-aeo-seo-tool/</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
@@ -87,84 +75,6 @@
   </url>
   <url>
     <loc>https://raywinkelman.com/blog/dabdash-for-thai-dispensaries/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/expats-should-not-open-thai-bank-accounts/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/iceland-hosting-high-risk-adjacent-tech/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/krabi-vacation-review/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/mercury-bank-non-resident-saas-founders/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/nuvion-peptides-canada-fast-shipping/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/panama-tax-residency/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/paraguay-tax-residency/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/renounce-canadian-tax-residency/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/swiss-banking-for-founders/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/thailand-tax-strategy-183-days/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/uae-tax-residency/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/us-real-estate-depreciation/</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://raywinkelman.com/blog/wyoming-nonresident-passthrough-llc/</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

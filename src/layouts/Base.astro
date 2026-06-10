@@ -4,7 +4,7 @@ import type { ResumeData } from '../data/types';
 import Role from '../components/Role.astro';
 import Edu from '../components/Edu.astro';
 import Venture from '../components/Venture.astro';
-import ShadowSoftwarePromo from '../components/ShadowSoftwarePromo.astro';
+import Funnel from '../components/Funnel.astro';
 import TopNav from '../components/TopNav.astro';
 import '../styles/global.css';
 
@@ -20,8 +20,8 @@ const canonicalPath = currentLang === 'en' ? '/' : `/${currentLang}/`;
 const canonicalUrl = `https://raywinkelman.com${canonicalPath}`;
 
 const fontUrl = needsThai
-  ? 'https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap'
-  : 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap';
+  ? 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;700&display=swap'
+  : 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap';
 
 const jsonLd = currentLang === 'en' ? {
   "@context": "https://schema.org",
@@ -39,7 +39,7 @@ const jsonLd = currentLang === 'en' ? {
       "@type": "Organization",
       "@id": "https://raywinkelman.com/#organization",
       "name": "Shadow Software LLC",
-      "url": "https://raywinkelman.com",
+      "url": "https://shadowsoftware.com",
       "founder": { "@id": "https://raywinkelman.com/#person" },
       "foundingDate": "2019",
       "knowsAbout": ["Software Architecture", "SaaS", "E-Commerce", "Marketplace Platforms"],
@@ -70,11 +70,10 @@ const jsonLd = currentLang === 'en' ? {
       "url": "https://raywinkelman.com",
       "image": {
         "@type": "ImageObject",
-        "url": "https://raywinkelman.com/ray.png",
-        "width": 120,
-        "height": 120
+        "url": "https://raywinkelman.com/big-shadow.png",
+        "width": 512,
+        "height": 512
       },
-      "email": "resume@raywinkelman.com",
       "alumniOf": [
         {
           "@type": "EducationalOrganization",
@@ -142,7 +141,7 @@ const jsonLd = currentLang === 'en' ? {
           "name": "What does Ray Winkelman do?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ray Winkelman builds and operates SaaS and marketplace platforms full-time through Shadow Software LLC. He also consults on SEO, AEO (answer engine optimisation), and offshore tax residency strategies for location-independent entrepreneurs. He does not hold a job or work for hire."
+            "text": "Ray Winkelman builds and operates SaaS and marketplace platforms full-time through Shadow Software LLC. Through Shadow Software, his team takes on client engagements in software development, SEO and AEO (answer engine optimisation), and cold email outbound systems. He does not hold a job or work for hire."
           }
         },
         {
@@ -164,7 +163,6 @@ const jsonLd = currentLang === 'en' ? {
 <head>
   <script is:inline>
     document.documentElement.classList.add('js');
-    (function(){const t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');})();
   </script>
   <ClientRouter />
   <meta charset="UTF-8">
@@ -182,17 +180,17 @@ const jsonLd = currentLang === 'en' ? {
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#060606">
 
   <meta property="og:type" content="profile">
   <meta property="og:url" content={canonicalUrl}>
   <meta property="og:title" content={data.title}>
   <meta property="og:description" content={data.description}>
-  <meta property="og:image" content="https://raywinkelman.com/ray.png">
-  <meta property="og:image:width" content="120">
-  <meta property="og:image:height" content="120">
-  <meta property="og:image:alt" content="Ray Winkelman — SaaS Founder & Software Architect">
+  <meta property="og:image" content="https://raywinkelman.com/big-shadow.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Big Shadow — avatar of Ray Winkelman, founder of Shadow Software LLC">
   <meta property="og:locale" content={data.ogLocale}>
   <meta property="og:site_name" content="Ray Winkelman">
   <meta property="profile:first_name" content="Ray">
@@ -201,8 +199,8 @@ const jsonLd = currentLang === 'en' ? {
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content={data.title}>
   <meta name="twitter:description" content={data.description}>
-  <meta name="twitter:image" content="https://raywinkelman.com/ray.png">
-  <meta name="twitter:image:alt" content="Ray Winkelman — SaaS Founder & Software Architect">
+  <meta name="twitter:image" content="https://raywinkelman.com/big-shadow.png">
+  <meta name="twitter:image:alt" content="Big Shadow — avatar of Ray Winkelman, founder of Shadow Software LLC">
 
   <link rel="alternate" hreflang="en" href="https://raywinkelman.com/">
   <link rel="alternate" hreflang="es" href="https://raywinkelman.com/es/">
@@ -237,12 +235,23 @@ const jsonLd = currentLang === 'en' ? {
   <TopNav currentPath={canonicalPath} currentLang={currentLang} />
 
   <header class="site-header">
+    <p class="kicker">{data.hero.kicker}</p>
     <h1 class="name">Ray Winkelman</h1>
-    <div class="meta reveal" data-delay="0.42">
-      <div class="meta-row">
-        <span>{data.location}</span>
-        <a class="email-link" data-u="resume" data-d="raywinkelman.com" href="#" aria-label="Email Ray Winkelman"></a>
-      </div>
+    <p class="position-line reveal" set:html={data.hero.positionHtml} />
+    <div class="proof-strip reveal" data-delay="0.1">
+      {data.hero.proof.map((item) => (
+        <span set:html={item} />
+      ))}
+    </div>
+    <div class="hero-cta reveal" data-delay="0.2">
+      <a class="btn btn--primary" href="https://shadowsoftware.com/contact" rel="noopener">
+        {data.hero.ctaPrimary}
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="2" y1="7" x2="12" y2="7"/>
+          <polyline points="8 3 12 7 8 11"/>
+        </svg>
+      </a>
+      <a class="btn btn--ghost" href="/blog/">{data.hero.ctaSecondary}</a>
     </div>
   </header>
 
@@ -252,9 +261,9 @@ const jsonLd = currentLang === 'en' ? {
       <h2 class="section-label">{data.labels.synopsis}</h2>
       <div class="synopsis-wrap">
         <picture>
-          <source srcset="/ray-2.avif" type="image/avif">
-          <source srcset="/ray-2.webp" type="image/webp">
-          <img src="/ray-2.webp" alt="Ray Winkelman" class="headshot" width="72" height="72" loading="lazy">
+          <source srcset="/big-shadow.avif" type="image/avif">
+          <source srcset="/big-shadow.webp" type="image/webp">
+          <img src="/big-shadow.webp" alt="Big Shadow — cartoon avatar of Ray Winkelman" class="headshot" width="84" height="84" loading="lazy">
         </picture>
         {data.synopsisHtml ? <p set:html={data.synopsisHtml} /> : <p>{data.synopsis}</p>}
       </div>
@@ -286,7 +295,7 @@ const jsonLd = currentLang === 'en' ? {
 
   </main>
 
-  <ShadowSoftwarePromo />
+  <Funnel funnel={data.funnel} />
 
   <footer class="site-footer reveal">
     <span>&copy; {year} Ray Winkelman &middot; <a href="/blog/">Blog</a></span>

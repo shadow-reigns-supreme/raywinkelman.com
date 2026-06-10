@@ -3,12 +3,6 @@
 // Astro deduplicates modules — this executes exactly once per page lifecycle,
 // regardless of which layout loads first or how many navigations occur.
 
-// Restore theme from localStorage immediately after DOM swap (prevents flash)
-document.addEventListener('astro:after-swap', () => {
-  const t = localStorage.getItem('theme');
-  document.documentElement.setAttribute('data-theme', t === 'light' ? 'light' : 'dark');
-});
-
 // Navigation progress bar
 (function initProgressBar() {
   let doneTimer: ReturnType<typeof setTimeout> | null = null;
@@ -53,10 +47,8 @@ if ('serviceWorker' in navigator && !['localhost', '127.0.0.1'].includes(locatio
 // Per-page init — fires on every navigation including initial page load
 document.addEventListener('astro:page-load', () => {
   initUTM();
-  initThemeToggle();
   initLangSelect();
   initPrintButton();
-  initEmailReveal();
   initNameSplit();
   initScrollReveal();
   initWpReveal();
@@ -76,19 +68,13 @@ function initUTM() {
   }
 }
 
-function initThemeToggle() {
-  const btn = document.querySelector('.theme-toggle');
-  if (!btn) return;
-  btn.addEventListener('click', () => {
-    const forced = document.documentElement.getAttribute('data-theme');
-    const current = forced ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    const next = current === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  });
-}
+let langSelectAbort: AbortController | null = null;
 
 function initLangSelect() {
+  langSelectAbort?.abort();
+  langSelectAbort = new AbortController();
+  const { signal } = langSelectAbort;
+
   const drop = document.querySelector<HTMLElement>('[data-lang-drop]');
   if (!drop) return;
   const btn = drop.querySelector('.lang-drop-btn');
@@ -106,24 +92,14 @@ function initLangSelect() {
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
     if (drop.hasAttribute('data-open')) { close(); } else { open(); }
-  });
+  }, { signal });
 
-  document.addEventListener('click', close);
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  document.addEventListener('click', close, { signal });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); }, { signal });
 }
 
 function initPrintButton() {
   document.querySelector('.download-btn')?.addEventListener('click', () => window.print());
-}
-
-function initEmailReveal() {
-  for (const a of document.querySelectorAll<HTMLAnchorElement>('a.email-link')) {
-    const u = a.dataset['u'];
-    const d = a.dataset['d'];
-    if (!u || !d) continue;
-    a.href = 'mailto:' + u + '\u0040' + d;
-    a.textContent = u + '\u0040' + d;
-  }
 }
 
 function initNameSplit() {
@@ -144,34 +120,39 @@ function initNameSplit() {
   }).join(' ');
 }
 
+let revealIo: IntersectionObserver | null = null;
+let wpRevealIo: IntersectionObserver | null = null;
+
 function initScrollReveal() {
+  revealIo?.disconnect();
   const reveals = document.querySelectorAll<HTMLElement>('.reveal');
   if (!('IntersectionObserver' in window)) {
     for (const el of reveals) el.classList.add('visible');
     return;
   }
-  const io = new IntersectionObserver((entries) => {
+  revealIo = new IntersectionObserver((entries) => {
     for (const e of entries) {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      if (e.isIntersecting) { e.target.classList.add('visible'); revealIo?.unobserve(e.target); }
     }
   }, { rootMargin: '0px 0px -30px 0px', threshold: 0.05 });
   for (const [i, el] of Array.from(reveals).entries()) {
     const manual = el.dataset['delay'];
     el.style.setProperty('--reveal-delay', manual ? `${manual}s` : `${Math.min(i * 0.08, 0.28)}s`);
-    io.observe(el);
+    revealIo.observe(el);
   }
 }
 
 function initWpReveal() {
+  wpRevealIo?.disconnect();
   const wpBody = document.querySelector('.wp-body');
   if (!wpBody || !('IntersectionObserver' in window)) return;
-  const wpIo = new IntersectionObserver((entries) => {
+  wpRevealIo = new IntersectionObserver((entries) => {
     for (const e of entries) {
-      if (e.isIntersecting) { e.target.classList.add('visible'); wpIo.unobserve(e.target); }
+      if (e.isIntersecting) { e.target.classList.add('visible'); wpRevealIo?.unobserve(e.target); }
     }
   }, { rootMargin: '0px 0px -20px 0px', threshold: 0.05 });
   for (const [i, el] of Array.from(wpBody.children).entries()) {
     if (el instanceof HTMLElement) el.style.setProperty('--wp-i', String(i));
-    wpIo.observe(el);
+    wpRevealIo.observe(el);
   }
 }

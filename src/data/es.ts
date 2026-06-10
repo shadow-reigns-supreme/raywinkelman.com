@@ -16,8 +16,31 @@ export const es: ResumeData = {
     print: 'Imprimir',
     langNav: 'Idioma',
   },
-  synopsis: 'Ejecutivo de software senior con 13+ años de destacada experiencia en la industria. Fundador de ShadowSoftware.com, AmericanGunTrader.com™ y DabDash.com.',
-  synopsisHtml: 'Ejecutivo de software senior con 13+ años de destacada experiencia en la industria. Fundador de <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">ShadowSoftware.com</a>, <a href="/americanguntrader/">AmericanGunTrader.com™</a> y <a href="/dabdash/">DabDash.com</a>.',
+  hero: {
+    kicker: 'Fundador y CEO · Shadow Software LLC',
+    positionHtml: 'El ingeniero detrás de <strong>Shadow Software</strong>. Construye y opera plataformas en producción desde 2019.',
+    proof: [
+      'Desde <strong>2019</strong>',
+      '<strong>13+</strong> años de ingeniería',
+      '<strong>2</strong> plataformas en producción',
+      '<strong>5.0</strong> en Google',
+    ],
+    ctaPrimary: 'Trabaja con Shadow Software',
+    ctaSecondary: 'Leer el blog',
+  },
+  funnel: {
+    kicker: 'Shadow Software LLC',
+    headingHtml: '¿Necesitas <em>ingeniería</em> como esta?',
+    lanes: [
+      { name: 'Desarrollo de software de extremo a extremo', note: 'Plataformas · APIs', href: 'https://shadowsoftware.com/what-we-do' },
+      { name: 'SEO y optimización para motores de respuesta', note: 'Google · Búsqueda IA', href: 'https://shadowsoftware.com' },
+      { name: 'Cold email y sistemas de outbound', note: 'Entregabilidad', href: 'https://shadowsoftware.com/contact' },
+      { name: 'Publicidad grey hat y alto riesgo', note: 'Cloaking · Compliance', href: 'https://shadowsoftware.com/contact' },
+    ],
+    cta: 'Iniciar un proyecto',
+  },
+  synopsis: 'Fundador y CEO de Shadow Software LLC, la empresa de ingeniería detrás de AmericanGunTrader.com y DabDash.com. 13+ años construyendo software para empresas de retail, gestión de activos y seguridad a escala Fortune. Hoy su equipo construye plataformas de extremo a extremo para clientes en todo el mundo.',
+  synopsisHtml: 'Fundador y CEO de <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a>, la empresa de ingeniería detrás de <a href="/americanguntrader/">AmericanGunTrader.com™</a> y <a href="/dabdash/">DabDash.com</a>. 13+ años construyendo software para empresas de retail, gestión de activos y seguridad a escala Fortune. Hoy su equipo construye plataformas de extremo a extremo para clientes en todo el mundo.',
   venturesContext: 'Construidos y escalados a través de Shadow Software LLC.',
   ventures: [
     {

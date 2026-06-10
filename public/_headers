@@ -16,15 +16,9 @@
 # ─── Other static assets (icons, fonts, manifest) ────────────────────────────
 # Not content-hashed but rarely change. 30-day cache, must-revalidate lets
 # Cloudflare serve stale while it revalidates in the background (SWR).
-/ray.avif
+/big-shadow.avif
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
-/ray.webp
-  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
-/ray-2.avif
-  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
-/ray-2.webp
-  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
-/ray-winkelman.webp
+/big-shadow.webp
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
 /*.png
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400

@@ -32,6 +32,27 @@ export interface Venture {
   blurb: string;
 }
 
+export interface Hero {
+  kicker: string;
+  positionHtml: string;
+  proof: string[];
+  ctaPrimary: string;
+  ctaSecondary: string;
+}
+
+export interface FunnelLane {
+  name: string;
+  note: string;
+  href: string;
+}
+
+export interface Funnel {
+  kicker: string;
+  headingHtml: string;
+  lanes: FunnelLane[];
+  cta: string;
+}
+
 export interface ResumeData {
   lang: string;
   dir?: 'ltr' | 'rtl';
@@ -49,6 +70,8 @@ export interface ResumeData {
     print?: string;
     langNav: string;
   };
+  hero: Hero;
+  funnel: Funnel;
   synopsis: string;
   synopsisHtml?: string;
   venturesContext: string;

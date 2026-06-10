@@ -24,12 +24,14 @@ interface Props {
   showVisitLink?: boolean;
   faqItems?: FaqItem[];
   featuredImage?: string;
+  promoVariant?: 'seo' | 'software' | 'outbound' | 'brand';
+  isIndex?: boolean;
 }
 
-const { title, description, lang = 'en', logo, platformName, platformUrl, tagline, path, datePublished, dateModified, showVisitLink = true, faqItems, featuredImage } = Astro.props;
+const { title, description, lang = 'en', logo, platformName, platformUrl, tagline, path, datePublished, dateModified, showVisitLink = true, faqItems, featuredImage, promoVariant = 'seo', isIndex = false } = Astro.props;
 const year = new Date().getFullYear();
 const canonicalUrl = `https://raywinkelman.com${path}`;
-const fontUrl = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap';
+const fontUrl = 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap';
 
 // Always derive AVIF and WebP paths — all assets have been converted
 const logoAvif = logo.replace(/\.[^.]+$/, '.avif');
@@ -43,10 +45,11 @@ const featuredImageWebp = featuredImage ? featuredImage.replace(/\.[^.]+$/, '.we
 const lcpPreload = featuredImageAvif ?? logoAvif;
 const lcpPreloadType = 'image/avif';
 
-// OG/Twitter image — featured image (1200×630) or logo fallback
-const ogImage = featuredImage ? `https://raywinkelman.com${featuredImageAvif}` : `https://raywinkelman.com${logo}`;
-const ogImageWidth = featuredImage ? '1200' : '64';
-const ogImageHeight = featuredImage ? '630' : '64';
+// OG/Twitter image — featured image (1200×630) or logo fallback.
+// Use WebP variant for social sharing — AVIF is not supported by Facebook/LinkedIn/Twitter scrapers.
+const ogImage = featuredImage ? `https://raywinkelman.com${featuredImageWebp}` : `https://raywinkelman.com${logo}`;
+const ogImageWidth = featuredImage ? '1200' : '512';
+const ogImageHeight = featuredImage ? '630' : '512';
 
 const resolvedDateModified = dateModified ?? datePublished;
 
@@ -67,7 +70,11 @@ const jsonLdGraph: object[] = [
       { "@type": "ListItem", "position": 2, "name": platformName, "item": canonicalUrl }
     ]
   },
-  {
+];
+
+// Only emit BlogPosting on individual post pages — not on list/index pages
+if (!isIndex) {
+  jsonLdGraph.push({
     "@type": "BlogPosting",
     "headline": title,
     "description": description,
@@ -83,12 +90,12 @@ const jsonLdGraph: object[] = [
       "@type": "Organization",
       "@id": "https://raywinkelman.com/#organization",
       "name": "Shadow Software LLC",
-      "url": "https://raywinkelman.com"
+      "url": "https://shadowsoftware.com"
     },
     "image": blogPostingImage,
     "mainEntityOfPage": canonicalUrl
-  }
-];
+  });
+}
 
 if (faqItems && faqItems.length > 0) {
   jsonLdGraph.push({
@@ -109,7 +116,6 @@ const jsonLd = { "@context": "https://schema.org", "@graph": jsonLdGraph };
 <head>
   <script is:inline>
     document.documentElement.classList.add('js');
-    (function(){const t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');})();
   </script>
   <ClientRouter />
   <meta charset="UTF-8">
@@ -125,10 +131,10 @@ const jsonLd = { "@context": "https://schema.org", "@graph": jsonLdGraph };
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#141416" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#060606">
 
-  <meta property="og:type" content="article">
+  <meta property="og:type" content={isIndex ? 'website' : 'article'}>
   <meta property="og:url" content={canonicalUrl}>
   <meta property="og:title" content={title}>
   <meta property="og:description" content={description}>
@@ -141,6 +147,7 @@ const jsonLd = { "@context": "https://schema.org", "@graph": jsonLdGraph };
   <meta name="twitter:title" content={title}>
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={ogImage}>
+  <meta name="twitter:image:alt" content={featuredImage ? platformName : 'Big Shadow — avatar of Ray Winkelman, founder of Shadow Software LLC'}>
 
   <link rel="alternate" hreflang="en" href={canonicalUrl}>
   <link rel="alternate" hreflang="x-default" href={canonicalUrl}>
@@ -211,11 +218,11 @@ const jsonLd = { "@context": "https://schema.org", "@graph": jsonLdGraph };
     )}
   </main>
 
-  <ShadowSoftwarePromo />
+  <ShadowSoftwarePromo variant={promoVariant} />
 
   <footer class="site-footer reveal">
     <span>&copy; {year} Ray Winkelman &middot; Shadow Software LLC</span>
-    <a href="/">Back to resume</a>
+    <a href="/">Back to profile</a>
   </footer>
 
   <script>

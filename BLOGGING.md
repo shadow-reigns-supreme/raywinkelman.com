@@ -8,14 +8,18 @@ Ray is a **SaaS founder, not an employee**. He builds platforms, doesn't take jo
 
 **Tone:** First-person, direct, no filler. Information-dense, never padded. No motivational language, no "hustle" framing.
 
+**Anonymity:** Never publish photos of Ray. His visual identity sitewide is the "Big Shadow" avatar (`/big-shadow.png` and variants) — a hooded, heavily-muscled cartoon figure with green eyes, matching the Shadow Software mascot.
+
 ---
 
 ## Topic Pillars (priority order)
 
-1. **Tech entrepreneurship** — platform building, SaaS lessons, Shadow Software LLC and its ventures
+The blog is a funnel to shadowsoftware.com. Every pillar maps to a service Shadow Software sells.
+
+1. **Software development** — engineering case studies from AGT/DabDash (multi-tenant architecture, payments, scraping pipelines, internal tools), platform building, SaaS lessons; written as the operator, not a tutorial author
 2. **AEO/SEO** — answer engine optimization, search strategy, AI search visibility
-3. **Offshore tax residencies** — flag theory, territorial tax, perpetual traveler strategies, legal structures
-4. **Travel** — destination reviews, nomad logistics; always through a working-founder lens, never leisure tourism
+3. **Cold email & outbound** — mailbox infrastructure, deliverability, spam-filter engineering, outbound systems run as software
+4. **Founder operations** — Shadow Software LLC and its ventures, build-vs-buy decisions, running products in production
 
 ---
 
@@ -242,27 +246,29 @@ Exactly one per post:
 
 | Category | Use for |
 |---|---|
-| `Tax` | Offshore tax residencies, flag theory, territorial tax, legal structures |
+| `Software Development` | Engineering case studies (AGT/DabDash architecture, payments, scraping pipelines), build-vs-buy, platform engineering for founders |
 | `AEO` | Answer engine optimization, AI search visibility, prompt-based discovery |
 | `SEO` | Search strategy, content architecture, technical SEO, link building |
-| `Banking` | Non-resident banking, offshore accounts, fintech tools, asset protection |
-| `Cybersecurity` | OpSec, system hardening, privacy engineering, anti-fingerprinting, nomad threat models |
-| `DabDash` | DabDash.com updates, cannabis delivery market, SaaS |
-| `American Gun Trader` | AmericanGunTrader.com updates, firearms market, P2P marketplace |
-| `Guest Blog` | First-person reviews, travel write-ups, SEO backlink placements |
+| `Cold Email` | Outbound systems, mailbox infrastructure, deliverability, spam-filter engineering, cold email copy |
+| `Cybersecurity` | OpSec, system hardening, privacy engineering, anti-fingerprinting |
+| `Guest Blog` | All non-pillar content: guest posts written for other SaaS companies, venture promo posts (DabDash, AmericanGunTrader), SEO backlink placements |
 
-`Guest Blog` posts are hidden from the blog index by default — only shown when the "Guest Blog" filter pill is clicked.
+The first five categories are **pillar content** — they map to services Shadow Software sells and carry the category nav. `Guest Blog` is the single non-pillar bucket: it is hidden from the blog index by default and only shown when its filter pill is clicked. Venture promos and paid placements never get their own category.
+
+Every post must reinforce the funnel: written from the perspective of the founder of Shadow Software LLC, with first-hand production experience. The per-category Shadow Software promo is selected automatically (`AEO`/`SEO` → search-visibility pitch, `Cold Email` → outbound pitch, `Software Development`/`Cybersecurity` → software pitch, anything else including `Guest Blog` → brand pitch).
+
+Retired categories (June 2026 redesign): `Tax`, `Banking`, and travel-style guest posts were pruned — the blog now reads purely as software / search / outbound expertise. Do not write new posts in those lanes. `DabDash` and `American Gun Trader` were retired as categories; that content now lives under `Guest Blog`.
 
 ---
 
 ## Guest Blog / Backlink Posts
 
-Posts written for SEO backlinks should:
+Posts written for SEO backlinks (other SaaS companies) and venture promo posts (DabDash, AmericanGunTrader) should:
 - Read as genuine first-hand experience — not advertorial
 - Use `wp-stats` near the top to show ratings/scores (makes the post credible)
 - Use natural anchor text within the sentence
 - Include a disclosure at the bottom using `wp-trademark`
-- Category: `Guest Blog`
+- Category: `Guest Blog` (always — never a per-company or per-venture category)
 
 ---
 
@@ -292,7 +298,7 @@ Create `src/content/posts/{slug}.json`:
   "title": "...",
   "excerpt": "~155 char excerpt — lead with the answer",
   "html": "inner body HTML only",
-  "category": "Tax",
+  "category": "SEO",
   "keyword": "primary keyword",
   "lang": "en-US",
   "slug": "post-slug",

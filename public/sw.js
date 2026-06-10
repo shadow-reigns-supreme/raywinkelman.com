@@ -1,11 +1,11 @@
-const CACHE_VERSION = 'rw-v2';
+const CACHE_VERSION = 'rw-v3';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const HTML_CACHE = `${CACHE_VERSION}-html`;
 
 const PRECACHE_STATIC = [
-  '/ray.avif',
-  '/ray.webp',
-  '/ray.png',
+  '/big-shadow.avif',
+  '/big-shadow.webp',
+  '/big-shadow.png',
   '/logos/agt.avif',
   '/logos/dabdash.avif',
 ];

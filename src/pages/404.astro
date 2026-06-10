@@ -1,0 +1,200 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import TopNav from '../components/TopNav.astro';
+import ShadowSoftwarePromo from '../components/ShadowSoftwarePromo.astro';
+import '../styles/global.css';
+
+const fontUrl = 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script is:inline>
+    document.documentElement.classList.add('js');
+  </script>
+  <ClientRouter />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>404 — Ray Winkelman</title>
+  <meta name="description" content="This page doesn't exist. The blog does.">
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#060606">
+
+  <!-- Non-blocking font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href={fontUrl}>
+  <link rel="stylesheet" href={fontUrl} media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href={fontUrl}></noscript>
+</head>
+<body>
+
+  <div id="nav-progress" aria-hidden="true"></div>
+  <TopNav currentPath="/404" />
+
+  <main class="nf">
+    <picture>
+      <source srcset="/big-shadow.avif" type="image/avif">
+      <source srcset="/big-shadow.webp" type="image/webp">
+      <img src="/big-shadow.webp" alt="Big Shadow — cartoon avatar of Ray Winkelman" class="nf-avatar" width="160" height="160">
+    </picture>
+
+    <p class="kicker">Lost in the shadows</p>
+    <h1 class="nf-code" aria-label="404">4<span class="nf-zero">0</span>4</h1>
+    <p class="nf-line">This page doesn't exist, never shipped, or got pruned. The work that does exist is one tap away.</p>
+
+    <div class="hero-cta">
+      <a class="btn btn--primary" href="/blog/">
+        Read the blog
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="2" y1="7" x2="12" y2="7"/>
+          <polyline points="8 3 12 7 8 11"/>
+        </svg>
+      </a>
+      <a class="btn btn--ghost" href="/">Profile</a>
+    </div>
+
+    <p class="nf-countdown" data-nf-countdown aria-live="polite">
+      Taking you to the blog in <span class="nf-seconds" data-nf-seconds>10</span>s
+      <button class="nf-cancel" type="button" data-nf-cancel>stay here</button>
+    </p>
+  </main>
+
+  <ShadowSoftwarePromo variant="brand" />
+
+  <footer class="site-footer reveal">
+    <span>&copy; {new Date().getFullYear()} Ray Winkelman &middot; Shadow Software LLC</span>
+    <a href="/blog/">Blog</a>
+  </footer>
+
+  <script>
+    import '../scripts/page-init';
+  </script>
+
+  <script is:inline>
+    (function () {
+      const secondsEl = document.querySelector('[data-nf-seconds]');
+      const wrap = document.querySelector('[data-nf-countdown]');
+      const cancelBtn = document.querySelector('[data-nf-cancel]');
+      if (!secondsEl || !wrap) return;
+
+      let seconds = 10;
+      const timer = setInterval(function () {
+        seconds -= 1;
+        secondsEl.textContent = String(seconds);
+        if (seconds <= 0) {
+          clearInterval(timer);
+          window.location.replace('/blog/');
+        }
+      }, 1000);
+
+      function stopTimer() {
+        clearInterval(timer);
+      }
+
+      if (cancelBtn) {
+        cancelBtn.addEventListener('click', function () {
+          stopTimer();
+          wrap.remove();
+        });
+      }
+
+      // Prevent ghost redirect if user navigates away via ClientRouter before timer expires
+      document.addEventListener('astro:before-preparation', stopTimer, { once: true });
+    })();
+  </script>
+
+  <style>
+    .nf {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      margin-bottom: 1rem;
+    }
+
+    .nf-avatar {
+      width: clamp(120px, 34vw, 160px);
+      height: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--rule);
+      margin-bottom: 1.75rem;
+      background: var(--bg);
+      box-shadow: 0 0 80px -20px rgba(var(--accent-rgb), 0.35);
+      animation: nfHalo 7s ease-in-out infinite;
+    }
+
+    @keyframes nfHalo {
+      0%, 100% { box-shadow: 0 0 80px -20px rgba(var(--accent-rgb), 0.25); }
+      50%      { box-shadow: 0 0 90px -16px rgba(var(--accent-rgb), 0.45); }
+    }
+
+    .nf-code {
+      font-family: var(--font-display);
+      font-size: clamp(5.5rem, 28vw, 9rem);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 0.95;
+      color: var(--text-strong);
+      margin-bottom: 1rem;
+    }
+
+    .nf-zero {
+      color: var(--accent);
+    }
+
+    .nf-line {
+      font-size: 1.0625rem;
+      line-height: 1.55;
+      color: var(--text-2);
+      max-width: 36ch;
+      margin-bottom: 1.75rem;
+    }
+
+    .nf-countdown {
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .nf-seconds {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .nf-cancel {
+      background: none;
+      border: none;
+      padding: 0;
+      margin-left: 0.6em;
+      font: inherit;
+      letter-spacing: inherit;
+      text-transform: inherit;
+      color: var(--text-2);
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+      cursor: pointer;
+      transition: color 0.18s ease;
+    }
+    .nf-cancel:hover {
+      color: var(--accent);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .nf-avatar { animation: none; }
+    }
+  </style>
+
+</body>
+</html>
