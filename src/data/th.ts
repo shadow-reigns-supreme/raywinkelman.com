@@ -18,10 +18,10 @@ export const th: ResumeData = {
   },
   hero: {
     kicker: 'ผู้ก่อตั้งและซีอีโอ · Shadow Software LLC',
-    positionHtml: 'วิศวกรเบื้องหลัง <strong>Shadow Software</strong> สร้างและดูแลแพลตฟอร์มระดับโปรดักชันตั้งแต่ปี 2019',
+    positionHtml: 'วิศวกรเบื้องหลัง <strong>Shadow Software</strong> สร้างซอฟต์แวร์ระดับโปรดักชันตั้งแต่ปี 2014 และบริหารในฐานะผู้ก่อตั้งตั้งแต่ปี 2019',
     proof: [
-      'ตั้งแต่ <strong>2019</strong>',
-      'วิศวกรรม <strong>13+</strong> ปี',
+      'ตั้งแต่ <strong>2014</strong>',
+      'วิศวกรรม <strong>12+</strong> ปี',
       '<strong>2</strong> แพลตฟอร์มในโปรดักชัน',
       '<strong>5.0</strong> บน Google',
     ],
@@ -39,8 +39,8 @@ export const th: ResumeData = {
     ],
     cta: 'เริ่มโปรเจกต์',
   },
-  synopsis: 'ผู้ก่อตั้งและซีอีโอของ Shadow Software LLC บริษัทวิศวกรรมเบื้องหลัง AmericanGunTrader.com และ DabDash.com ประสบการณ์สร้างซอฟต์แวร์กว่า 13+ ปีให้กับธุรกิจค้าปลีก การจัดการสินทรัพย์ และความปลอดภัยระดับ Fortune ปัจจุบันทีมของเขาสร้างแพลตฟอร์มครบวงจรให้ลูกค้าทั่วโลก',
-  synopsisHtml: 'ผู้ก่อตั้งและซีอีโอของ <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a> บริษัทวิศวกรรมเบื้องหลัง <a href="/americanguntrader/">AmericanGunTrader.com™</a> และ <a href="/dabdash/">DabDash.com</a> ประสบการณ์สร้างซอฟต์แวร์กว่า 13+ ปีให้กับธุรกิจค้าปลีก การจัดการสินทรัพย์ และความปลอดภัยระดับ Fortune ปัจจุบันทีมของเขาสร้างแพลตฟอร์มครบวงจรให้ลูกค้าทั่วโลก',
+  synopsis: 'ผู้ก่อตั้งและซีอีโอของ Shadow Software LLC บริษัทวิศวกรรมเบื้องหลัง AmericanGunTrader.com และ DabDash.com ประสบการณ์สร้างซอฟต์แวร์กว่า 12+ ปีให้กับธุรกิจค้าปลีก การจัดการสินทรัพย์ และความปลอดภัยระดับ Fortune ปัจจุบันทีมของเขาสร้างแพลตฟอร์มครบวงจรให้ลูกค้าทั่วโลก',
+  synopsisHtml: 'ผู้ก่อตั้งและซีอีโอของ <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a> บริษัทวิศวกรรมเบื้องหลัง <a href="/americanguntrader/">AmericanGunTrader.com™</a> และ <a href="/dabdash/">DabDash.com</a> ประสบการณ์สร้างซอฟต์แวร์กว่า 12+ ปีให้กับธุรกิจค้าปลีก การจัดการสินทรัพย์ และความปลอดภัยระดับ Fortune ปัจจุบันทีมของเขาสร้างแพลตฟอร์มครบวงจรให้ลูกค้าทั่วโลก',
   venturesContext: 'สร้างและขยายผ่าน Shadow Software LLC',
   ventures: [
     {

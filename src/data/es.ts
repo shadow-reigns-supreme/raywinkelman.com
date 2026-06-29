@@ -18,10 +18,10 @@ export const es: ResumeData = {
   },
   hero: {
     kicker: 'Fundador y CEO · Shadow Software LLC',
-    positionHtml: 'El ingeniero detrás de <strong>Shadow Software</strong>. Construye y opera plataformas en producción desde 2019.',
+    positionHtml: 'El ingeniero detrás de <strong>Shadow Software</strong>. Desarrollando software en producción desde 2014, al frente como fundador desde 2019.',
     proof: [
-      'Desde <strong>2019</strong>',
-      '<strong>13+</strong> años de ingeniería',
+      'Desde <strong>2014</strong>',
+      '<strong>12+</strong> años de ingeniería',
       '<strong>2</strong> plataformas en producción',
       '<strong>5.0</strong> en Google',
     ],
@@ -39,8 +39,8 @@ export const es: ResumeData = {
     ],
     cta: 'Iniciar un proyecto',
   },
-  synopsis: 'Fundador y CEO de Shadow Software LLC, la empresa de ingeniería detrás de AmericanGunTrader.com y DabDash.com. 13+ años construyendo software para empresas de retail, gestión de activos y seguridad a escala Fortune. Hoy su equipo construye plataformas de extremo a extremo para clientes en todo el mundo.',
-  synopsisHtml: 'Fundador y CEO de <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a>, la empresa de ingeniería detrás de <a href="/americanguntrader/">AmericanGunTrader.com™</a> y <a href="/dabdash/">DabDash.com</a>. 13+ años construyendo software para empresas de retail, gestión de activos y seguridad a escala Fortune. Hoy su equipo construye plataformas de extremo a extremo para clientes en todo el mundo.',
+  synopsis: 'Fundador y CEO de Shadow Software LLC, la empresa de ingeniería detrás de AmericanGunTrader.com y DabDash.com. 12+ años construyendo software para empresas de retail, gestión de activos y seguridad a escala Fortune. Hoy su equipo construye plataformas de extremo a extremo para clientes en todo el mundo.',
+  synopsisHtml: 'Fundador y CEO de <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a>, la empresa de ingeniería detrás de <a href="/americanguntrader/">AmericanGunTrader.com™</a> y <a href="/dabdash/">DabDash.com</a>. 12+ años construyendo software para empresas de retail, gestión de activos y seguridad a escala Fortune. Hoy su equipo construye plataformas de extremo a extremo para clientes en todo el mundo.',
   venturesContext: 'Construidos y escalados a través de Shadow Software LLC.',
   ventures: [
     {
