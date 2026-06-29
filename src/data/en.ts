@@ -21,7 +21,7 @@ export const en: ResumeData = {
     positionHtml: 'The engineer behind <strong>Shadow Software</strong>. Shipping production software since 2014, running it as a founder since 2019.',
     proof: [
       'Since <strong>2014</strong>',
-      '<strong>12+</strong> yrs engineering',
+      '<strong>{years}+</strong> yrs engineering',
       '<strong>2</strong> platforms in production',
       '<strong>5.0</strong> on Google',
     ],
@@ -39,8 +39,8 @@ export const en: ResumeData = {
     ],
     cta: 'Start a project',
   },
-  synopsis: 'Founder and CEO of Shadow Software LLC, the engineering company behind AmericanGunTrader.com and DabDash.com. 12+ years building software for Fortune-scale retail, asset management, and security companies. Today his team builds platforms end to end for clients worldwide.',
-  synopsisHtml: 'Founder and CEO of <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a>, the engineering company behind <a href="/americanguntrader/">AmericanGunTrader.com™</a> and <a href="/dabdash/">DabDash.com</a>. 12+ years building software for Fortune-scale retail, asset management, and security companies. Today his team builds platforms end to end for clients worldwide.',
+  synopsis: 'Founder and CEO of Shadow Software LLC, the engineering company behind AmericanGunTrader.com and DabDash.com. {years}+ years building software for Fortune-scale retail, asset management, and security companies. Today his team builds platforms end to end for clients worldwide.',
+  synopsisHtml: 'Founder and CEO of <a href="https://www.shadowsoftware.com" target="_blank" rel="noopener">Shadow Software LLC</a>, the engineering company behind <a href="/americanguntrader/">AmericanGunTrader.com™</a> and <a href="/dabdash/">DabDash.com</a>. {years}+ years building software for Fortune-scale retail, asset management, and security companies. Today his team builds platforms end to end for clients worldwide.',
   venturesContext: 'Built and scaled through Shadow Software LLC.',
   ventures: [
     {

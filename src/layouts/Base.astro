@@ -6,6 +6,7 @@ import Edu from '../components/Edu.astro';
 import Venture from '../components/Venture.astro';
 import Funnel from '../components/Funnel.astro';
 import TopNav from '../components/TopNav.astro';
+import { fillYears } from '../data/career';
 import '../styles/global.css';
 
 interface Props {
@@ -14,6 +15,12 @@ interface Props {
 
 const { data } = Astro.props;
 const year = new Date().getFullYear();
+
+// Substitute the {years} token (engineering tenure) so the figure stays
+// correct over time without hand edits. See src/data/career.ts.
+const heroProof = data.hero.proof.map((item) => fillYears(item));
+const synopsisHtml = data.synopsisHtml ? fillYears(data.synopsisHtml) : undefined;
+const synopsisText = fillYears(data.synopsis);
 const currentLang = data.lang;
 const needsThai = currentLang === 'th';
 const canonicalPath = currentLang === 'en' ? '/' : `/${currentLang}/`;
@@ -239,7 +246,7 @@ const jsonLd = currentLang === 'en' ? {
     <h1 class="name">Ray Winkelman</h1>
     <p class="position-line reveal" set:html={data.hero.positionHtml} />
     <div class="proof-strip reveal" data-delay="0.1">
-      {data.hero.proof.map((item) => (
+      {heroProof.map((item) => (
         <span set:html={item} />
       ))}
     </div>
@@ -265,7 +272,7 @@ const jsonLd = currentLang === 'en' ? {
           <source srcset="/big-shadow.webp" type="image/webp">
           <img src="/big-shadow.webp" alt="Big Shadow — cartoon avatar of Ray Winkelman" class="headshot" width="84" height="84" loading="lazy">
         </picture>
-        {data.synopsisHtml ? <p set:html={data.synopsisHtml} /> : <p>{data.synopsis}</p>}
+        {synopsisHtml ? <p set:html={synopsisHtml} /> : <p>{synopsisText}</p>}
       </div>
     </section>
 
